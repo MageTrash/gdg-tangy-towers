@@ -1,3 +1,0 @@
-This would be all of our objects: Player, Enemy, Turrets, Fruits.
-
-We may include a subfolder for obstructions, bridges, etc. Basically any map-altering shit. That's post-MVP.

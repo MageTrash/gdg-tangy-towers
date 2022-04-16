@@ -1,1 +1,0 @@
-This'll be for an adjustable UI, which should accommodate Window resizing.

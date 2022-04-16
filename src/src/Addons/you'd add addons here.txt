@@ -1,2 +1,0 @@
-Get Addons from AssetStore, but be cautious.
-We might use the Github and Tiled extensions.

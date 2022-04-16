@@ -1,7 +1,0 @@
-Public Variables:
-
-
-Affectable Modifiers:
-
-
-Script Components:
