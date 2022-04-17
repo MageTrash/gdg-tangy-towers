@@ -19,7 +19,6 @@ func _ready() -> void:
 		fruit_counter.append(0)
 
 
-# This function will be called to increment certain fruit counts
-# to use in another script e.g. Global.increment_fruit(Global.fruit.APPLE)
+# Call this function to increment certain fruit counts
 func increment_fruit(fruit_type: int) -> void:
 	fruit_counter[fruit_type] += 1

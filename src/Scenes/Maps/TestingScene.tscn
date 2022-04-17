@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Objects/Fruit.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Objects/BaseEnemy.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( -73.4171, 0.749154, 73.4171, -0.749154, -3, 102, -35.2102, -0.374577, 35.2102, 0.374577, 103, 33, -17.2305, -25.8458, 17.2305, 25.8458, 162, 94, -34.8356, 0.374577, 34.8356, -0.374577, 225, 148, -52.0662, 1.12373, 52.0662, -1.12373, 326, 89 )
+}
 
 [node name="TestingShit" type="Node2D"]
+
+[node name="InfoText" type="RichTextLabel" parent="."]
+margin_left = 1.0
+margin_top = -83.0
+margin_right = 383.0
+margin_bottom = -7.0
+text = "This scene is only for testing stuff out."
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 131, 121 )
@@ -11,9 +24,11 @@ position = Vector2( 131, 121 )
 [node name="Fruit" parent="." instance=ExtResource( 2 )]
 position = Vector2( 240, 91 )
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 1.0
-margin_top = -83.0
-margin_right = 383.0
-margin_bottom = -7.0
-text = "This scene is only for testing stuff out."
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2( -1, -1 )
+curve = SubResource( 1 )
+
+[node name="BaseEnemy" parent="Path2D" instance=ExtResource( 3 )]
+position = Vector2( -3, 102 )
+rotation = -0.0283871
+loop = false
