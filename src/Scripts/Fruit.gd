@@ -1,6 +1,6 @@
 extends Node2D
 
-export(Global.fruit) var fruit_type = Global.fruit.APPLE
+export(Global.fruit) var fruit_type
 
 
 onready var area = $PickupArea
