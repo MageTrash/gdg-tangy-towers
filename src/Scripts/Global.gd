@@ -1,7 +1,7 @@
 extends Node
 # This is a global script, it is not attached to anything and can be accessed from any script
 
-# this list may change later
+# this list will change later
 enum fruit {
 	APPLE,
 	BANANA,

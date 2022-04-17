@@ -12,3 +12,4 @@ func _ready() -> void:
 func on_area_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		print("maybe prompt for pick up? or just pick it up straight away")
+		Global.increment_fruit(fruit_type)
