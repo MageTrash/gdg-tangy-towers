@@ -13,7 +13,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	offset += path_speed * delta
 
-	# if the enemy is at the end of the path call reach_end()
+	# if the enemy is at the end of the path call reach_end() note: loop must be off for this to work
 	if unit_offset >= 1.0:
 		reached_end()
 
@@ -21,3 +21,5 @@ func _physics_process(delta: float) -> void:
 # called when enemy has reached the end of path2D
 func reached_end() -> void:
 	queue_free()
+
+
