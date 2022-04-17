@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( -73.4171, 0.749154, 73.4171, -0.749154, -3, 102, -35.2102, -0.374577, 35.2102, 0.374577, 103, 33, -17.2305, -25.8458, 17.2305, 25.8458, 162, 94, -34.8356, 0.374577, 34.8356, -0.374577, 225, 148, -52.0662, 1.12373, 52.0662, -1.12373, 326, 89 )
+"points": PoolVector2Array( -129.986, -17.6356, 129.986, 17.6356, -6.91793, 246.774, -81.8793, 11.6462, 81.8793, -11.6462, 186.082, 121.774, -86.4544, 7.44565, 86.4544, -7.44565, 484.082, 358.774, -96.6139, -11.6042, 96.6139, 11.6042, 649.082, 238.774 )
 }
 
 [node name="TestingShit" type="Node2D"]
@@ -19,16 +19,15 @@ margin_bottom = -7.0
 text = "This scene is only for testing stuff out."
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 131, 121 )
+position = Vector2( 200, 187 )
 
 [node name="Fruit" parent="." instance=ExtResource( 2 )]
-position = Vector2( 240, 91 )
+position = Vector2( 463, 157 )
 
 [node name="Path2D" type="Path2D" parent="."]
-position = Vector2( -1, -1 )
+position = Vector2( 1.91793, -47.7739 )
 curve = SubResource( 1 )
 
 [node name="BaseEnemy" parent="Path2D" instance=ExtResource( 3 )]
-position = Vector2( -3, 102 )
-rotation = -0.0283871
-loop = false
+position = Vector2( -6.91793, 246.774 )
+rotation = 0.124303
