@@ -13,7 +13,7 @@ onready var velocity: Vector2
 func _physics_process(delta: float) -> void:
 	# This will get a normalized Vector2 direction of where the player want's to move
 	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	direction.y = Input.get_action_strength("move_up") - Input.get_action_strength("move_up")
+	direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	direction.normalized()
 
 	# This checks if the user wants to move
