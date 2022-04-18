@@ -8,6 +8,9 @@ height = 8.0
 
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
 script = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": "Change the script variables to fine tune the movement"
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

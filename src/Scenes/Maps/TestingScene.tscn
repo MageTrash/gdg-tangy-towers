@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Objects/Fruit.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Objects/BaseEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Objects/Spawner.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -11,7 +12,7 @@ _data = {
 
 [node name="TestingShit" type="Node2D"]
 
-[node name="InfoText" type="RichTextLabel" parent="."]
+[node name="InfoText" type="Label" parent="."]
 margin_left = 1.0
 margin_top = -83.0
 margin_right = 383.0
@@ -30,4 +31,7 @@ curve = SubResource( 1 )
 
 [node name="BaseEnemy" parent="Path2D" instance=ExtResource( 3 )]
 position = Vector2( -6.91793, 246.774 )
-rotation = 0.124303
+rotation = 0.124299
+
+[node name="Spawner" parent="." instance=ExtResource( 4 )]
+spawned_object = ExtResource( 2 )
