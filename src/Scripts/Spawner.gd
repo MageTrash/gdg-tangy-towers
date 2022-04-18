@@ -12,6 +12,8 @@ onready var list_of_tiles: Array = get_used_cells()
 func _ready() -> void:
 	assert(spawn_object != null, "Add a scene to the spawn_object script variable")
 	assert(list_of_tiles.size() != 0, "You have not set any tiles to spawn objects")
+	if spawn_limit > list_of_tiles.size():
+		spawn_limit = list_of_tiles.size()
 
 	while loop:
 		spawn_random(spawn_amount)
@@ -47,8 +49,8 @@ func spawn_random(amount: int) -> void:
 # returns true if there is no objects in the way
 func check_no_objects(spawn_pos: Vector2, group: String) -> bool:
 	var space = get_world_2d().direct_space_state
-	for collision in space.intersect_point(spawn_pos):
-		if collision.is_in_group(group):
+	for collision in space.intersect_point(spawn_pos, 32, [], 2147483647, true, true):
+		if collision.collider.is_in_group("Spawnable"):
 			return false
 	return true
 
