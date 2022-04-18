@@ -34,4 +34,5 @@ position = Vector2( -6.91793, 246.774 )
 rotation = 0.124299
 
 [node name="Spawner" parent="." instance=ExtResource( 4 )]
+tile_data = PoolIntArray( 917517, 0, 0 )
 spawned_object = ExtResource( 2 )
