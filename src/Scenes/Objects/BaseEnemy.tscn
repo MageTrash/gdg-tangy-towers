@@ -22,7 +22,7 @@ __meta__ = {
 frames = SubResource( 2 )
 animation = "moving"
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="." groups=["Enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource( 1 )

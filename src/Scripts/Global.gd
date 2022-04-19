@@ -1,6 +1,8 @@
 extends Node
 # This is a global script, it is not attached to anything and can be accessed from any script
 
+
+
 # this list will change later
 enum fruit {
 	APPLE,
@@ -22,3 +24,4 @@ func _ready() -> void:
 # Call this function to increment certain fruit counts
 func increment_fruit(fruit_type: int) -> void:
 	fruit_counter[fruit_type] += 1
+
