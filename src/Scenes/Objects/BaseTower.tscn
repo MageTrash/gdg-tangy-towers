@@ -29,3 +29,7 @@ position = Vector2( 0, -20 )
 __meta__ = {
 "_gizmo_extents_": 4.0
 }
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true

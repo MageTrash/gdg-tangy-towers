@@ -3,10 +3,11 @@ extends Node2D
 
 export(PackedScene) var bullet_scene := preload("res://Scenes/Objects/Bullet.tscn")
 export(int) var bullet_speed = 200
-export(int) var fire_rate = 10
+export(float, 0.1, 200) var fire_rate = 5
 
 onready var sight_area: Area2D = $SightArea
 onready var muzzel: Position2D = $ShotPosition
+onready var cooldown: Timer = $CooldownTimer
 onready var targets: Array
 
 var root1: float
@@ -15,6 +16,7 @@ var result: Vector2
 
 
 func _ready() -> void:
+	cooldown.wait_time = 1 / fire_rate
 	sight_area.connect("area_entered", self, "in_sight")
 	sight_area.connect("area_exited", self, "out_of_sight")
 
@@ -30,13 +32,14 @@ func out_of_sight(area: Area2D) -> void:
 
 
 func _process(delta: float) -> void:
-	if targets:
+	if targets and cooldown.is_stopped():
 		if predict_position(targets[0]):
 			var bullet = bullet_scene.instance()
 			bullet.speed = bullet_speed
 			bullet.position = muzzel.position
 			bullet.rotation = result.angle()
 			add_child(bullet)
+			cooldown.start()
 
 
 # solves a quadratic equation and returns how many solutions it has
