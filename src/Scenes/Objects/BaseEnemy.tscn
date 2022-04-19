@@ -1,14 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/BaseEnemy.gd" type="Script" id=1]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "moving",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="BaseEnemy" type="PathFollow2D"]
 script = ExtResource( 1 )
 __meta__ = {
-"_editor_description_": "Make sure you add this as a child of a Path2D otherwise it won't do shit"
+"_editor_description_": "Make sure you add this as a child of a Path2D, otherwise it won't do shit"
 }
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "moving"
 
 [node name="HitBox" type="Area2D" parent="."]
 

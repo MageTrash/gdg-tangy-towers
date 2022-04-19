@@ -1,10 +1,33 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "carrying",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "moving",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "collecting",
+"speed": 5.0
+} ]
+
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 4.0
-height = 8.0
+radius = 4.5
+height = 2.00001
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 30 )
@@ -15,11 +38,13 @@ __meta__ = {
 "_editor_description_": "Change the script variables to fine tune the movement"
 }
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "carrying"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="."]
 
 [node name="ExcludeSpawn" type="Area2D" parent="." groups=["Spawnable"]]
 __meta__ = {

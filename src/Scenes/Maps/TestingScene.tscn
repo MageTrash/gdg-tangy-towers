@@ -14,7 +14,7 @@ _data = {
 
 [node name="InfoText" type="Label" parent="."]
 margin_left = 1.0
-margin_top = -83.0
+margin_top = -27.0
 margin_right = 383.0
 margin_bottom = -7.0
 text = "This scene is only for testing stuff out."
