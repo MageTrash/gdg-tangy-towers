@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<keyboard version="1">
+    <commands>
+        <key command="CopyMerged" shortcut="Ctrl+Shift+C" removed="true" />
+        <key command="Fill" shortcut="F" removed="true" />
+        <key command="PlayAnimation" shortcut="Enter Pad" />
+        <key command="PlayAnimation" shortcut="Space" />
+        <key command="PlayAnimation" shortcut="Enter" />
+        <key command="ShowGrid" shortcut="Ctrl+&apos;" />
+        <key command="ShowGrid" shortcut="Ctrl+G" />
+        <key command="ShowPixelGrid" shortcut="Ctrl+Shift+&apos;" />
+        <key command="CropSprite" shortcut="Ctrl+Shift+C" />
+        <key command="Rotate" shortcut="Ctrl+Shift+R">
+            <param name="angle" value="90" />
+            <param name="target" value="mask" />
+        </key>
+    </commands>
+    <tools>
+        <key tool="paint_bucket" shortcut="G" removed="true" />
+        <key tool="paint_bucket" shortcut="F" />
+    </tools>
+    <quicktools>
+        <key tool="hand" shortcut="Space" removed="true" />
+    </quicktools>
+    <actions />
+    <wheel />
+    <drag />
+</keyboard>
