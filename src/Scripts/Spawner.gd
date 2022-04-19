@@ -1,7 +1,7 @@
 extends TileMap
 
 
-export(PackedScene) var spawn_object
+export(PackedScene) var spawn_object := preload("res://Scenes/Objects/Fruit.tscn")
 export(int) var spawn_limit = 5
 export(int) var spawn_amount = 3
 export(float) var timer_length = 10.0
