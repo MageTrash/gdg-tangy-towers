@@ -15,6 +15,9 @@ func _ready() -> void:
 	if spawn_limit > list_of_tiles.size():
 		spawn_limit = list_of_tiles.size()
 
+	# set the tile to invisible
+	tile_set.tile_set_modulate(0, Color(0 ,0, 0, 0))
+
 	while loop:
 		spawn_random(spawn_amount)
 		yield(get_tree().create_timer(timer_length), "timeout")
