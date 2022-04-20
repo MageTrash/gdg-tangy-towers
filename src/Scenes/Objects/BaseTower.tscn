@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/BaseTower.gd" type="Script" id=1]
 
@@ -8,6 +8,9 @@ height = 12.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 104.019
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 20, 20 )
 
 [node name="BaseTower" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,6 +26,17 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightArea"]
 self_modulate = Color( 0.219608, 1, 0, 0.376471 )
 shape = SubResource( 2 )
+
+[node name="ExcludeSpawn" type="Area2D" parent="." groups=["Spawnable"]]
+__meta__ = {
+"_editor_description_": "This is for making sure things don't spawn on/near the player"
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExcludeSpawn"]
+self_modulate = Color( 0, 0.0627451, 1, 0.152941 )
+show_behind_parent = true
+rotation = 1.5708
+shape = SubResource( 3 )
 
 [node name="ShotPosition" type="Position2D" parent="."]
 position = Vector2( 0, -20 )

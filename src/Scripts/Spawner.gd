@@ -53,6 +53,7 @@ func spawn_random(amount: int) -> void:
 func check_no_objects(spawn_pos: Vector2, group: String) -> bool:
 	var space = get_world_2d().direct_space_state
 	for collision in space.intersect_point(spawn_pos, 32, [], 2147483647, true, true):
+		print(collision.collider)
 		if collision.collider.is_in_group("Spawnable"):
 			return false
 	return true
