@@ -24,11 +24,15 @@ text = "This scene is only for testing stuff out."
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 75, 86 )
 
-[node name="PathArea" type="Area2D" parent="."]
+[node name="PathArea" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PathArea"]
 self_modulate = Color( 1, 1, 1, 0.180392 )
-polygon = PoolVector2Array( -33, 227, 7, 229, 46, 226, 79, 211, 102, 189, 134, 146, 166, 106, 197, 100, 241, 130, 292, 182, 389, 283, 430, 314, 484, 330, 543, 318, 579, 278, 608, 236, 633, 219, 670, 216, 703, 218, 700, 166, 663, 165, 612, 166, 576, 180, 551, 211, 526, 250, 499, 275, 480, 280, 451, 267, 404, 222, 342, 152, 277, 91, 221, 53, 192, 47, 159, 52, 125, 73, 73, 136, 50, 162, 16, 167, -21, 166, -56, 167, -57, 228 )
+polygon = PoolVector2Array( -33, 227, 7, 229, 46, 226, 79, 211, 102, 189, 134, 146, 166, 106, 197, 100, 241, 130, 292, 182, 306.419, 197.014, 350.494, 161.59, 342, 152, 277, 91, 221, 53, 192, 47, 159, 52, 125, 73, 73, 136, 50, 162, 16, 167, -21, 166, -56, 167, -57, 228 )
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="PathArea"]
+self_modulate = Color( 1, 1, 1, 0.180392 )
+polygon = PoolVector2Array( 333.834, 225.559, 389, 283, 430, 314, 484, 330, 543, 318, 579, 278, 608, 236, 633, 219, 670, 216, 703, 218, 700, 166, 663, 165, 612, 166, 576, 180, 551, 211, 526, 250, 499, 275, 480, 280, 451, 267, 404, 222, 374.525, 188.722 )
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2( 1.91793, -47.7739 )

@@ -2,7 +2,7 @@ extends Node2D
 
 
 export(PackedScene) var bullet_scene := preload("res://Scenes/Objects/Bullet.tscn")
-export(int) var bullet_speed = 200
+export(int, 50, 1000) var bullet_speed = 200
 export(float, 0.1, 200) var fire_rate = 5
 
 onready var sight_area: Area2D = $SightArea
@@ -13,7 +13,6 @@ onready var targets: Array
 var root1: float
 var root2: float
 var result: Vector2
-
 
 func _ready() -> void:
 	cooldown.wait_time = 1 / fire_rate
