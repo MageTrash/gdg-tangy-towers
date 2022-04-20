@@ -35,7 +35,10 @@ func _ready() -> void:
 
 # Call this function to increment certain fruit counts
 func increment_fruit(fruit_type: int) -> void:
-	fruit_counter[fruit_type] += 1
+	if in_wave:
+		play_effect(fruit_type)
+	else:
+		fruit_counter[fruit_type] += 1
 
 
 func increment_enemies_counter() -> void:
@@ -50,3 +53,12 @@ func register_path(path: Path2D) -> void:
 func spawn_enemy() -> void:
 	Global.map_path.add_child(enemy.instance())
 	wave_timer.start()
+
+
+func play_effect(fruit_type: int) -> void:
+	match fruit_type:
+		fruit.APPLE:
+			print("apple effect")
+		fruit.BANANA:
+			print("banana effect")
+		# etc. . .
