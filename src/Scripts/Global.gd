@@ -3,7 +3,7 @@ extends Node
 
 # this list will change later
 enum fruit {
-	APPLE,
+	NOIDFRUIT,
 	BANANA,
 	GRAPE,
 }
@@ -15,7 +15,7 @@ onready var enemy: PackedScene = preload("res://Scenes/Objects/BaseEnemy.tscn")
 
 onready var enemies_at_end: int = 0
 # This boolean will state if fruit collect goes to the counter or active effect
-onready var in_wave: bool = false
+onready var in_wave: bool = true
 # This array will hold the counter for each fruit
 onready var fruit_counter = []
 
@@ -57,8 +57,10 @@ func spawn_enemy() -> void:
 
 func play_effect(fruit_type: int) -> void:
 	match fruit_type:
-		fruit.APPLE:
-			print("apple effect")
+		fruit.NOIDFRUIT:
+			Engine.time_scale = 2.0
+			yield(get_tree().create_timer(5),"timeout")
+			Engine.time_scale = 1.0
 		fruit.BANANA:
 			print("banana effect")
 		# etc. . .
