@@ -2,7 +2,6 @@ extends Node2D
 
 export(Global.fruit) var fruit_type
 
-
 onready var area: Area2D = $PickupArea
 
 func _ready() -> void:

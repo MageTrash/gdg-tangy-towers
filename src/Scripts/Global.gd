@@ -1,6 +1,14 @@
 extends Node
 # This is a global script, it is not attached to anything and can be accessed from any script
 
+# this list will change later
+enum fruit {
+	APPLE,
+	BANANA,
+	GRAPE,
+}
+
+
 onready var map_path: Path2D
 onready var wave_timer: Timer = Timer.new()
 onready var enemy: PackedScene = preload("res://Scenes/Objects/BaseEnemy.tscn")
@@ -10,14 +18,6 @@ onready var enemies_at_end: int = 0
 onready var in_wave: bool = false
 # This array will hold the counter for each fruit
 onready var fruit_counter = []
-
-
-# this list will change later
-enum fruit {
-	APPLE,
-	BANANA,
-	GRAPE,
-}
 
 
 func _ready() -> void:
