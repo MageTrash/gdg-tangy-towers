@@ -3,6 +3,7 @@ extends Node2D
 
 export(PackedScene) var bullet_scene := preload("res://Scenes/Objects/Bullet.tscn")
 export(int, 50, 1000) var bullet_speed = 200
+export(int, 1, 100) var bullet_damage = 1
 export(float, 0.1, 200) var fire_rate = 5
 
 onready var sight_area: Area2D = $SightArea
@@ -37,6 +38,7 @@ func _process(delta: float) -> void:
 			bullet.speed = bullet_speed
 			bullet.position = muzzel.position
 			bullet.rotation = result.angle()
+			bullet.damage = bullet_damage
 			add_child(bullet)
 			cooldown.start()
 

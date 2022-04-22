@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-export(int) var health: int = 10
+export(int) var health: int = 10 setget set_health
 export(int) var path_speed: int = 30
 
 var is_slowed: bool = false setget set_slowed
@@ -33,7 +33,17 @@ func _physics_process(delta: float) -> void:
 # called when enemy has reached the end of path2D
 func reached_end() -> void:
 	Global.increment_enemies_counter()
-	# death anim
+	# made it to the end anim
 	queue_free()
 
+
+func set_health(value: int) -> void:
+	health = value
+	if health <= 0:
+		dead()
+
+
+func dead() -> void:
+	# death anim???
+	queue_free()
 
