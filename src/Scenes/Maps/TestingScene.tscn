@@ -24,7 +24,6 @@ text = "This scene is only for testing stuff out."
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 75, 86 )
-slow_factor = 0.7
 
 [node name="PathArea" type="StaticBody2D" parent="."]
 
@@ -51,11 +50,13 @@ spawn_limit = 10
 spawn_amount = 4
 timer_length = 5.0
 
-[node name="AOETower" parent="." instance=ExtResource( 2 )]
+[node name="Towers" type="Node" parent="."]
+
+[node name="AOETower" parent="Towers" instance=ExtResource( 2 )]
 position = Vector2( 193, 143 )
 
-[node name="BaseTower" parent="." instance=ExtResource( 5 )]
+[node name="BaseTower" parent="Towers" instance=ExtResource( 5 )]
 position = Vector2( 483, 230 )
 
-[node name="BaseTower2" parent="." instance=ExtResource( 5 )]
+[node name="BaseTower2" parent="Towers" instance=ExtResource( 5 )]
 position = Vector2( 195, 185 )
