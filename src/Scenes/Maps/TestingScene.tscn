@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Objects/Towers/AOETower.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Objects/BaseEnemy.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Objects/Spawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/BaseTower.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/TestingScene.gd" type="Script" id=6]
 
 [sub_resource type="Curve2D" id=1]
@@ -23,6 +24,7 @@ text = "This scene is only for testing stuff out."
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 75, 86 )
+slow_factor = 0.7
 
 [node name="PathArea" type="StaticBody2D" parent="."]
 
@@ -51,3 +53,9 @@ timer_length = 5.0
 
 [node name="AOETower" parent="." instance=ExtResource( 2 )]
 position = Vector2( 193, 143 )
+
+[node name="BaseTower" parent="." instance=ExtResource( 5 )]
+position = Vector2( 483, 230 )
+
+[node name="BaseTower2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 195, 185 )
