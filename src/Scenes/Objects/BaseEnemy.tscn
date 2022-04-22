@@ -13,6 +13,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="BaseEnemy" type="PathFollow2D"]
+loop = false
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "Make sure you add this as a child of a Path2D, otherwise it won't do shit"
