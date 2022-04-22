@@ -11,12 +11,12 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "carrying",
+"name": "moving",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "moving",
+"name": "carrying",
 "speed": 5.0
 }, {
 "frames": [  ],
