@@ -1,0 +1,23 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+
+void fragment() {
+	vec2 st = UV; // Assigns the UV distribution to the new distribution, s-t.
+	float angle = atan((UV.y)/(UV.x));
+	float y = sin(angle);
+	float x = cos(angle); // Assigns y as a function of x;
+	
+	//vec2 circ = vec2(UV.x * cos(UV.y + TIME), UV.y * sin(UV.x + TIME));
+	
+	float radial = distance(UV, vec2(0.5)); // Creates a radial gradient.
+	radial = step(radial, (sin(TIME)+3.)/8.); //Steps it to be binary.
+	
+	COLOR = vec4(radial, 0., 0., 1.);
+	
+	
+}
+
+"

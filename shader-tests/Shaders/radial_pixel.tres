@@ -1,0 +1,27 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float pixelSize : hint_range(0.0, 24.0) = 4.;
+
+void fragment() {
+	// Dividing the max resolution into our preffered pixel size.
+	vec2 res = 1./TEXTURE_PIXEL_SIZE; //Defines texture size.
+	vec2 pixelUV;
+	pixelUV.x = round( (UV.x+0.5 *1./float(res.x) )*float(res.x) )/float(res.x);
+	pixelUV.y = round( (UV.y+0.5 *1./float(res.y) )*float(res.y) )/float(res.y);
+	
+	
+	float radial = distance(pixelUV, vec2(0.5)); // Creates a radial gradient.
+	radial = step(radial, /*(sin(TIME)+3.)/8.*/0.5); //Steps it to be binary.
+	
+	vec4 pixelTexture = texture(TEXTURE, pixelUV);
+	vec4 flatCircle = vec4(vec3(radial), 1.);
+	
+	COLOR = pixelTexture;
+	
+	
+}
+
+"

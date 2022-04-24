@@ -1,0 +1,35 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+// Creates a function to plot in the UV.y axis depending on UV.x axis.
+float plot(vec2 st) {
+	return smoothstep(0.02, 0.0, abs(st.y - st.x));
+}
+
+// Converts HSB to RGB
+// https://www.shadertoy.com/view/MsS3Wc
+vec3 hsv2rgb_smooth( in vec3 c )
+{
+	vec3 rgb = clamp(abs(mod(c.x*6.0+vec3(0.0,4.0,2.0),6.0)-3.0)-1.0, 0.0, 1.0);
+	rgb = rgb*rgb*(3.0-2.0*rgb); // cubic smoothing
+	return c.z * mix(vec3(1.0), rgb, c.y);
+}
+
+
+
+void fragment() {
+	vec2 st = UV/TEXTURE_PIXEL_SIZE; // Assigns the UV distribution to the new distribution, s-t.
+	float angle = atan(abs((st.y-0.5)/(st.x-0.5)));
+	float y = sin(angle); // Assigns y as a function of x;
+	float x = cos(angle); 
+	
+	//vec2 circ = vec2(UV.x * cos(UV.y + TIME), UV.y * sin(UV.x + TIME));
+	
+	COLOR = vec4(hsv2rgb_smooth(vec3(UV.x,1.0, UV.y)), 1.);
+	
+	
+}
+
+"

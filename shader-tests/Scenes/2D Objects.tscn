@@ -1,0 +1,179 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Shaders/sine_mix.tres" type="Shader" id=2]
+[ext_resource path="res://Shaders/fading.tres" type="Shader" id=3]
+[ext_resource path="res://Shaders/vis-1.tres" type="Shader" id=4]
+[ext_resource path="res://Shaders/pixel_circle.gdshader" type="Shader" id=5]
+[ext_resource path="res://Shaders/radial_basic.tres" type="Shader" id=6]
+[ext_resource path="res://Shaders/rainbow.tres" type="Shader" id=7]
+[ext_resource path="res://Shaders/outline_rainbow.tres" type="Shader" id=8]
+[ext_resource path="res://Shaders/radial_pixel.tres" type="Shader" id=9]
+[ext_resource path="res://Shaders/lightcircle_shadertoy.tres" type="Shader" id=10]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/period = 2.0
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 3 )
+shader_param/period = 2.0
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 4 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 7 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 6 )
+
+[sub_resource type="ShaderMaterial" id=11]
+shader = ExtResource( 9 )
+shader_param/pixelSize = 4.0
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 8 )
+shader_param/line_thickness = 1.0
+shader_param/sin_frequency = 0.5
+shader_param/sin_offset = 0.0
+shader_param/light_offset = 0.5
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 5 )
+shader_param/square_size = 100
+shader_param/circle_diameter = 40.0
+shader_param/min_alpha = 0.1
+shader_param/max_alpha = 0.5
+shader_param/wave_intensity = 2.0
+shader_param/wave_frequency = 1.1
+shader_param/col1 = Color( 0.25098, 0.815686, 0.74902, 1 )
+shader_param/col2 = Color( 1, 1, 1, 1 )
+
+[sub_resource type="ShaderMaterial" id=12]
+shader = ExtResource( 10 )
+shader_param/light_color = Color( 0.9, 0.65, 0.5, 1 )
+shader_param/square_size = 100
+
+[sub_resource type="Shader" id=13]
+code = "shader_type canvas_item;
+
+mat2 rotate2d(float angle){
+    return mat2(cos(angle),-sin(angle),
+                sin(angle),cos(angle));
+}
+
+float variation(vec2 v1, vec2 v2, float strength, float speed) {
+	return sin(
+        dot(normalize(v1), normalize(v2)) * strength + iTime * speed
+    ) / 100.0;
+}
+
+vec3 paintCircle (vec2 uv, vec2 center, float rad, float width) {
+    
+    vec2 diff = center-uv;
+    float len = length(diff);
+
+    len += variation(diff, vec2(0.0, 1.0), 5.0, 2.0);
+    len -= variation(diff, vec2(1.0, 0.0), 5.0, 2.0);
+    
+    float circle = smoothstep(rad-width, rad, len) - smoothstep(rad, rad+width, len);
+    return vec3(circle);
+}
+
+
+void mainImage( out vec4 fragColor, in vec2 fragCoord )
+{
+	vec2 uv = fragCoord.xy / iResolution.xy;
+    uv.x *= 1.5;
+    uv.x -= 0.25;
+    
+    vec3 color;
+    float radius = 0.35;
+    vec2 center = vec2(0.5);
+    
+     
+    //paint color circle
+    color = paintCircle(uv, center, radius, 0.1);
+    
+    //color with gradient
+    vec2 v = rotate2d(iTime) * uv;
+    color *= vec3(v.x, v.y, 0.7-v.y*v.x);
+    
+    //paint white circle
+    color += paintCircle(uv, center, radius, 0.01);
+    
+    
+	fragColor = vec4(color, 1.0);
+}
+"
+
+[sub_resource type="ShaderMaterial" id=14]
+shader = SubResource( 13 )
+
+[node name="Node2D" type="Node2D"]
+material = SubResource( 1 )
+
+[node name="Icon" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( -138, -128 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+region_rect = Rect2( -36.477, -28.701, 150, 150 )
+
+[node name="Icon2" type="Sprite" parent="."]
+material = SubResource( 7 )
+position = Vector2( -398, -126 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+region_rect = Rect2( -36.477, -28.701, 150, 150 )
+
+[node name="Icon3" type="Sprite" parent="."]
+material = SubResource( 4 )
+position = Vector2( -390, 130 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 20, 30, 30, 20 )
+
+[node name="Icon4" type="Sprite" parent="."]
+material = SubResource( 5 )
+position = Vector2( -139, 130 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 20, 30, 30, 20 )
+
+[node name="Icon5" type="Sprite" parent="."]
+material = SubResource( 11 )
+position = Vector2( 239, 101 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 20, 30, 30, 20 )
+
+[node name="Icon6" type="Sprite" parent="."]
+position = Vector2( 139, -127 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+
+[node name="Icon7" type="Sprite" parent="."]
+material = SubResource( 8 )
+position = Vector2( 370, -127 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource( 10 )
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 101.0
+margin_bottom = 101.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource( 12 )
+margin_top = 118.0
+margin_right = 100.0
+margin_bottom = 218.0
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect2"]
+material = SubResource( 14 )
+margin_top = 109.0
+margin_right = 40.0
+margin_bottom = 149.0

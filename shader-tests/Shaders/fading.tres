@@ -1,0 +1,17 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "// 2D Shader for manipulating a simple icon.
+shader_type canvas_item;
+
+// Defines some variables for use.
+uniform float period = 2.0;
+
+// Fragment shader, which affects the visual aspect.
+void fragment() {
+	
+	// UV represents the %coord distance in xy from the (0,0) corner of the texture.
+	COLOR = texture(TEXTURE, UV); // Typical assignment of texture based on UV coord space.
+	COLOR.a = abs(sin(TIME)); // Fluctuates in time.
+}
+"

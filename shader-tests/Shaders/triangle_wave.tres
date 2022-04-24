@@ -1,0 +1,20 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "// 2D Shader for manipulating a simple icon.
+shader_type canvas_item;
+
+// Defines some variables for use.
+uniform float blue = 1.0;
+uniform float period = 2.0;
+
+// Defines a triangle wave
+float triwave(float periodic, float amplitude) {
+	return abs( 2.0*mod(TIME, periodic)-amplitude);
+}
+
+// Fragment shader, which affects the visual aspect.
+void fragment() {
+	COLOR = vec4(triwave(period, 2), 0, 0, 1.0); //(R,G,B,A)
+}
+"
