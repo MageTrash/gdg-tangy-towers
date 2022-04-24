@@ -52,16 +52,22 @@ func _unhandled_input(event: InputEvent) -> void:
 			is_building = !is_building
 			emit_signal("building", is_building)
 
+		# check if towers collisionshape intersects with anything else
 		if event.pressed and event.scancode == KEY_SPACE and is_building:
 			var current_tower = tower.instance()
 			var tower_shape = current_tower.get_node("StaticBody2D/CollisionShape2D")
 			var space = get_world_2d().direct_space_state
 			var query = Physics2DShapeQueryParameters.new()
-			query.collide_with_areas = true
+#			query.collide_with_areas = true
 			query.shape_rid = tower_shape.shape.get_rid()
 			var shape_trans: Transform2D = tower_shape.transform
 			shape_trans.origin = global_transform.origin
 			query.transform = shape_trans
 			query.exclude = [self, $ExcludeSpawn]
 			var results = space.intersect_shape(query)
-			print(results)
+			if results == []:
+				tower_shape.set_disabled(true)
+				current_tower.global_position = global_position
+				get_parent().get_node("Towers").add_child(current_tower)
+			else:
+				current_tower.queue_free()

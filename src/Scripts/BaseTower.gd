@@ -15,10 +15,17 @@ var root1: float
 var root2: float
 var result: Vector2
 
+
 func _ready() -> void:
 	cooldown.wait_time = 1 / fire_rate
 	sight_area.connect("area_entered", self, "in_sight")
 	sight_area.connect("area_exited", self, "out_of_sight")
+	$ExcludeSpawn.connect("body_exited", self, "left_spawn_area")
+
+
+func left_spawn_area(body: PhysicsBody2D) -> void:
+	if body.is_in_group("Player"):
+		$StaticBody2D/CollisionShape2D.set_deferred("disabled", false)
 
 
 func in_sight(area: Area2D) -> void:
