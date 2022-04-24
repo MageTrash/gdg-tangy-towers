@@ -44,6 +44,7 @@ func _process(delta: float) -> void:
 
 
 # solves a quadratic equation and returns how many solutions it has
+# the values will be in the global variables root1 & root2
 func solve_quadratic(a: float, b: float, c: float) -> int:
 	var discriminant = pow(b, 2) - 4 * a * c
 	if discriminant < 0:
@@ -63,6 +64,7 @@ func get_path_tangent(point_offset: float) -> Vector2:
 
 
 # returns the normalized direction to targets future position
+# https://youtu.be/2zVwug_agr0 this is the maths behind this function
 func predict_position(target: PathFollow2D) -> bool:
 	var target_dir: Vector2 = get_path_tangent(target.offset)
 	var target_to_self: Vector2 = muzzel.global_position - target.global_position
