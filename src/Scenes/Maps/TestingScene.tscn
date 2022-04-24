@@ -62,5 +62,5 @@ margin_left = 4.0
 margin_top = 8.0
 margin_right = 101.0
 margin_bottom = 22.0
-text = "Build Mode: off"
+text = "Place Towers?: off"
 script = ExtResource( 7 )
