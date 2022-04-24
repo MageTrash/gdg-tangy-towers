@@ -9,6 +9,7 @@ enum fruit {
 }
 
 
+onready var player: KinematicBody2D
 onready var map_path: Path2D
 onready var wave_timer: Timer = Timer.new()
 onready var enemy: PackedScene = preload("res://Scenes/Objects/BaseEnemy.tscn")
@@ -48,6 +49,10 @@ func increment_enemies_counter() -> void:
 # The map script will register it's path so all towers have a global reference to it
 func register_path(path: Path2D) -> void:
 	map_path = path
+
+
+func register_player(body: KinematicBody2D) -> void:
+	player = body
 
 
 func spawn_enemy() -> void:

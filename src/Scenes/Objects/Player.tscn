@@ -4,6 +4,13 @@
 [ext_resource path="res://Art n Music/Character Sprites/chef-hat-temp.png" type="Texture" id=2]
 [ext_resource path="res://Art n Music/Character Sprites/shadow_character.png" type="Texture" id=3]
 
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.99999
+height = 6.00006
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 30, 30 )
+
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [  ],
@@ -27,31 +34,16 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 30, 30 )
-
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 4.99999
-height = 6.00006
-
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
 script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "Change the script variables to fine tune the movement"
 }
-speed = 120
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-frames = SubResource( 3 )
-animation = "carrying"
-
-[node name="ShadowCharacter" type="Sprite" parent="."]
-position = Vector2( 0.5, -1 )
-texture = ExtResource( 3 )
-
-[node name="Chef-hat-temp" type="Sprite" parent="."]
-position = Vector2( 0.5, -17 )
-texture = ExtResource( 2 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -1 )
+rotation = 1.5708
+shape = SubResource( 1 )
 
 [node name="ExcludeSpawn" type="Area2D" parent="." groups=["Spawnable"]]
 __meta__ = {
@@ -64,7 +56,14 @@ show_behind_parent = true
 rotation = 1.5708
 shape = SubResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -1 )
-rotation = 1.5708
-shape = SubResource( 1 )
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "carrying"
+
+[node name="ShadowCharacter" type="Sprite" parent="."]
+position = Vector2( 0.5, -1 )
+texture = ExtResource( 3 )
+
+[node name="Chef-hat-temp" type="Sprite" parent="."]
+position = Vector2( 0.5, -17 )
+texture = ExtResource( 2 )

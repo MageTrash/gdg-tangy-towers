@@ -8,9 +8,17 @@ export(float) var speed: float = 80.0
 export(float, 1, 20) var friction: float = 4.0
 export(float, 0.0, 1.0) var slow_factor: float = 0.7
 
+
+signal building(is_building)
+
+onready var is_building: bool = false
 onready var raw_direction: Vector2
 onready var direction: Vector2
 onready var velocity: Vector2
+
+func _ready() -> void:
+	# give global a reference to player from anywhere
+	Global.register_player(self)
 
 func _physics_process(delta: float) -> void:
 	# This will get a normalized Vector2 direction of where the player want's to move
@@ -34,3 +42,11 @@ func _physics_process(delta: float) -> void:
 
 
 	velocity = move_and_slide(velocity)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.pressed and event.scancode == KEY_E:
+			# toggle is_building
+			is_building = !is_building
+			emit_signal("building", is_building)
