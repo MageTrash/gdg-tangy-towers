@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Objects/Towers/SlowTower.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Objects/Spawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/BaseTower.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/TestingScene.gd" type="Script" id=6]
 
 [sub_resource type="Curve2D" id=1]
@@ -21,7 +22,7 @@ margin_bottom = -7.0
 text = "This scene is only for testing stuff out."
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 75, 86 )
+position = Vector2( 270, 257 )
 
 [node name="PathArea" type="StaticBody2D" parent="."]
 
@@ -47,3 +48,6 @@ timer_length = 5.0
 
 [node name="SlowTower" parent="Towers" instance=ExtResource( 2 )]
 position = Vector2( 191, 147 )
+
+[node name="BaseTower" parent="Towers" instance=ExtResource( 5 )]
+position = Vector2( 335, 89 )
