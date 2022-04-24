@@ -17,6 +17,8 @@ func _physics_process(delta: float) -> void:
 
 func hit(area: Area2D) -> void:
 	if area.is_in_group("Enemy"):
+		# if the enemy has not been slowed already then hit it with the slow effect
+		# otherwise the bullet will continue moving
 		if area.get_parent().slow_multiplier == 1.0:
 			area.get_parent().slow_multiplier = slowness
 			queue_free()

@@ -12,14 +12,19 @@ func _ready() -> void:
 	set_loop(false)
 
 
+# this gets called when it's health is changed and the check makes sure you don't get
+# overlapping timers counting down to change slow_multiplier back to 1.0
 func set_slowed(value: float) -> void:
 	if value != slow_multiplier:
 		slow_multiplier = value
+		# this just makes a timer and continues the process once the timer ends
 		yield(get_tree().create_timer(slow_time), "timeout")
 		slow_multiplier = 1.0
 
 
 func _physics_process(delta: float) -> void:
+	# offset is it's distance along the path2D; delta makes it sure it moves relative
+	# to the  time past instead of framerate: slow_multipler should be from 0 to 1.0 (to slow it down)
 	offset += path_speed * delta * slow_multiplier
 
 	# if the enemy is at the end of the path call reach_end() note: loop must be off for this to work

@@ -34,11 +34,14 @@ func out_of_sight(area: Area2D) -> void:
 
 func _process(delta: float) -> void:
 	if targets and cooldown.is_stopped():
+		# if there are targets in the targets array and the shooting cooldown has ended
 		var current_target
+		# loop through the targets and get the first one that isn't slowed
 		for target in targets:
 			if target.slow_multiplier == 1.0:
 				current_target = target
 				break
+		# if there is none that are not currently slowed then don't shoot
 		if current_target != null:
 			if predict_position(current_target):
 				current_target.slow_time = slow_time
@@ -52,6 +55,7 @@ func _process(delta: float) -> void:
 
 
 # solves a quadratic equation and returns how many solutions it has
+# the values will be in the global variables root1 & root2
 func solve_quadratic(a: float, b: float, c: float) -> int:
 	var discriminant = pow(b, 2) - 4 * a * c
 	if discriminant < 0:
@@ -64,6 +68,7 @@ func solve_quadratic(a: float, b: float, c: float) -> int:
 	return 2 if discriminant > 0 else 1
 
 
+# this will pretty much get the tangent of the path2D curve at the offset location
 func get_path_tangent(point_offset: float) -> Vector2:
 	var point1: Vector2= Global.map_path.curve.interpolate_baked(point_offset)
 	var point2: Vector2 = Global.map_path.curve.interpolate_baked(point_offset + 0.001)
@@ -71,6 +76,7 @@ func get_path_tangent(point_offset: float) -> Vector2:
 
 
 # returns the normalized direction to targets future position
+# https://youtu.be/2zVwug_agr0 this is the maths behind this function
 func predict_position(target: PathFollow2D) -> bool:
 	var target_dir: Vector2 = get_path_tangent(target.offset)
 	var target_to_self: Vector2 = muzzel.global_position - target.global_position
