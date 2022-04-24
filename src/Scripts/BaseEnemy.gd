@@ -7,9 +7,12 @@ var slow_multiplier: float = 1.0 setget set_slowed
 var slow_time: float = 4.0
 
 onready var hitbox: Area2D = $HitBox
+onready var slow_timer: Timer = Timer.new()
 
 func _ready() -> void:
 	set_loop(false)
+	slow_timer.connect("timeout", self, "reset_slowed")
+	add_child(slow_timer)
 
 
 # this gets called when it's health is changed and the check makes sure you don't get
@@ -17,9 +20,12 @@ func _ready() -> void:
 func set_slowed(value: float) -> void:
 	if value != slow_multiplier:
 		slow_multiplier = value
-		# this just makes a timer and continues the process once the timer ends
-		yield(get_tree().create_timer(slow_time), "timeout")
-		slow_multiplier = 1.0
+		slow_timer.wait_time = slow_time
+		slow_timer.start()
+
+
+func reset_slowed() -> void:
+	slow_multiplier = 1.0
 
 
 func _physics_process(delta: float) -> void:
