@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art n Music/Character Sprites/chef-hat-temp.png" type="Texture" id=2]
@@ -10,6 +10,10 @@ height = 6.00006
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 30 )
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 6.0
+height = 12.0
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -55,6 +59,10 @@ self_modulate = Color( 0, 0.0627451, 1, 0.152941 )
 show_behind_parent = true
 rotation = 1.5708
 shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ExcludeSpawn"]
+rotation = 1.5708
+shape = SubResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
