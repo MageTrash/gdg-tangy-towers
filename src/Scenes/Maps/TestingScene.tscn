@@ -23,6 +23,7 @@ text = "This scene is only for testing stuff out."
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 270, 257 )
+speed = 80.0
 
 [node name="PathArea" type="StaticBody2D" parent="."]
 
