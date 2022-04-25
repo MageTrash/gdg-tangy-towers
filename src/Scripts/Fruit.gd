@@ -1,6 +1,6 @@
 extends Node2D
 
-export(Global.fruit) var fruit_type
+export(preload("res://Scripts/Global.gd").fruit) var fruit_type
 
 onready var area: Area2D = $PickupArea
 
