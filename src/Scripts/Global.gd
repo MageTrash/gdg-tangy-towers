@@ -8,6 +8,7 @@ enum fruit {
 	GRAPE,
 }
 
+var enemy_speed_mod: float = 1.0
 
 onready var player: KinematicBody2D
 onready var map_path: Path2D

@@ -31,7 +31,7 @@ func reset_slowed() -> void:
 func _physics_process(delta: float) -> void:
 	# offset is it's distance along the path2D; delta makes it sure it moves relative
 	# to the  time past instead of framerate: slow_multipler should be from 0 to 1.0 (to slow it down)
-	offset += path_speed * delta * slow_multiplier
+	offset += path_speed * delta * slow_multiplier * Global.enemy_speed_mod
 
 	# if the enemy is at the end of the path call reach_end() note: loop must be off for this to work
 	if unit_offset >= 1.0:
