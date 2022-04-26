@@ -49,6 +49,9 @@ timer_length = 5.0
 [node name="TowerShop" parent="." instance=ExtResource( 3 )]
 position = Vector2( 538, 82 )
 
+[node name="ShopUI" parent="TowerShop/CanvasLayer" index="0"]
+visible = false
+
 [node name="Towers" type="Node" parent="."]
 
 [node name="SlowTower" parent="Towers" instance=ExtResource( 2 )]
@@ -64,3 +67,5 @@ margin_right = 101.0
 margin_bottom = 22.0
 text = "Place Towers?: off"
 script = ExtResource( 7 )
+
+[editable path="TowerShop"]
