@@ -35,20 +35,30 @@ margin_bottom = 140.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 39.0
+margin_top = 29.0
 margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="Label" type="Label" parent="CanvasLayer/ShopUI/TabContainer/Tower 1"]
-margin_right = 392.0
-margin_bottom = 21.0
+margin_left = 179.0
+margin_right = 212.0
+margin_bottom = 11.0
+size_flags_horizontal = 4
 text = "Tower 1"
 
-[node name="Button" type="Button" parent="CanvasLayer/ShopUI/TabContainer/Tower 1"]
-margin_top = 25.0
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ShopUI/TabContainer/Tower 1"]
+margin_top = 15.0
 margin_right = 392.0
-margin_bottom = 52.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/ShopUI/TabContainer/Tower 1/MarginContainer"]
+margin_left = 161.0
+margin_right = 230.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 69, 0 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Buy"
 
 [node name="Tower 2" type="VBoxContainer" parent="CanvasLayer/ShopUI/TabContainer"]
@@ -56,20 +66,28 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="Label" type="Label" parent="CanvasLayer/ShopUI/TabContainer/Tower 2"]
-margin_right = 50.0
-margin_bottom = 14.0
+margin_right = 392.0
+margin_bottom = 21.0
+size_flags_horizontal = 4
 text = "Tower 2"
 
-[node name="Button" type="Button" parent="CanvasLayer/ShopUI/TabContainer/Tower 2"]
-margin_top = 18.0
-margin_right = 50.0
-margin_bottom = 38.0
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ShopUI/TabContainer/Tower 2"]
+margin_top = 25.0
+margin_right = 392.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/ShopUI/TabContainer/Tower 2/MarginContainer"]
+margin_left = 161.0
+margin_right = 230.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 69, 0 )
+size_flags_horizontal = 4
 text = "Buy"
 
 [node name="Tower 3" type="VBoxContainer" parent="CanvasLayer/ShopUI/TabContainer"]
@@ -77,18 +95,26 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 39.0
 margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="Label" type="Label" parent="CanvasLayer/ShopUI/TabContainer/Tower 3"]
-margin_right = 431.0
-margin_bottom = 14.0
+margin_right = 392.0
+margin_bottom = 21.0
+size_flags_horizontal = 4
 text = "Tower 3"
 
-[node name="Button" type="Button" parent="CanvasLayer/ShopUI/TabContainer/Tower 3"]
-margin_top = 18.0
-margin_right = 431.0
-margin_bottom = 38.0
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/ShopUI/TabContainer/Tower 3"]
+margin_top = 25.0
+margin_right = 392.0
+margin_bottom = 52.0
 size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="CanvasLayer/ShopUI/TabContainer/Tower 3/MarginContainer"]
+margin_left = 161.0
+margin_right = 230.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 69, 0 )
+size_flags_horizontal = 4
 text = "Buy"
