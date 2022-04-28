@@ -21,6 +21,7 @@ var effect_time = [3.0, 3.0, 10.0, 3.0, 3.0]
 var enemy_speed_mod : float = 1.0
 var player_speed_mod : float = 1.0
 var tower_fire_rate_mod
+var tower_damage_mod : float = 1.0
 
 onready var player : KinematicBody2D
 onready var map_path : Path2D
@@ -89,8 +90,10 @@ func play_effect(fruit_type: int) -> void:
 		fruit.POMEYES:
 			print("pomeyes")
 			blindness.color = Color.black
+			tower_damage_mod = 1.5
 			yield(get_tree().create_timer(effect_time[fruit.POMEYES]), "timeout")
 			blindness.color = Color.white
+			tower_damage_mod = 1.0
 		fruit.THORNFRUIT:
 			print("thornfruit")
 		fruit.NEUTRAROOTS:

@@ -2,7 +2,7 @@ extends Node2D
 
 
 export(PackedScene) var bullet_scene := preload("res://Scenes/Objects/SplashArea.tscn")
-export(int, 1, 100) var bullet_damage = 5
+export(float, 1, 100) var bullet_damage : float = 5
 export(float, 0.1, 200) var time_between_shot = 5
 
 
@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 	if targets and cooldown.is_stopped():
 		var bullet = bullet_scene.instance()
 		bullet.set_as_toplevel(true)
-		bullet.damage = bullet_damage
+		bullet.damage = bullet_damage * Global.tower_damage_mod
 		bullet.global_position = targets[0].global_position
 		add_child(bullet)
 		cooldown.start()
