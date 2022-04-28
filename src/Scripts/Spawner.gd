@@ -41,7 +41,7 @@ func spawn_random(amount: int) -> void:
 			if overload <= 0:
 				return
 			# get random tile and get it's world position then center it in the tile
-			var random_tile = list_of_tiles[randi_range(0, list_of_tiles.size())]
+			var random_tile = list_of_tiles[Global.randi_range(0, list_of_tiles.size())]
 			var world_pos: Vector2 = map_to_world(random_tile)
 			world_pos += cell_size/2
 			obj.position = world_pos
@@ -59,8 +59,3 @@ func check_no_objects(spawn_pos: Vector2, group: String) -> bool:
 		if collision.collider.is_in_group("Spawnable"):
 			return false
 	return true
-
-
-# e.g. randi_range(0, 5) will be a random integer 0, 1, 2, 3 or 4. 5 is excluded
-func randi_range(from: int, to: int) -> int:
-	return randi() % (to - from) + from

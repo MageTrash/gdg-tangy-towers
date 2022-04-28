@@ -1,23 +1,30 @@
 extends Node
 # This is a global script, it is not attached to anything and can be accessed from any script
 
+# emit this signal with the count array every time it's changed
+signal count_change(count_array)
+
 # this list will change later
 enum fruit {
+	SPIRALINES,
 	NOIDFRUIT,
-	BANANA,
-	GRAPE,
+	POMEYES,
+	THORNFRUIT,
+	NEUTRAROOTS,
 }
 
-var enemy_speed_mod: float = 1.0
+var enemy_speed_mod : float = 1.0
+var player_speed_mod : float = 1.0
+var tower_fire_rate_mod
 
-onready var player: KinematicBody2D
-onready var map_path: Path2D
-onready var wave_timer: Timer = Timer.new()
-onready var enemy: PackedScene = preload("res://Scenes/Objects/BaseEnemy.tscn")
+onready var player : KinematicBody2D
+onready var map_path : Path2D
+onready var wave_timer : Timer = Timer.new()
+onready var enemy : PackedScene = preload("res://Scenes/Objects/BaseEnemy.tscn")
 
-onready var enemies_at_end: int = 0
+onready var enemies_at_end : int = 0
 # This boolean will state if fruit collect goes to the counter or active effect
-onready var in_wave: bool = true
+onready var in_wave : bool = false
 # This array will hold the counter for each fruit
 onready var fruit_counter = []
 
@@ -41,6 +48,7 @@ func increment_fruit(fruit_type: int) -> void:
 		play_effect(fruit_type)
 	else:
 		fruit_counter[fruit_type] += 1
+		emit_signal("count_change", fruit_counter)
 
 
 func increment_enemies_counter() -> void:
@@ -63,10 +71,19 @@ func spawn_enemy() -> void:
 
 func play_effect(fruit_type: int) -> void:
 	match fruit_type:
+		fruit.SPIRALINES:
+			print("spiralines")
 		fruit.NOIDFRUIT:
-			Engine.time_scale = 2.0
-			yield(get_tree().create_timer(5),"timeout")
-			Engine.time_scale = 1.0
-		fruit.BANANA:
-			print("banana effect")
-		# etc. . .
+			print("noidfruit")
+		fruit.POMEYES:
+			print("pomeyes")
+		fruit.THORNFRUIT:
+			print("thornfruit")
+		fruit.NEUTRAROOTS:
+			print("neutraroots")
+
+
+# this is here so every script can use this function
+# e.g. randi_range(0, 5) will be a random integer 0, 1, 2, 3 or 4. 5 is excluded
+func randi_range(from: int, to: int) -> int:
+	return randi() % (to - from) + from
