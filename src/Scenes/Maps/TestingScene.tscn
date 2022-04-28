@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Objects/Towers/SlowTower.tscn" type="PackedScene" id=2]
@@ -9,11 +9,15 @@
 [ext_resource path="res://Scripts/TestLabel.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/UI/ShopTheme.tres" type="Theme" id=8]
 [ext_resource path="res://Scripts/DebugText.gd" type="Script" id=9]
+[ext_resource path="res://Scripts/Timer.gd" type="Script" id=10]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( -129.986, -17.6356, 129.986, 17.6356, -6.91793, 246.774, -81.8793, 11.6462, 81.8793, -11.6462, 186.082, 121.774, -86.4544, 7.44565, 86.4544, -7.44565, 484.082, 358.774, -96.6139, -11.6042, 96.6139, 11.6042, 649.082, 238.774 )
 }
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 0.678431, 0, 1 )
 
 [node name="TestingScene" type="Node2D"]
 script = ExtResource( 6 )
@@ -92,5 +96,23 @@ margin_bottom = 339.0
 theme = ExtResource( 8 )
 text = "displays the fruit global fruit count once you pick up some fruit"
 script = ExtResource( 9 )
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer"]
+margin_left = 544.0
+margin_top = 9.0
+margin_right = 630.0
+margin_bottom = 29.0
+theme = ExtResource( 8 )
+text = "0:57"
+script = ExtResource( 10 )
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+margin_left = 509.0
+margin_top = 30.0
+margin_right = 633.0
+margin_bottom = 44.0
+theme = ExtResource( 8 )
+custom_styles/fg = SubResource( 2 )
+value = 75.0
 
 [editable path="YSort/TowerShop"]
