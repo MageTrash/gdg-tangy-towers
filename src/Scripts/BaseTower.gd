@@ -3,7 +3,7 @@ extends Node2D
 
 export(PackedScene) var bullet_scene := preload("res://Scenes/Objects/Bullet.tscn")
 export(int, 50, 1000) var bullet_speed = 200
-export(int, 1, 100) var bullet_damage = 1
+export(float, 1, 100) var bullet_damage : float = 1
 export(float, 0.1, 200) var fire_rate = 5
 
 onready var sight_area: Area2D = $SightArea
@@ -18,9 +18,14 @@ var result: Vector2
 
 func _ready() -> void:
 	cooldown.wait_time = 1 / fire_rate
+	Global.connect("tower_rate_change", self, "on_fire_rate_change")
 	sight_area.connect("area_entered", self, "in_sight")
 	sight_area.connect("area_exited", self, "out_of_sight")
 	$ExcludeSpawn.connect("body_exited", self, "left_spawn_area")
+
+
+func on_fire_rate_change(modifier: float) -> void:
+	cooldown.wait_time = 1 / (fire_rate * modifier)
 
 
 func left_spawn_area(body: PhysicsBody2D) -> void:
@@ -45,7 +50,7 @@ func _process(delta: float) -> void:
 			bullet.speed = bullet_speed
 			bullet.position = muzzel.position
 			bullet.rotation = result.angle()
-			bullet.damage = bullet_damage
+			bullet.damage = bullet_damage * Global.tower_damage_mod
 			add_child(bullet)
 			cooldown.start()
 
