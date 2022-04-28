@@ -3,6 +3,7 @@ extends Node
 
 # emit this signal with the count array every time it's changed
 signal count_change(count_array)
+signal tower_rate_change(tower_fire_rate_mod)
 
 # this list will change later
 enum fruit {
@@ -15,12 +16,12 @@ enum fruit {
 
 # this must be the same length as fruit enum and is ordered the same way
 # e.g. the first value in probability corresponds to SPIRALINES
-var probability = [1, 1, 10, 1, 1]
-var effect_time = [3.0, 3.0, 10.0, 3.0, 3.0]
+var probability = [1, 10, 1, 1, 1]
+var effect_time = [3.0, 10.0, 10.0, 3.0, 3.0]
 
+# these change must return to 1.0
 var enemy_speed_mod : float = 1.0
 var player_speed_mod : float = 1.0
-var tower_fire_rate_mod
 var tower_damage_mod : float = 1.0
 
 onready var player : KinematicBody2D
@@ -85,8 +86,15 @@ func play_effect(fruit_type: int) -> void:
 	match fruit_type:
 		fruit.SPIRALINES:
 			print("spiralines")
+
 		fruit.NOIDFRUIT:
 			print("noidfruit")
+			player_speed_mod = 2.0
+			emit_signal("tower_rate_change", 2.0)
+			yield(get_tree().create_timer(effect_time[fruit.NOIDFRUIT]), "timeout")
+			player_speed_mod = 1.0
+			emit_signal("tower_rate_change", 1.0)
+
 		fruit.POMEYES:
 			print("pomeyes")
 			blindness.color = Color.black
@@ -94,7 +102,10 @@ func play_effect(fruit_type: int) -> void:
 			yield(get_tree().create_timer(effect_time[fruit.POMEYES]), "timeout")
 			blindness.color = Color.white
 			tower_damage_mod = 1.0
+
 		fruit.THORNFRUIT:
 			print("thornfruit")
+
 		fruit.NEUTRAROOTS:
 			print("neutraroots")
+

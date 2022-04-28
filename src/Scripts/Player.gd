@@ -2,11 +2,11 @@ extends KinematicBody2D
 
 # Note: you can edit the export values in the inspector window
 # The higher the speed the faster the player will move
-export(float) var speed: float = 80.0
+export(float) var speed : float = 80.0
 # If friction is 1 then the player will stop instantly
 # If it's higher then the player will slide to a stop
-export(float, 1, 20) var friction: float = 4.0
-export(float, 0.0, 1.0) var slow_factor: float = 0.7
+export(float, 1, 20) var friction : float = 4.0
+export(float, 0.0, 1.0) var slow_factor : float = 0.7
 
 
 signal building(is_building)
@@ -32,10 +32,10 @@ func _physics_process(delta: float) -> void:
 	# If they are not pressing any movement keys then we slow down the player to a stop,
 	# so that the player slows down gradually instead of stopping instantly.
 	if direction:
-		velocity = direction * speed
+		velocity = direction * speed * Global.player_speed_mod
 	else:
-		velocity.x = move_toward(velocity.x, 0.0, speed/friction)
-		velocity.y = move_toward(velocity.y, 0.0, speed/friction)
+		velocity.x = move_toward(velocity.x, 0.0, (speed*Global.player_speed_mod)/friction)
+		velocity.y = move_toward(velocity.y, 0.0, (speed*Global.player_speed_mod)/friction)
 	# If the player presses Ctrl/Shift, they will slow down.
 	if Input.get_action_strength("move_slow"):
 		velocity *= slow_factor

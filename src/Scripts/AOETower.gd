@@ -14,8 +14,13 @@ onready var targets: Array
 
 func _ready() -> void:
 	cooldown.wait_time = time_between_shot
+	Global.connect("tower_rate_change", self, "on_fire_rate_change")
 	sight_area.connect("area_entered", self, "in_sight")
 	sight_area.connect("area_exited", self, "out_of_sight")
+
+
+func on_fire_rate_change(modifier: float) -> void:
+	cooldown.wait_time = time_between_shot * (1 / Global.tower_fire_rate_mod)
 
 
 func in_sight(area: Area2D) -> void:
