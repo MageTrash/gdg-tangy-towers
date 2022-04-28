@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/basic paths temp.png-b38734a4a3207bb12fd50dbb287d9eeb.stex"
+path="res://.import/shadow_enemy.png-019383f279a61bb8540b706050896b3c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art n Music/Tilesets/basic paths temp.png"
-dest_files=[ "res://.import/basic paths temp.png-b38734a4a3207bb12fd50dbb287d9eeb.stex" ]
+source_file="res://- Resource Dump/Aseprite/shadow_enemy.png"
+dest_files=[ "res://.import/shadow_enemy.png-019383f279a61bb8540b706050896b3c.stex" ]
 
 [params]
 
