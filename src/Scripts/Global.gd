@@ -13,6 +13,10 @@ enum fruit {
 	NEUTRAROOTS,
 }
 
+# this must be the same length as fruit enum and is ordered the same way
+# e.g. the first value in probability corresponds to SPIRALINES
+var probability = [10, 1, 1, 1, 1]
+
 var enemy_speed_mod : float = 1.0
 var player_speed_mod : float = 1.0
 var tower_fire_rate_mod
@@ -20,6 +24,7 @@ var tower_fire_rate_mod
 onready var player : KinematicBody2D
 onready var map_path : Path2D
 onready var wave_timer : Timer = Timer.new()
+onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 onready var enemy : PackedScene = preload("res://Scenes/Objects/BaseEnemy.tscn")
 
 onready var enemies_at_end : int = 0
@@ -30,7 +35,9 @@ onready var fruit_counter = []
 
 
 func _ready() -> void:
-	randomize()
+	assert(probability.size() == fruit.size(), "match probability with fruit enum")
+
+	rng.randomize()
 
 	# This will add/set all the counters to zero at the start of the game
 	for i in len(fruit.values()):
@@ -81,9 +88,3 @@ func play_effect(fruit_type: int) -> void:
 			print("thornfruit")
 		fruit.NEUTRAROOTS:
 			print("neutraroots")
-
-
-# this is here so every script can use this function
-# e.g. randi_range(0, 5) will be a random integer 0, 1, 2, 3 or 4. 5 is excluded
-func randi_range(from: int, to: int) -> int:
-	return randi() % (to - from) + from

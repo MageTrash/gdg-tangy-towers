@@ -41,7 +41,7 @@ func spawn_random(amount: int) -> void:
 			if overload <= 0:
 				return
 			# get random tile and get it's world position then center it in the tile
-			var random_tile = list_of_tiles[Global.randi_range(0, list_of_tiles.size())]
+			var random_tile = list_of_tiles[Global.rng.randi_range(0, list_of_tiles.size() - 1)]
 			var world_pos: Vector2 = map_to_world(random_tile)
 			world_pos += cell_size/2
 			obj.position = world_pos
