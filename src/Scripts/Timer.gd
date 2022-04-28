@@ -1,6 +1,6 @@
 extends Label
 
-var time = 120
+export(float, 0.0, 120.0) var time = 120.0
 
 func _process(delta):
 	time -= delta
