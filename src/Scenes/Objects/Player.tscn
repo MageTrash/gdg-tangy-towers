@@ -1,15 +1,16 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art n Music/Character Sprites/chef_hat5.png" type="Texture" id=2]
 [ext_resource path="res://Art n Music/Character Sprites/shadow_character.png" type="Texture" id=3]
-[ext_resource path="res://Art n Music/320-empty.png" type="Texture" id=4]
+[ext_resource path="res://Art n Music/CircleLight.png" type="Texture" id=4]
 [ext_resource path="res://Art n Music/Character Sprites/chef_hat2.png" type="Texture" id=5]
 [ext_resource path="res://Art n Music/Character Sprites/chef_hat4.png" type="Texture" id=6]
 [ext_resource path="res://Art n Music/Character Sprites/chef_hat6.png" type="Texture" id=7]
 [ext_resource path="res://Art n Music/Character Sprites/chef_hat1.png" type="Texture" id=8]
 [ext_resource path="res://Art n Music/Character Sprites/chef_hat7.png" type="Texture" id=9]
 [ext_resource path="res://Art n Music/Character Sprites/chef_hat3.png" type="Texture" id=10]
+[ext_resource path="res://Scripts/Shaders/Pixellated Circle.tres" type="Shader" id=11]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.99999
@@ -18,6 +19,11 @@ height = 6.00006
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 30 )
 
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 11 )
+shader_param/minCircleSize = 120.0
+shader_param/maxCircleExpansion = 20.0
+
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [  ],
@@ -25,14 +31,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [  ],
-"loop": true,
-"name": "carrying",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "moving",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "carrying",
 "speed": 5.0
 } ]
 
@@ -63,6 +69,7 @@ position = Vector2( 0.5, 0 )
 texture = ExtResource( 3 )
 
 [node name="Light2D" type="Light2D" parent="."]
+material = SubResource( 4 )
 texture = ExtResource( 4 )
 mode = 2
 

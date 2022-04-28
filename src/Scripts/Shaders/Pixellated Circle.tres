@@ -1,0 +1,24 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform float minCircleSize : hint_range(0.0, 320.0) = 100.;
+uniform float maxCircleExpansion : hint_range(0.0, 100.0) = 20.;
+
+void light() {
+	// Dividing the max resolution into our preffered pixel size.
+	vec2 res = 1./TEXTURE_PIXEL_SIZE; //Defines texture size.
+	vec2 pixelUV; //Defines our new UV.
+	pixelUV.x = round( (UV.x )*float(res.x) )/float(res.x);
+	pixelUV.y = round( (UV.y )*float(res.y) )/float(res.y);
+	
+	//Calculates the fluctuating circle.
+	float radius = sin(TIME)*maxCircleExpansion/2./res.x + (minCircleSize+maxCircleExpansion)/2./res.x;
+	float radial = smoothstep(radius+0.001, radius-0.001, distance(pixelUV, vec2(0.5)));
+	
+	vec4 flatCircle = vec4(radial); //Creates an RGBA with the circle.
+	
+	LIGHT = flatCircle;
+}
+"

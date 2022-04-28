@@ -26,13 +26,11 @@ margin_right = 640.0
 margin_bottom = 360.0
 color = Color( 0.592157, 0.694118, 0.403922, 1 )
 
-[node name="Non-YSort" type="Node" parent="."]
-
-[node name="TowerShop" parent="Non-YSort" instance=ExtResource( 3 )]
+[node name="TowerShop" parent="." instance=ExtResource( 3 )]
 position = Vector2( 538, 82 )
-group_node = NodePath("../../YSort/Towers")
+group_node = NodePath("../YSort/Towers")
 
-[node name="ShopUI" parent="Non-YSort/TowerShop/CanvasLayer" index="0"]
+[node name="ShopUI" parent="TowerShop/CanvasLayer" index="0"]
 visible = false
 
 [node name="YSort" type="YSort" parent="."]
@@ -90,7 +88,7 @@ script = ExtResource( 7 )
 margin_left = 6.0
 margin_top = 25.0
 margin_right = 342.0
-margin_bottom = 339.0
+margin_bottom = 67.0
 theme = ExtResource( 8 )
 text = "displays the fruit global fruit count once you pick up some fruit"
 script = ExtResource( 9 )
@@ -113,4 +111,4 @@ theme = ExtResource( 8 )
 custom_styles/fg = SubResource( 2 )
 value = 75.0
 
-[editable path="Non-YSort/TowerShop"]
+[editable path="TowerShop"]
