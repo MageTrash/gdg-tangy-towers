@@ -16,13 +16,15 @@ enum fruit {
 
 # this must be the same length as fruit enum and is ordered the same way
 # e.g. the first value in probability corresponds to SPIRALINES
-var probability = [1, 10, 1, 1, 1]
-var effect_time = [3.0, 10.0, 10.0, 3.0, 3.0]
+var probability = [10, 1, 1, 1, 1]
+var effect_time = [4.5, 10.0, 10.0, 3.0, 3.0]
 
 # these change must return to 1.0
 var enemy_speed_mod : float = 1.0
 var player_speed_mod : float = 1.0
 var tower_damage_mod : float = 1.0
+# should only be either -1.0 or 1.0
+var player_direction_mod : float = 1.0
 
 onready var player : KinematicBody2D
 onready var map_path : Path2D
@@ -86,6 +88,11 @@ func play_effect(fruit_type: int) -> void:
 	match fruit_type:
 		fruit.SPIRALINES:
 			print("spiralines")
+			player_direction_mod = -1.0
+			enemy_speed_mod = -0.5
+			yield(get_tree().create_timer(effect_time[fruit.SPIRALINES]), "timeout")
+			player_direction_mod = 1.0
+			enemy_speed_mod = 1.0
 
 		fruit.NOIDFRUIT:
 			print("noidfruit")

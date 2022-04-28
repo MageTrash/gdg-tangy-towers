@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	# This will get a normalized Vector2 direction of where the player want's to move
 	raw_direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	raw_direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	direction = raw_direction.normalized()
+	direction = raw_direction.normalized() * Global.player_direction_mod
 
 
 	# This checks if the user wants to move.
