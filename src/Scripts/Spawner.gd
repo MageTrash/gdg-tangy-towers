@@ -2,16 +2,19 @@ extends TileMap
 
 
 export(PackedScene) var spawn_object := preload("res://Scenes/Objects/Fruit.tscn")
+export(NodePath) var group_node
 export(int) var spawn_limit = 5
 export(int) var spawn_amount = 3
 export(float) var timer_length = 10.0
 export(bool) var loop = true
 
 onready var list_of_tiles: Array = get_used_cells()
+onready var fruit_group = get_node_or_null(group_node)
 
 func _ready() -> void:
 	assert(spawn_object != null, "Add a scene to the spawn_object script variable")
 	assert(list_of_tiles.size() != 0, "You have not set any tiles to spawn objects")
+	assert(fruit_group != null, "Add a path to a node group to spawn fruit children e.g. ysort")
 	if spawn_limit > list_of_tiles.size():
 		spawn_limit = list_of_tiles.size()
 
@@ -45,7 +48,7 @@ func spawn_random(amount: int) -> void:
 			# check if there is any objects already spawned at world_pos
 			valid_spot = check_no_objects(world_pos, "Spawnable")
 		# once we've found a valid spot to spawn we add it as a child to Spawner
-		add_child(obj)
+		fruit_group.add_child(obj)
 
 
 # this will check if the given position has any collsions with the given group at that point
