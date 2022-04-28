@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art n Music/Character Sprites/chef-hat-temp.png" type="Texture" id=2]
 [ext_resource path="res://Art n Music/Character Sprites/shadow_character.png" type="Texture" id=3]
+[ext_resource path="res://Art n Music/CircleLight.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.99999
@@ -55,6 +56,10 @@ self_modulate = Color( 0, 0.0627451, 1, 0.152941 )
 show_behind_parent = true
 rotation = 1.5708
 shape = SubResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 4 )
+mode = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
