@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
-# Note: you can edit the export values in the inspector window
+# Note: you can edit the export values in the inspector windo
 # The higher the speed the faster the player will move
-export(float) var speed : float = 80.0
+export(float) var speed : float = 100.0
 # If friction is 1 then the player will stop instantly
 # If it's higher then the player will slide to a stop
 export(float, 1, 20) var friction : float = 4.0
+# Used to slow down player when they hold down ctrl/shift
 export(float, 0.0, 1.0) var slow_factor : float = 0.7
 
 
@@ -39,12 +40,11 @@ func _physics_process(delta: float) -> void:
 	# If the player presses Ctrl/Shift, they will slow down.
 	if Input.get_action_strength("move_slow"):
 		velocity *= slow_factor
-
-
 	velocity = move_and_slide(velocity)
 
 var tower = preload("res://Scenes/Objects/BaseTower.tscn")
 
+## For debugging purposes
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_E:

@@ -26,6 +26,15 @@ margin_right = 640.0
 margin_bottom = 360.0
 color = Color( 0.592157, 0.694118, 0.403922, 1 )
 
+[node name="Non-YSort" type="Node" parent="."]
+
+[node name="TowerShop" parent="Non-YSort" instance=ExtResource( 3 )]
+position = Vector2( 538, 82 )
+group_node = NodePath("../../YSort/Towers")
+
+[node name="ShopUI" parent="Non-YSort/TowerShop/CanvasLayer" index="0"]
+visible = false
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
@@ -53,13 +62,6 @@ spawn_amount = 4
 timer_length = 5.0
 
 [node name="Fruits" type="YSort" parent="YSort"]
-
-[node name="TowerShop" parent="YSort" instance=ExtResource( 3 )]
-position = Vector2( 538, 82 )
-group_node = NodePath("../Towers")
-
-[node name="ShopUI" parent="YSort/TowerShop/CanvasLayer" index="0"]
-visible = false
 
 [node name="Towers" type="YSort" parent="YSort"]
 
@@ -111,4 +113,4 @@ theme = ExtResource( 8 )
 custom_styles/fg = SubResource( 2 )
 value = 75.0
 
-[editable path="YSort/TowerShop"]
+[editable path="Non-YSort/TowerShop"]
