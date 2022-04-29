@@ -29,20 +29,25 @@ light_mode = 1
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [  ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "carrying",
+"name": "carry_moving",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "carry_idle",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "moving",
-"speed": 5.0
+"speed": 8.0
 } ]
 
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
@@ -81,4 +86,4 @@ texture = ExtResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.5, -16 )
 frames = SubResource( 3 )
-animation = "moving"
+animation = "carry_idle"

@@ -12,6 +12,8 @@ export(float, 0.0, 1.0) var slow_factor : float = 0.7
 
 signal building(is_building)
 
+onready var animated_sprite = $AnimatedSprite
+
 onready var is_building: bool = false
 onready var raw_direction: Vector2
 onready var direction: Vector2
@@ -26,8 +28,7 @@ func _physics_process(delta: float) -> void:
 	raw_direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	raw_direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	direction = raw_direction.normalized() * Global.player_direction_mod
-
-
+	
 	# This checks if the user wants to move.
 	# If they do then we move in the direction they are inputing with the speed we choose.
 	# If they are not pressing any movement keys then we slow down the player to a stop,
@@ -37,14 +38,30 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, (speed*Global.player_speed_mod)/friction)
 		velocity.y = move_toward(velocity.y, 0.0, (speed*Global.player_speed_mod)/friction)
+	
 	# If the player presses Ctrl/Shift, they will slow down.
 	if Input.get_action_strength("move_slow"):
 		velocity *= slow_factor
 	velocity = move_and_slide(velocity)
+	
+	# Plays the animations depending on the player state.
+	var is_moving = (direction.length() != 0.0)
+	
+	if is_building == true:
+		if is_moving:
+			animated_sprite.play("carry_moving")
+		else:
+			animated_sprite.play("carry_idle")
+	else:
+		if is_moving:
+			animated_sprite.play("moving")
+		else:
+			animated_sprite.play("idle")
 
+
+### For debugging purposes ###
 var tower = preload("res://Scenes/Objects/Towers/BaseTower.tscn")
 
-## For debugging purposes
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.pressed and event.scancode == KEY_E:
@@ -52,7 +69,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			is_building = !is_building
 			emit_signal("building", is_building)
 
-		# check if towers collisionshape intersects with anything else
+		# Check if tower's CollisionShape intersects with anything else
 		if event.pressed and event.scancode == KEY_SPACE and is_building:
 			var current_tower = tower.instance()
 			var tower_shape = current_tower.get_node("StaticBody2D/CollisionShape2D")
