@@ -1,17 +1,27 @@
 extends PathFollow2D
 
-export(int) var health: int = 10 setget set_health
-export(int) var path_speed: int = 30
+export(int) var health : int = 10 setget set_health
+export(int) var path_speed : int = 30
 
-var slow_multiplier: float = 1.0 setget set_slowed
-var slow_time: float = 4.0
+enum enemy {
+	FUNGALBLUEBERRY,
+	ROTTENBANANA,
+	LEMONOSE,
+	WORMEDFRUIT,
+}
 
-onready var hitbox: Area2D = $HitBox
+var slow_multiplier : float = 1.0 setget set_slowed
+var slow_time : float = 4.0
+
+onready var hitboxv: Area2D = $HitBox
+onready var sprite : AnimatedSprite = $AnimatedSprite
+onready var anim : AnimationPlayer = $AnimationPlayer
 onready var slow_timer: Timer = Timer.new()
 
 func _ready() -> void:
 	set_loop(false)
 	slow_timer.connect("timeout", self, "reset_slowed")
+	anim.connect("animation_finished", self, "on_anim_fin")
 	add_child(slow_timer)
 
 
@@ -47,11 +57,12 @@ func reached_end() -> void:
 
 func set_health(value: int) -> void:
 	health = value
+	anim.play("hit")
 	if health <= 0:
-		dead()
+		anim.play("death")
 
 
-func dead() -> void:
-	# death anim???
-	queue_free()
+func on_anim_fin(anim_name: String) -> void:
+	if anim_name == "death":
+		queue_free()
 
