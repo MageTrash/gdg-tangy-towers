@@ -20,11 +20,6 @@ animations = [ {
 "name": "temp fruit",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "bulbfruit",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "neutraroots",
@@ -38,6 +33,11 @@ animations = [ {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "spiralines",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "bulbfruit",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -91,7 +91,7 @@ rotation = 1.5708
 shape = SubResource( 5 )
 
 [node name="Shadow" type="Sprite" parent="."]
-position = Vector2( 0.5, -9 )
+position = Vector2( 0.5, -2 )
 texture = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

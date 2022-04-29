@@ -17,30 +17,35 @@ shader = ExtResource( 11 )
 shader_param/minCircleSize = 120.0
 shader_param/maxCircleExpansion = 20.0
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 4.99999
-height = 6.00006
-
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 30 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [  ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "idle",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "carrying",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "moving",
+"speed": 10.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "carry_moving",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "carry_idle",
 "speed": 5.0
 } ]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.99999
+height = 6.00002
 
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
 script = ExtResource( 1 )
@@ -54,11 +59,9 @@ material = SubResource( 4 )
 enabled = false
 texture = ExtResource( 4 )
 mode = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -1 )
-rotation = 1.5708
-shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ExcludeSpawn" type="Area2D" parent="." groups=["Spawnable"]]
 __meta__ = {
@@ -70,12 +73,19 @@ self_modulate = Color( 0, 0.0627451, 1, 0.152941 )
 show_behind_parent = true
 rotation = 1.5708
 shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Shadow" type="Sprite" parent="."]
-position = Vector2( 0.5, 0 )
+position = Vector2( 0.5, -1 )
 texture = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.5, -16 )
 frames = SubResource( 3 )
 animation = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )

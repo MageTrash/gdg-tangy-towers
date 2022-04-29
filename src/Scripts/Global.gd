@@ -97,8 +97,8 @@ func play_effect(fruit_type: int) -> void:
 
 		fruit.FLASHFRUIT:
 			print("FLASHFRUIT")
-			player_speed_mod = 2.0
-			emit_signal("tower_rate_change", 2.0)
+			player_speed_mod = 1.75
+			emit_signal("tower_rate_change", 1.75)
 			yield(get_tree().create_timer(effect_time[fruit.FLASHFRUIT]), "timeout")
 			player_speed_mod = 1.0
 			emit_signal("tower_rate_change", 1.0)
