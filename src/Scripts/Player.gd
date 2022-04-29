@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		velocity *= slow_factor
 	velocity = move_and_slide(velocity)
 
-var tower = preload("res://Scenes/Objects/BaseTower.tscn")
+var tower = preload("res://Scenes/Objects/Towers/BaseTower.tscn")
 
 ## For debugging purposes
 func _unhandled_input(event: InputEvent) -> void:

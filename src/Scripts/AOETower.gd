@@ -1,7 +1,7 @@
 extends Node2D
 
 
-export(PackedScene) var bullet_scene := preload("res://Scenes/Objects/SplashArea.tscn")
+export(PackedScene) var bullet_scene := preload("res://Scenes/Objects/Towers/SplashArea.tscn")
 export(float, 1, 100) var bullet_damage : float = 5
 export(float, 0.1, 200) var time_between_shot = 5
 

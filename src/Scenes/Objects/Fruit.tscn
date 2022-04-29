@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Fruit.gd" type="Script" id=1]
 [ext_resource path="res://Art n Music/Fruit Sprites/shadow_fruit.png" type="Texture" id=2]
@@ -13,6 +13,9 @@
 radius = 5.99999
 height = 5.99999
 
+[sub_resource type="CanvasItemMaterial" id=7]
+light_mode = 1
+
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
@@ -23,11 +26,6 @@ animations = [ {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "spiralines",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "bulbfruit",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
@@ -44,6 +42,11 @@ animations = [ {
 "loop": true,
 "name": "neutraroots",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "bulbfruit",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=6]
@@ -59,6 +62,7 @@ rotation = 1.5708
 shape = SubResource( 5 )
 
 [node name="Shadow" type="Sprite" parent="."]
+material = SubResource( 7 )
 position = Vector2( 0.5, -9 )
 texture = ExtResource( 2 )
 
