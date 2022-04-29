@@ -12,17 +12,17 @@
 [ext_resource path="res://Art n Music/Character Sprites/chef_hat3.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/Shaders/Pixellated Circle.tres" type="Shader" id=11]
 
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 11 )
+shader_param/minCircleSize = 120.0
+shader_param/maxCircleExpansion = 20.0
+
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.99999
 height = 6.00006
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 30 )
-
-[sub_resource type="ShaderMaterial" id=4]
-shader = ExtResource( 11 )
-shader_param/minCircleSize = 120.0
-shader_param/maxCircleExpansion = 20.0
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -48,6 +48,11 @@ __meta__ = {
 "_editor_description_": "Change the script variables to fine tune the movement"
 }
 
+[node name="Light2D" type="Light2D" parent="."]
+material = SubResource( 4 )
+texture = ExtResource( 4 )
+mode = 2
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -1 )
 rotation = 1.5708
@@ -67,11 +72,6 @@ shape = SubResource( 2 )
 [node name="ShadowCharacter" type="Sprite" parent="."]
 position = Vector2( 0.5, 0 )
 texture = ExtResource( 3 )
-
-[node name="Light2D" type="Light2D" parent="."]
-material = SubResource( 4 )
-texture = ExtResource( 4 )
-mode = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.5, -16 )
