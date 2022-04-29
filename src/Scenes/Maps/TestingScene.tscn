@@ -111,4 +111,14 @@ theme = ExtResource( 8 )
 custom_styles/fg = SubResource( 2 )
 value = 75.0
 
+[node name="ExitButton" type="Button" parent="CanvasLayer"]
+margin_left = 530.0
+margin_top = 329.0
+margin_right = 628.0
+margin_bottom = 349.0
+theme = ExtResource( 8 )
+text = "(DO NOT CLICK) Exit"
+
+[connection signal="pressed" from="CanvasLayer/ExitButton" to="." method="_on_ExitButton_pressed"]
+
 [editable path="TowerShop"]
