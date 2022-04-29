@@ -16,7 +16,7 @@ enum fruit {
 
 # this must be the same length as fruit enum and is ordered the same way
 # e.g. the first value in probability corresponds to SPIRALINES
-var probability = [10, 1, 1, 1, 1]
+var probability = [1, 0, 1, 0, 1]
 var effect_time = [4.5, 10.0, 10.0, 3.0, 3.0]
 
 # these change must return to 1.0

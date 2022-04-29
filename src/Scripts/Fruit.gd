@@ -2,11 +2,13 @@ extends Node2D
 
 export(preload("res://Scripts/Global.gd").fruit) var fruit_type
 
-onready var area: Area2D = $PickupArea
+onready var area : Area2D = $PickupArea
+onready var sprite : AnimatedSprite = $AnimatedSprite
 
 func _ready() -> void:
 #	fruit_type = Global.rng.randi_range(0, Global.fruit.size() - 1)
 	fruit_type = pick_random(Global.probability)
+	sprite.animation = Global.fruit.keys()[fruit_type].to_lower()
 	area.connect("body_entered", self, "on_area_entered")
 
 

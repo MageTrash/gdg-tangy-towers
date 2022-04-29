@@ -25,24 +25,24 @@ animations = [ {
 "name": "bulbfruit",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "flashfruit",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "neutraroot",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
-"name": "spiralfruit",
+"name": "spiralines",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "pomeye",
+"name": "pomeyes",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "zapnanas",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "neutraroots",
 "speed": 5.0
 } ]
 
@@ -62,4 +62,4 @@ texture = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.5, -9 )
 frames = SubResource( 2 )
-animation = "temp fruit"
+animation = "zapnanas"
