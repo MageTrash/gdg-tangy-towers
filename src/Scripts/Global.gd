@@ -96,7 +96,7 @@ func play_effect(fruit_type: int) -> void:
 
 		fruit.NOIDFRUIT:
 			print("noidfruit")
-			
+
 			player_speed_mod = 2.0
 			emit_signal("tower_rate_change", 2.0)
 			yield(get_tree().create_timer(effect_time[fruit.NOIDFRUIT]), "timeout")

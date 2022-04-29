@@ -70,31 +70,20 @@ position = Vector2( 191, 122 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Sideui" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 320, 180 )
+[node name="Sideui" type="TextureRect" parent="CanvasLayer"]
+margin_right = 640.0
+margin_bottom = 360.0
 texture = ExtResource( 11 )
 
-[node name="Vines" type="Node2D" parent="CanvasLayer"]
-position = Vector2( 509, -40 )
-scale = Vector2( 0.5, 0.5 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Vines2" type="Sprite" parent="CanvasLayer/Vines"]
-position = Vector2( 31.0004, 837 )
-rotation = -1.5708
+[node name="Vines" type="TextureRect" parent="CanvasLayer"]
+margin_left = 509.0
+margin_top = 359.0
+margin_right = 1229.0
+margin_bottom = 420.0
+rect_rotation = -90.0
+rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
-
-[node name="Vines3" type="Sprite" parent="CanvasLayer/Vines"]
-position = Vector2( 31.0004, 502 )
-rotation = -1.5708
-texture = ExtResource( 2 )
-
-[node name="Vines" type="Sprite" parent="CanvasLayer/Vines"]
-position = Vector2( 31.0004, 167 )
-rotation = -1.57079
-texture = ExtResource( 2 )
+stretch_mode = 2
 
 [node name="InfoText" type="Label" parent="CanvasLayer"]
 margin_left = 1.0
