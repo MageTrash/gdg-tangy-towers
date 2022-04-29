@@ -38,14 +38,14 @@ animations = [ {
 "name": "pomeyes",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "zapnanas",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "spiralines",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "flashfruit",
 "speed": 5.0
 } ]
 
@@ -101,7 +101,7 @@ texture = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.5, -12 )
 frames = SubResource( 2 )
-animation = "zapnanas"
+animation = "flashfruit"
 
 [node name="ExcludeSpawn" type="Area2D" parent="." groups=["Spawnable"]]
 __meta__ = {
