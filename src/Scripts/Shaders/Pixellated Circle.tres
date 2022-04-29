@@ -6,7 +6,7 @@ code = "shader_type canvas_item;
 uniform float minCircleSize : hint_range(0.0, 320.0) = 100.;
 uniform float maxCircleExpansion : hint_range(0.0, 100.0) = 20.;
 
-void light() {
+void fragment() {
 	// Dividing the max resolution into our preffered pixel size.
 	vec2 res = 1./TEXTURE_PIXEL_SIZE; //Defines texture size.
 	vec2 pixelUV; //Defines our new UV.
@@ -19,6 +19,6 @@ void light() {
 	
 	vec4 flatCircle = vec4(radial); //Creates an RGBA with the circle.
 	
-	LIGHT = flatCircle;
+	COLOR = flatCircle;
 }
 "

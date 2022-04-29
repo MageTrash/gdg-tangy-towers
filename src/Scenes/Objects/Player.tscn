@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art n Music/Character Sprites/chef_hat5.png" type="Texture" id=2]
@@ -12,6 +12,11 @@
 [ext_resource path="res://Art n Music/Character Sprites/chef_hat3.png" type="Texture" id=10]
 [ext_resource path="res://Scripts/Shaders/Pixellated Circle.tres" type="Shader" id=11]
 
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 11 )
+shader_param/minCircleSize = 120.0
+shader_param/maxCircleExpansion = 20.0
+
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.99999
 height = 6.00006
@@ -19,10 +24,8 @@ height = 6.00006
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 30 )
 
-[sub_resource type="ShaderMaterial" id=4]
-shader = ExtResource( 11 )
-shader_param/minCircleSize = 120.0
-shader_param/maxCircleExpansion = 20.0
+[sub_resource type="CanvasItemMaterial" id=5]
+light_mode = 1
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -31,14 +34,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "moving",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "carrying",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "moving",
 "speed": 5.0
 } ]
 
@@ -47,6 +50,12 @@ script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "Change the script variables to fine tune the movement"
 }
+
+[node name="Light2D" type="Light2D" parent="."]
+show_behind_parent = true
+material = SubResource( 4 )
+texture = ExtResource( 4 )
+mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -1 )
@@ -64,14 +73,10 @@ show_behind_parent = true
 rotation = 1.5708
 shape = SubResource( 2 )
 
-[node name="ShadowCharacter" type="Sprite" parent="."]
+[node name="Shadow" type="Sprite" parent="."]
+material = SubResource( 5 )
 position = Vector2( 0.5, 0 )
 texture = ExtResource( 3 )
-
-[node name="Light2D" type="Light2D" parent="."]
-material = SubResource( 4 )
-texture = ExtResource( 4 )
-mode = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.5, -16 )

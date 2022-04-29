@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Fruit.gd" type="Script" id=1]
 [ext_resource path="res://Art n Music/Fruit Sprites/shadow_fruit.png" type="Texture" id=2]
@@ -13,6 +13,9 @@
 radius = 5.99999
 height = 5.99999
 
+[sub_resource type="CanvasItemMaterial" id=7]
+light_mode = 1
+
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
@@ -25,26 +28,61 @@ animations = [ {
 "name": "bulbfruit",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "flashfruit",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "neutraroot",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "spiralfruit",
+"name": "neutraroots",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
-"name": "pomeye",
+"name": "pomeyes",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "zapnanas",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "spiralines",
 "speed": 5.0
 } ]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 20, 20 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "Float"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, -9 ), Vector2( 0.5, -12 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, -12 ) ]
+}
 
 [node name="Fruit" type="Node2D"]
 script = ExtResource( 1 )
@@ -56,10 +94,27 @@ rotation = 1.5708
 shape = SubResource( 5 )
 
 [node name="Shadow" type="Sprite" parent="."]
+material = SubResource( 7 )
 position = Vector2( 0.5, -9 )
 texture = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0.5, -9 )
+position = Vector2( 0.5, -12 )
 frames = SubResource( 2 )
-animation = "temp fruit"
+animation = "zapnanas"
+
+[node name="ExcludeSpawn" type="Area2D" parent="." groups=["Spawnable"]]
+__meta__ = {
+"_editor_description_": "This is for making sure things don't spawn on/near the player"
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExcludeSpawn"]
+self_modulate = Color( 0, 0.0627451, 1, 0.152941 )
+show_behind_parent = true
+rotation = 1.5708
+shape = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Float"
+anims/Float = SubResource( 8 )
+anims/RESET = SubResource( 9 )

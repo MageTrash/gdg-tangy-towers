@@ -13,6 +13,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="BaseEnemy" type="PathFollow2D"]
+rotate = false
 loop = false
 script = ExtResource( 1 )
 __meta__ = {
