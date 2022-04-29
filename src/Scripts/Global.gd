@@ -8,7 +8,7 @@ signal tower_rate_change(tower_fire_rate_mod)
 # this list will change later
 enum fruit {
 	SPIRALINES,
-	NOIDFRUIT,
+	FLASHFRUIT,
 	POMEYES,
 	BULBFRUIT,
 	NEUTRAROOTS,
@@ -16,7 +16,7 @@ enum fruit {
 
 # this must be the same length as fruit enum and is ordered the same way
 # e.g. the first value in probability corresponds to SPIRALINES
-var probability = [1, 0, 1, 0, 1]
+var probability = [1, 1, 1, 1, 1]
 var effect_time = [4.5, 10.0, 10.0, 3.0, 3.0]
 
 # these change must return to 1.0
@@ -94,12 +94,11 @@ func play_effect(fruit_type: int) -> void:
 			player_direction_mod = 1.0
 			enemy_speed_mod = 1.0
 
-		fruit.NOIDFRUIT:
-			print("noidfruit")
-
+		fruit.FLASHFRUIT:
+			print("FLASHFRUIT")
 			player_speed_mod = 2.0
 			emit_signal("tower_rate_change", 2.0)
-			yield(get_tree().create_timer(effect_time[fruit.NOIDFRUIT]), "timeout")
+			yield(get_tree().create_timer(effect_time[fruit.FLASHFRUIT]), "timeout")
 			player_speed_mod = 1.0
 			emit_signal("tower_rate_change", 1.0)
 
