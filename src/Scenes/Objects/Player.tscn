@@ -26,24 +26,19 @@ extents = Vector2( 30, 30 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
-"frames": [ ExtResource( 8 ) ],
+"frames": [  ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "carry_moving",
+"name": "carrying",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "moving",
-"speed": 8.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "carry_idle",
 "speed": 5.0
 } ]
 
@@ -56,6 +51,7 @@ __meta__ = {
 [node name="Light2D" type="Light2D" parent="."]
 show_behind_parent = true
 material = SubResource( 4 )
+enabled = false
 texture = ExtResource( 4 )
 mode = 2
 

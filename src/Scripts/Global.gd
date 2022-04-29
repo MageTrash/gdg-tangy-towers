@@ -4,6 +4,7 @@ extends Node
 # emit this signal with the count array every time it's changed
 signal count_change(count_array)
 signal tower_rate_change(tower_fire_rate_mod)
+signal toggle_player_light(light_change)
 
 # this list will change later
 enum fruit {
@@ -104,10 +105,12 @@ func play_effect(fruit_type: int) -> void:
 
 		fruit.POMEYES:
 			print("pomeyes")
+			emit_signal("toggle_player_light", true)
 			blindness.color = Color.black
 			tower_damage_mod = 1.5
 			yield(get_tree().create_timer(effect_time[fruit.POMEYES]), "timeout")
 			blindness.color = Color.white
+			emit_signal("toggle_player_light", false)
 			tower_damage_mod = 1.0
 
 		fruit.BULBFRUIT:

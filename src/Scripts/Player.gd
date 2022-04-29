@@ -12,23 +12,28 @@ export(float, 0.0, 1.0) var slow_factor : float = 0.7
 
 signal building(is_building)
 
+
 onready var animated_sprite = $AnimatedSprite
 
 onready var is_building: bool = false
 onready var raw_direction: Vector2
 onready var direction: Vector2
 onready var velocity: Vector2
+onready var light : Light2D = $Light2D
+
 
 func _ready() -> void:
+	light.enabled = false
 	# give global a reference to player from anywhere
 	Global.register_player(self)
+	Global.connect("toggle_player_light", self, "change_light")
 
 func _physics_process(delta: float) -> void:
 	# This will get a normalized Vector2 direction of where the player want's to move
 	raw_direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	raw_direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	direction = raw_direction.normalized() * Global.player_direction_mod
-	
+
 	# This checks if the user wants to move.
 	# If they do then we move in the direction they are inputing with the speed we choose.
 	# If they are not pressing any movement keys then we slow down the player to a stop,
@@ -38,15 +43,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, (speed*Global.player_speed_mod)/friction)
 		velocity.y = move_toward(velocity.y, 0.0, (speed*Global.player_speed_mod)/friction)
-	
+
 	# If the player presses Ctrl/Shift, they will slow down.
 	if Input.get_action_strength("move_slow"):
 		velocity *= slow_factor
 	velocity = move_and_slide(velocity)
-	
+
 	# Plays the animations depending on the player state.
 	var is_moving = (direction.length() != 0.0)
-	
+
 	if is_building == true:
 		if is_moving:
 			animated_sprite.play("carry_moving")
@@ -88,3 +93,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				get_parent().get_node("Towers").add_child(current_tower)
 			else:
 				current_tower.queue_free()
+
+
+func change_light(toggle: bool) -> void:
+	light.enabled = toggle
