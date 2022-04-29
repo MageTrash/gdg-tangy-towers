@@ -31,14 +31,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "moving",
-"speed": 5.0
-}, {
 "frames": [  ],
 "loop": true,
 "name": "carrying",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 7 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "moving",
 "speed": 5.0
 } ]
 
@@ -49,6 +49,7 @@ __meta__ = {
 }
 
 [node name="Light2D" type="Light2D" parent="."]
+show_behind_parent = true
 material = SubResource( 4 )
 texture = ExtResource( 4 )
 mode = 2
