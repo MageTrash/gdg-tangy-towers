@@ -36,7 +36,7 @@ func out_of_sight(area: Area2D) -> void:
 		targets.erase(area.get_parent())
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if targets and cooldown.is_stopped():
 		# if there are targets in the targets array and the shooting cooldown has ended
 		var current_target
