@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/BaseEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Art n Music/Enemy Sprites/shadow_enemy.png" type="Texture" id=3]
@@ -10,6 +10,10 @@
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 12.0
 height = 4.0
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 4.453
+height = 9.094
 
 [sub_resource type="Shader" id=3]
 resource_local_to_scene = true
@@ -32,16 +36,6 @@ shader_param/flashState = 0.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": true,
-"name": "fungaberry",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "lemonose",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "wormy",
@@ -50,6 +44,16 @@ animations = [ {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "rotnana",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "lemonose",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "fungaberry",
 "speed": 5.0
 } ]
 
@@ -171,6 +175,13 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2( 0, -8 )
 shape = SubResource( 9 )
+
+[node name="Collider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2( 0, 2.5 )
+rotation = 1.5708
+shape = SubResource( 10 )
 
 [node name="TransformSprites" type="RemoteTransform2D" parent="."]
 

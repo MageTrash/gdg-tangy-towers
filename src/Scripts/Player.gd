@@ -20,7 +20,7 @@ onready var raw_direction: Vector2
 onready var direction: Vector2
 onready var velocity: Vector2
 onready var light : Light2D = $Light2D
-
+onready var stunned : Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	light.enabled = false
@@ -34,11 +34,15 @@ func _physics_process(_delta: float) -> void:
 	raw_direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 	direction = raw_direction.normalized() * Global.player_direction_mod
 
+	if stunned:
+		velocity = stunned
+		stunned.x = move_toward(stunned.x, 0.0, speed/(friction*3))
+		stunned.y = move_toward(stunned.y, 0.0, speed/(friction*3))
 	# This checks if the user wants to move.
 	# If they do then we move in the direction they are inputing with the speed we choose.
 	# If they are not pressing any movement keys then we slow down the player to a stop,
 	# so that the player slows down gradually instead of stopping instantly.
-	if direction:
+	if direction and !stunned:
 		velocity = direction * speed * Global.player_speed_mod
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, (speed*Global.player_speed_mod)/friction)
@@ -47,6 +51,7 @@ func _physics_process(_delta: float) -> void:
 	# If the player presses Ctrl/Shift, they will slow down.
 	if Input.get_action_strength("move_slow"):
 		velocity *= slow_factor
+
 	velocity = move_and_slide(velocity)
 
 	# Plays the animations depending on the player state.
@@ -80,7 +85,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			var tower_shape = current_tower.get_node("StaticBody2D/CollisionShape2D")
 			var space = get_world_2d().direct_space_state
 			var query = Physics2DShapeQueryParameters.new()
-#			query.collide_with_areas = true
 			query.shape_rid = tower_shape.shape.get_rid()
 			var shape_trans: Transform2D = tower_shape.transform
 			shape_trans.origin = global_transform.origin

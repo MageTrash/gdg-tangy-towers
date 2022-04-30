@@ -82,6 +82,13 @@ func register_player(body: KinematicBody2D) -> void:
 	player = body
 
 
+# this will pretty much get the tangent of the path2D curve at the offset location
+func get_path_tangent(point_offset: float) -> Vector2:
+	var point1: Vector2 = map_path.curve.interpolate_baked(point_offset)
+	var point2: Vector2 = map_path.curve.interpolate_baked(point_offset + 0.0001)
+	return (point2 - point1).normalized()
+
+
 func spawn_enemy() -> void:
 	var type_of_enemy = 3
 	var bad_guy = enemy.instance()
