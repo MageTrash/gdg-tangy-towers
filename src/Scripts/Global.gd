@@ -30,6 +30,7 @@ var player_direction_mod : float = 1.0
 
 onready var player : KinematicBody2D
 onready var map_path : Path2D
+onready var enemy_ysort : YSort
 onready var wave_timer : Timer = Timer.new()
 onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 onready var blindness : CanvasModulate = CanvasModulate.new()
@@ -53,7 +54,7 @@ func _ready() -> void:
 	for i in len(fruit.values()):
 		fruit_counter.append(0)
 
-	wave_timer.wait_time = 2
+	wave_timer.wait_time = 1
 	wave_timer.connect("timeout", self, "spawn_enemy")
 	wave_timer.autostart = true
 	add_child(wave_timer)
@@ -73,8 +74,9 @@ func increment_enemies_counter() -> void:
 
 
 # The map script will register it's path so all towers have a global reference to it
-func register_path(path: Path2D) -> void:
+func register_path_and_ysort(path: Path2D, ysort: YSort) -> void:
 	map_path = path
+	enemy_ysort = ysort
 
 
 func register_player(body: KinematicBody2D) -> void:
@@ -82,7 +84,15 @@ func register_player(body: KinematicBody2D) -> void:
 
 
 func spawn_enemy() -> void:
-	Global.map_path.add_child(enemy.instance())
+#	Global.map_path.add_child(enemy.instance())
+	var bad_guy = enemy.instance()
+	var sprites = bad_guy.get_node("Sprites")
+	bad_guy.remove_child(sprites)
+	enemy_ysort.add_child(sprites)
+	sprites.set_owner(enemy_ysort)
+	bad_guy.get_node("TransformSprites").remote_path = sprites.get_path()
+	bad_guy.anim = sprites.get_node("AnimationPlayer")
+	map_path.add_child(bad_guy)
 	wave_timer.start()
 
 

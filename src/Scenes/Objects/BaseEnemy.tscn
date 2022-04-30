@@ -38,9 +38,9 @@ animations = [ {
 "name": "rotnana",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "wormy",
+"name": "test_dummy",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -48,14 +48,14 @@ animations = [ {
 "name": "fungaberry",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "test_dummy",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "lemonose",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "wormy",
 "speed": 5.0
 } ]
 
@@ -178,17 +178,21 @@ __meta__ = {
 position = Vector2( 0, -8 )
 shape = SubResource( 9 )
 
-[node name="ShadowEnemy" type="Sprite" parent="."]
-position = Vector2( 0.5, 0 )
+[node name="TransformSprites" type="RemoteTransform2D" parent="."]
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="ShadowEnemy" type="Sprite" parent="Sprites"]
+position = Vector2( 0.5, 1 )
 texture = ExtResource( 3 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Sprites"]
 material = SubResource( 8 )
 position = Vector2( 0.5, -8 )
 frames = SubResource( 2 )
 animation = "rotnana"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites"]
 anims/RESET = SubResource( 7 )
 anims/death = SubResource( 5 )
 anims/hit = SubResource( 6 )

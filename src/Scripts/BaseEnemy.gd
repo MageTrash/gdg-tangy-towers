@@ -14,8 +14,7 @@ var slow_multiplier : float = 1.0 setget set_slowed
 var slow_time : float = 4.0
 
 onready var hitboxv: Area2D = $HitBox
-onready var sprite : AnimatedSprite = $AnimatedSprite
-onready var anim : AnimationPlayer = $AnimationPlayer
+onready var anim : AnimationPlayer
 onready var slow_timer: Timer = Timer.new()
 
 func _ready() -> void:
@@ -64,5 +63,6 @@ func set_health(value: int) -> void:
 
 func on_anim_fin(anim_name: String) -> void:
 	if anim_name == "death":
+		anim.get_parent().queue_free()
 		queue_free()
 
