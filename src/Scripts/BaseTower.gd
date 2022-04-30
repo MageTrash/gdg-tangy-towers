@@ -69,16 +69,10 @@ func solve_quadratic(a: float, b: float, c: float) -> int:
 	return 2 if discriminant > 0 else 1
 
 
-func get_path_tangent(point_offset: float) -> Vector2:
-	var point1: Vector2= Global.map_path.curve.interpolate_baked(point_offset)
-	var point2: Vector2 = Global.map_path.curve.interpolate_baked(point_offset + 0.001)
-	return (point2 - point1).normalized()
-
-
 # returns the normalized direction to targets future position
 # https://youtu.be/2zVwug_agr0 this is the maths behind this function
 func predict_position(target: PathFollow2D) -> bool:
-	var target_dir: Vector2 = get_path_tangent(target.offset)
+	var target_dir: Vector2 = Global.get_path_tangent(target.offset)
 	var target_to_self: Vector2 = muzzel.global_position - target.global_position
 	var dist_to_target: float = target_to_self.length()
 	var angle_at_target: float = target_to_self.angle_to(target_dir)

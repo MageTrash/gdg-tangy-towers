@@ -8,6 +8,7 @@ export(Vector2) var lemonose_health = Vector2(20, 30)
 export(int) var lemonose_speed = 20
 export(Vector2) var wormy_health = Vector2(30, 40)
 export(int) var wormy_speed = 15
+export(float) var knockback : float = 200.0
 
 enum enemy {
 	FUNGABERRY,
@@ -24,7 +25,7 @@ var path_speed : int
 var slow_multiplier : float = 1.0 setget set_slowed
 var slow_time : float = 4.0
 
-onready var hitboxv: Area2D = $HitBox
+onready var collider : Area2D = $Collider
 onready var anim : AnimationPlayer
 onready var slow_timer: Timer = Timer.new()
 
@@ -32,23 +33,20 @@ func _ready() -> void:
 	set_loop(false)
 	slow_timer.connect("timeout", self, "reset_slowed")
 	anim.connect("animation_finished", self, "on_anim_fin")
+	collider.connect("body_entered", self, "on_body_entered")
 	add_child(slow_timer)
 
 	match enemy_type:
 		enemy.FUNGABERRY:
-			print("f")
 			health = Global.rng.randi_range(fungaberry_health.x, fungaberry_health.y)
 			path_speed = fungaberry_speed
 		enemy.ROTNANA:
-			print("r")
 			health = Global.rng.randi_range(rotnana_health.x, rotnana_health.y)
 			path_speed = rotnana_speed
 		enemy.LEMONOSE:
-			print("l")
 			health = Global.rng.randi_range(lemonose_health.x, lemonose_health.y)
 			path_speed = lemonose_speed
 		enemy.WORMY:
-			print("w")
 			health = Global.rng.randi_range(wormy_health.x, wormy_health.y)
 			path_speed = wormy_speed
 
@@ -64,7 +62,6 @@ func set_slowed(value: float) -> void:
 
 func reset_slowed() -> void:
 	slow_multiplier = 1.0
-
 
 func _physics_process(delta: float) -> void:
 	# offset is it's distance along the path2D; delta makes it sure it moves relative
@@ -95,3 +92,8 @@ func on_anim_fin(anim_name: String) -> void:
 		anim.get_parent().queue_free()
 		queue_free()
 
+
+func on_body_entered(body: Node) -> void:
+	if body.is_in_group("Player"):
+		var to_player : Vector2 = (body.global_position - global_position).normalized()
+		body.stunned = to_player * knockback
