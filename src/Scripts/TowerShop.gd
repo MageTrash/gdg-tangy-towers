@@ -13,9 +13,9 @@ func _ready() -> void:
 	buy_area.connect("body_exited", self, "on_shop_exited")
 
 
-func on_shop_entered(body: Node) -> void:
+func on_shop_entered(_body: Node) -> void:
 	shop_ui.visible = true
 
 
-func on_shop_exited(body: Node) -> void:
+func on_shop_exited(_body: Node) -> void:
 	shop_ui.visible = false

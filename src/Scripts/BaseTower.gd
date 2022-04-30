@@ -43,7 +43,7 @@ func out_of_sight(area: Area2D) -> void:
 		targets.erase(area.get_parent())
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if targets and cooldown.is_stopped():
 		if predict_position(targets[0]):
 			var bullet = bullet_scene.instance()

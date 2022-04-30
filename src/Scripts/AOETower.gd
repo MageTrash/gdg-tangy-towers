@@ -20,7 +20,7 @@ func _ready() -> void:
 
 
 func on_fire_rate_change(modifier: float) -> void:
-	cooldown.wait_time = time_between_shot * (1 / Global.tower_fire_rate_mod)
+	cooldown.wait_time = time_between_shot * (1 / modifier)
 
 
 func in_sight(area: Area2D) -> void:
@@ -33,7 +33,7 @@ func out_of_sight(area: Area2D) -> void:
 		targets.erase(area.get_parent())
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if targets and cooldown.is_stopped():
 		var bullet = bullet_scene.instance()
 		bullet.set_as_toplevel(true)

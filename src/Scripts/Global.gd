@@ -24,7 +24,6 @@ var effect_time = [4.5, 10.0, 10.0, 3.0, 3.0]
 var enemy_speed_mod : float = 1.0
 var player_speed_mod : float = 1.0
 var tower_damage_mod : float = 1.0
-var tower_fire_rate_mod : float = 1.0
 # should only be either -1.0 or 1.0
 var player_direction_mod : float = 1.0
 

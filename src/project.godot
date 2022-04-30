@@ -18,6 +18,10 @@ config/icon="res://icon.png"
 
 Global="*res://Scripts/Global.gd"
 
+[debug]
+
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=640
@@ -31,6 +35,7 @@ window/stretch/aspect="keep"
 [global]
 
 aspect=false
+error=false
 
 [importer_defaults]
 

@@ -28,7 +28,7 @@ func _ready() -> void:
 	Global.register_player(self)
 	Global.connect("toggle_player_light", self, "change_light")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# This will get a normalized Vector2 direction of where the player want's to move
 	raw_direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	raw_direction.y = Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
