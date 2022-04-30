@@ -73,8 +73,10 @@ position = Vector2( 53, 78 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Sideui" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 589, 180 )
+[node name="Sideui" type="TextureRect" parent="CanvasLayer"]
+margin_left = 538.0
+margin_right = 640.0
+margin_bottom = 360.0
 texture = ExtResource( 11 )
 
 [node name="Vines" type="TextureRect" parent="CanvasLayer"]
