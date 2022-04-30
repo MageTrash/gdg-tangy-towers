@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chef_hat5.png-82c162012ed04b135c3e90f2125060c4.stex"
+path="res://.import/character-moving6.png-e35f4cf07fa01f1e004b3904ee1085d7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art n Music/Character Sprites/chef_hat5.png"
-dest_files=[ "res://.import/chef_hat5.png-82c162012ed04b135c3e90f2125060c4.stex" ]
+source_file="res://Art n Music/Character Sprites/character-moving6.png"
+dest_files=[ "res://.import/character-moving6.png-e35f4cf07fa01f1e004b3904ee1085d7.stex" ]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
