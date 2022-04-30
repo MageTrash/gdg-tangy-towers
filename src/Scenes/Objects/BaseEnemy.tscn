@@ -36,9 +36,9 @@ shader_param/flashState = 0.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "wormy",
+"name": "fungaberry",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
@@ -51,9 +51,9 @@ animations = [ {
 "name": "lemonose",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "fungaberry",
+"name": "wormy",
 "speed": 5.0
 } ]
 

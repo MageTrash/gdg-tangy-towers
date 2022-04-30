@@ -96,4 +96,4 @@ func on_anim_fin(anim_name: String) -> void:
 func on_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		var to_player : Vector2 = (body.global_position - global_position).normalized()
-		body.stunned = to_player * knockback
+		body.stunned = to_player * knockback * (Global.player_speed_mod*0.85)

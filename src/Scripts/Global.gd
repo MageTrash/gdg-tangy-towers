@@ -19,6 +19,7 @@ enum fruit {
 # e.g. the first value in probability corresponds to SPIRALINES
 var probability = [1, 1, 1, 1, 1]
 var effect_time = [4.5, 10.0, 10.0, 3.0, 3.0]
+var effect_type = 0
 
 # these change must return to 1.0
 var enemy_speed_mod : float = 1.0

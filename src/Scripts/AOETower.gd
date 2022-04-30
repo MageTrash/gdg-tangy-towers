@@ -2,8 +2,8 @@ extends Node2D
 
 
 export(PackedScene) var bullet_scene := preload("res://Scenes/Objects/Towers/SplashArea.tscn")
-export(float, 1, 100) var bullet_damage : float = 5
-export(float, 0.1, 200) var time_between_shot = 5
+export(float, 1, 100) var bullet_damage : float = 10
+export(float, 0.1, 200) var time_between_shot = 4
 
 
 onready var sight_area: Area2D = $SightArea

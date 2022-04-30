@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art n Music/UI/vines.png" type="Texture" id=2]
@@ -19,11 +19,31 @@
 [ext_resource path="res://Art n Music/Fruit Sprites/bulbfruit.png" type="Texture" id=17]
 [ext_resource path="res://Art n Music/Fruit Sprites/pomeye.png" type="Texture" id=18]
 [ext_resource path="res://Art n Music/Fruit Sprites/spiralfruit.png" type="Texture" id=19]
+[ext_resource path="res://Scripts/Shaders/Screen Overlays.tres" type="Shader" id=20]
+[ext_resource path="res://Scenes/Maps/Camera2D.gd" type="Script" id=21]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( -117.079, -20.3414, 117.079, 20.3414, -6.91793, 246.774, -81.8793, 11.6462, 81.8793, -11.6462, 186.082, 121.774, -86.4544, 7.44565, 86.4544, -7.44565, 484.082, 358.774, -96.6139, -11.6042, 96.6139, 11.6042, 649.082, 238.774 )
 }
+
+[sub_resource type="OpenSimplexNoise" id=6]
+period = 1.2
+
+[sub_resource type="NoiseTexture" id=7]
+seamless = true
+noise = SubResource( 6 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 20 )
+shader_param/effectActive = false
+shader_param/effectType = 3
+shader_param/center = Vector2( 0.5, 0.5 )
+shader_param/sample_radius = 0.5
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/center_radius = 0.5
+shader_param/aberWidth = 10.0
+shader_param/noise = SubResource( 7 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 0.678431, 0, 1 )
@@ -107,6 +127,24 @@ position = Vector2( 169, 156 )
 
 [node name="BaseTower" parent="YSort/Towers" instance=ExtResource( 12 )]
 position = Vector2( 289, 72 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 320, 180 )
+current = true
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource( 5 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
