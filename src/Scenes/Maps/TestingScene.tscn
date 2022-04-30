@@ -1,16 +1,16 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://- Resource Dump/Aseprite/vines.png" type="Texture" id=2]
+[ext_resource path="res://Art n Music/UI/vines.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/UI/TowerShop.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Objects/Spawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Objects/Towers/BaseTower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Objects/Towers/AOETower.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/TestingScene.gd" type="Script" id=6]
 [ext_resource path="res://Scripts/TestLabel.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/UI/ShopTheme.tres" type="Theme" id=8]
 [ext_resource path="res://Scripts/DebugText.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=10]
-[ext_resource path="res://- Resource Dump/Aseprite/sideui.png" type="Texture" id=11]
+[ext_resource path="res://Art n Music/UI/sideui.png" type="Texture" id=11]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -66,14 +66,13 @@ timer_length = 7.0
 
 [node name="Towers" type="YSort" parent="YSort"]
 
-[node name="BaseTower" parent="YSort/Towers" instance=ExtResource( 5 )]
-position = Vector2( 191, 122 )
+[node name="AOETower" parent="YSort/Towers" instance=ExtResource( 5 )]
+position = Vector2( 53, 78 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Sideui" type="TextureRect" parent="CanvasLayer"]
-margin_right = 640.0
-margin_bottom = 360.0
+[node name="Sideui" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 589, 180 )
 texture = ExtResource( 11 )
 
 [node name="Vines" type="TextureRect" parent="CanvasLayer"]
@@ -131,10 +130,10 @@ custom_styles/fg = SubResource( 2 )
 value = 75.0
 
 [node name="ExitButton" type="Button" parent="CanvasLayer"]
-margin_left = 530.0
-margin_top = 329.0
-margin_right = 628.0
-margin_bottom = 349.0
+margin_left = 541.0
+margin_top = 319.0
+margin_right = 639.0
+margin_bottom = 339.0
 theme = ExtResource( 8 )
 text = "(DO NOT CLICK) Exit"
 
