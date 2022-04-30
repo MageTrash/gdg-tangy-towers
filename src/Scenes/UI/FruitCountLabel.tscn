@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/FruitCountLabel.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/UI/ShopTheme.tres" type="Theme" id=2]
+
+[node name="FruitCountLabel" type="Label"]
+margin_right = 45.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 45, 45 )
+theme = ExtResource( 2 )
+text = "0"
+align = 1
+valign = 1
+script = ExtResource( 1 )
