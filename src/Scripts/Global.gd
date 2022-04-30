@@ -100,7 +100,6 @@ func spawn_enemy() -> void:
 func play_effect(fruit_type: int) -> void:
 	match fruit_type:
 		fruit.SPIRALINES:
-			print("spiralines")
 			player_direction_mod = -0.9
 			enemy_speed_mod = -0.7
 			yield(get_tree().create_timer(effect_time[fruit.SPIRALINES]), "timeout")
@@ -108,7 +107,6 @@ func play_effect(fruit_type: int) -> void:
 			enemy_speed_mod = 1.0
 
 		fruit.FLASHFRUIT:
-			print("FLASHFRUIT")
 			player_speed_mod = 1.75
 			emit_signal("tower_rate_change", 1.75)
 			yield(get_tree().create_timer(effect_time[fruit.FLASHFRUIT]), "timeout")
@@ -116,7 +114,6 @@ func play_effect(fruit_type: int) -> void:
 			emit_signal("tower_rate_change", 1.0)
 
 		fruit.POMEYES:
-			print("pomeyes")
 			emit_signal("toggle_player_light", true)
 			blindness.color = Color.black
 			tower_damage_mod = 1.5

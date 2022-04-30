@@ -36,19 +36,15 @@ func _ready() -> void:
 
 	match enemy_type:
 		enemy.FUNGABERRY:
-			print("f")
 			health = Global.rng.randi_range(fungaberry_health.x, fungaberry_health.y)
 			path_speed = fungaberry_speed
 		enemy.ROTNANA:
-			print("r")
 			health = Global.rng.randi_range(rotnana_health.x, rotnana_health.y)
 			path_speed = rotnana_speed
 		enemy.LEMONOSE:
-			print("l")
 			health = Global.rng.randi_range(lemonose_health.x, lemonose_health.y)
 			path_speed = lemonose_speed
 		enemy.WORMY:
-			print("w")
 			health = Global.rng.randi_range(wormy_health.x, wormy_health.y)
 			path_speed = wormy_speed
 
