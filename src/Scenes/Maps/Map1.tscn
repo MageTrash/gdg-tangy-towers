@@ -1,15 +1,109 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Art n Music/Tilesets/boundary.png" type="Texture" id=2]
+[ext_resource path="res://Art n Music/Tilesets/leaves.png" type="Texture" id=3]
+[ext_resource path="res://Art n Music/Tilesets/brick-path.png" type="Texture" id=4]
+[ext_resource path="res://Art n Music/Tilesets/grass.png" type="Texture" id=5]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array(  )
+"points": PoolVector2Array( 0, 0, 0, 0, -2.91793, 137.774, 0, 0, 0, 0, 64.0821, 127.774, 0, 0, 0, 0, 106.082, 140.774, 0, 0, 0, 0, 107.082, 190.774, 0, 0, 0, 0, 100.082, 294.774, 0, 0, 0, 0, 196.082, 292.774, 0, 0, 0, 0, 224.082, 203.774, 0, 0, 0, 0, 447.082, 196.774 )
 }
+
+[sub_resource type="TileSet" id=3]
+0/name = "boundary.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 96, 144 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[sub_resource type="TileSet" id=4]
+0/name = "leaves.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 1, 48, 79 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+1/name = "brick-path.png 1"
+1/texture = ExtResource( 4 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 0, 0, 48, 32 )
+1/tile_mode = 2
+1/autotile/icon_coordinate = Vector2( 0, 0 )
+1/autotile/tile_size = Vector2( 16, 16 )
+1/autotile/spacing = 0
+1/autotile/occluder_map = [  ]
+1/autotile/navpoly_map = [  ]
+1/autotile/priority_map = [  ]
+1/autotile/z_index_map = [  ]
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shape_offset = Vector2( 0, 0 )
+1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+1/shape_one_way = false
+1/shape_one_way_margin = 0.0
+1/shapes = [  ]
+1/z_index = 0
+
+[sub_resource type="TileSet" id=5]
+0/name = "grass.png 0"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 96, 144 )
+0/tile_mode = 2
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
 
 [sub_resource type="TileSet" id=2]
 
-[node name="Map" type="YSort"]
+[node name="Map" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 345, 83 )
@@ -21,14 +115,19 @@ curve = SubResource( 1 )
 [node name="Tiles" type="Node" parent="."]
 
 [node name="Boundary Tiles" type="TileMap" parent="Tiles"]
+tile_set = SubResource( 3 )
 cell_size = Vector2( 16, 16 )
 format = 1
+tile_data = PoolIntArray( 0, 0, 65537, 1, 0, 65537, 2, 0, 65537, 3, 0, 65537, 4, 0, 65537, 5, 0, 65537, 6, 0, 65537, 7, 0, 65537, 8, 0, 65537, 9, 0, 65537, 10, 0, 65537, 65536, 0, 65537, 131072, 0, 65537, 196608, 0, 65537, 720896, 0, 196609, 786432, 0, 196610, 851968, 0, 196608, 917504, 0, 196612, 1048576, 0, 65537, 1048577, 0, 196610, 1114112, 0, 65537, 1114113, 0, 196608, 1179648, 0, 65537, 1179649, 0, 524293, 1179650, 0, 262146, 1179651, 0, 1, 1179652, 0, 327683, 1245184, 0, 327681, 1245185, 0, 65537, 1245186, 0, 524291, 1245187, 0, 262148, 1245188, 0, 524288, 1245189, 0, 1, 1245190, 0, 262144, 1245191, 0, 262149, 1245192, 0, 262149, 1245193, 0, 131077, 1310720, 0, 196613, 1310721, 0, 65537, 1310722, 0, 196612, 1310724, 0, 196611, 1310726, 0, 3, 1310727, 0, 5, 1310728, 0, 65537, 1310729, 0, 65537, 1376256, 0, 393217, 1376257, 0, 65537, 1376262, 0, 393216, 1376263, 0, 458752, 1376264, 0, 327681, 1376265, 0, 65537, 1441800, 0, 458757 )
 
 [node name="Feature Tiles" type="TileMap" parent="Tiles"]
+tile_set = SubResource( 4 )
 cell_size = Vector2( 16, 16 )
 format = 1
+tile_data = PoolIntArray( 524293, 1, 65536, 524294, 1, 65537, 524295, 1, 65538 )
 
 [node name="Grass Tiles" type="TileMap" parent="Tiles"]
+tile_set = SubResource( 5 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
