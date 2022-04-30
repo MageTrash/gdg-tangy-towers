@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art n Music/UI/vines.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Scripts/DebugText.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=10]
 [ext_resource path="res://Art n Music/UI/sideui.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/Objects/Towers/BaseTower.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Objects/Towers/SlowTower.tscn" type="PackedScene" id=13]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -70,6 +72,12 @@ timer_length = 7.0
 
 [node name="AOETower" parent="YSort/Towers" instance=ExtResource( 5 )]
 position = Vector2( 53, 78 )
+
+[node name="SlowTower" parent="YSort/Towers" instance=ExtResource( 13 )]
+position = Vector2( 169, 156 )
+
+[node name="BaseTower" parent="YSort/Towers" instance=ExtResource( 12 )]
+position = Vector2( 289, 72 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

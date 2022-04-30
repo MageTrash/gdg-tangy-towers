@@ -1,7 +1,6 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/BaseEnemy.gd" type="Script" id=1]
-[ext_resource path="res://Art n Music/Fruit Sprites/fruit-temp.png" type="Texture" id=2]
 [ext_resource path="res://Art n Music/Enemy Sprites/shadow_enemy.png" type="Texture" id=3]
 [ext_resource path="res://Art n Music/Enemy Sprites/wormy.png" type="Texture" id=4]
 [ext_resource path="res://Art n Music/Enemy Sprites/fungalberry.png" type="Texture" id=5]
@@ -33,16 +32,6 @@ shader_param/flashState = 0.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "rotnana",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 2 ) ],
-"loop": true,
-"name": "test_dummy",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "fungaberry",
@@ -56,6 +45,11 @@ animations = [ {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "wormy",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "rotnana",
 "speed": 5.0
 } ]
 
@@ -190,7 +184,7 @@ texture = ExtResource( 3 )
 material = SubResource( 8 )
 position = Vector2( 0.5, -8 )
 frames = SubResource( 2 )
-animation = "rotnana"
+animation = "fungaberry"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites"]
 anims/RESET = SubResource( 7 )

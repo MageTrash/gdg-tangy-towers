@@ -1,15 +1,26 @@
 extends PathFollow2D
 
-export(int) var health : int = 10 setget set_health
-export(int) var path_speed : int = 30
+export(Vector2) var fungaberry_health = Vector2(5, 10)
+export(int) var fungaberry_speed = 30
+export(Vector2) var rotnana_health = Vector2(10, 20)
+export(int) var rotnana_speed = 25
+export(Vector2) var lemonose_health = Vector2(20, 30)
+export(int) var lemonose_speed = 20
+export(Vector2) var wormy_health = Vector2(30, 40)
+export(int) var wormy_speed = 15
 
 enum enemy {
-	FUNGALBLUEBERRY,
-	ROTTENBANANA,
+	FUNGABERRY,
+	ROTNANA,
 	LEMONOSE,
-	WORMEDFRUIT,
+	WORMY,
 }
 
+# Is chosen from enemy enum
+var enemy_type : int
+
+var health : int = 10 setget set_health
+var path_speed : int
 var slow_multiplier : float = 1.0 setget set_slowed
 var slow_time : float = 4.0
 
@@ -22,6 +33,24 @@ func _ready() -> void:
 	slow_timer.connect("timeout", self, "reset_slowed")
 	anim.connect("animation_finished", self, "on_anim_fin")
 	add_child(slow_timer)
+
+	match enemy_type:
+		enemy.FUNGABERRY:
+			print("f")
+			health = Global.rng.randi_range(fungaberry_health.x, fungaberry_health.y)
+			path_speed = fungaberry_speed
+		enemy.ROTNANA:
+			print("r")
+			health = Global.rng.randi_range(rotnana_health.x, rotnana_health.y)
+			path_speed = rotnana_speed
+		enemy.LEMONOSE:
+			print("l")
+			health = Global.rng.randi_range(lemonose_health.x, lemonose_health.y)
+			path_speed = lemonose_speed
+		enemy.WORMY:
+			print("w")
+			health = Global.rng.randi_range(wormy_health.x, wormy_health.y)
+			path_speed = wormy_speed
 
 
 # this gets called when it's health is changed and the check makes sure you don't get

@@ -83,9 +83,11 @@ func register_player(body: KinematicBody2D) -> void:
 
 
 func spawn_enemy() -> void:
-#	Global.map_path.add_child(enemy.instance())
+	var type_of_enemy = 3
 	var bad_guy = enemy.instance()
 	var sprites = bad_guy.get_node("Sprites")
+	sprites.get_node("AnimatedSprite").animation = bad_guy.enemy.keys()[type_of_enemy].to_lower()
+	bad_guy.enemy_type = type_of_enemy
 	bad_guy.remove_child(sprites)
 	enemy_ysort.add_child(sprites)
 	sprites.set_owner(enemy_ysort)
