@@ -8,6 +8,4 @@ func _on_ExitButton_pressed():
 
 
 func _on_InWaveCheck_toggled(button_pressed):
-#	var in_wave = button_pressed
-#	print(button_pressed)
-	pass
+	Global.in_wave = button_pressed

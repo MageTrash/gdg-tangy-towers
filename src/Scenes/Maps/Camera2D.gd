@@ -4,3 +4,4 @@ extends Camera2D
 func _process(_delta):
 	# Passes on our global effect type to the shader.
 	$CanvasLayer/ColorRect.material.set_shader_param("effectType", Global.effect_type)
+#	pass
