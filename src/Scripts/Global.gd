@@ -43,7 +43,12 @@ onready var enemies_at_end : int = 0
 # This boolean will state if fruit collect goes to the counter or active effect
 onready var in_wave : bool = true
 # This array will hold the counter for each fruit
-onready var fruit_counter = []
+onready var fruit_counter = [] setget set_fruit_counter
+
+
+func set_fruit_counter(value) -> void:
+	fruit_counter = value
+	emit_signal("count_change", fruit_counter)
 
 
 func _ready() -> void:
