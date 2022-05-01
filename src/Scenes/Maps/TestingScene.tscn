@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art n Music/UI/vines.png" type="Texture" id=2]
@@ -42,8 +42,18 @@ shader_param/center = Vector2( 0.5, 0.5 )
 shader_param/sample_radius = 0.5
 shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/center_radius = 0.5
-shader_param/aberWidth = 10.0
+shader_param/aberWidth = 5.0
 shader_param/noise = SubResource( 7 )
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 20 )
+shader_param/effectActive = false
+shader_param/effectType = 2
+shader_param/center = Vector2( 0.5, 0.5 )
+shader_param/sample_radius = 0.5
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/center_radius = 0.5
+shader_param/aberWidth = 5.0
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 1, 0.678431, 0, 1 )
@@ -138,8 +148,16 @@ __meta__ = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
 
-[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+[node name="CurrentFilter" type="ColorRect" parent="Camera2D/CanvasLayer"]
 material = SubResource( 5 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NextFilter" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource( 8 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {

@@ -14,10 +14,7 @@ uniform float center_radius: hint_range(0.0, 1.0) = 0.5;
 
 const float pi = 3.14159265359;
 
-
-
-
-uniform float aberWidth = 10.;
+uniform float aberWidth = 5.;
 
 void fragment() {
 	vec4 background = texture(SCREEN_TEXTURE, SCREEN_UV);
