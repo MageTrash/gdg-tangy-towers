@@ -28,10 +28,13 @@ var tower_damage_mod : float = 1.0
 # should only be either -1.0 or 1.0
 var player_direction_mod : float = 1.0
 
+var in_effect : bool = false
+
 onready var player : KinematicBody2D
 onready var map_path : Path2D
 onready var enemy_ysort : YSort
 onready var wave_timer : Timer = Timer.new()
+onready var effect_timer : Timer = Timer.new()
 onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 onready var blindness : CanvasModulate = CanvasModulate.new()
 onready var enemy : PackedScene = preload("res://Scenes/Objects/BaseEnemy.tscn")
@@ -53,6 +56,9 @@ func _ready() -> void:
 	# This will add/set all the counters to zero at the start of the game
 	for i in len(fruit.values()):
 		fruit_counter.append(0)
+
+	effect_timer.connect("timeout", self, "cleanse_effects")
+	add_child(effect_timer)
 
 	wave_timer.wait_time = 1
 	wave_timer.connect("timeout", self, "spawn_enemy")
@@ -105,34 +111,51 @@ func spawn_enemy() -> void:
 	wave_timer.start()
 
 
+func cleanse_effects() -> void:
+	in_effect = false
+	effect_timer.stop()
+	player_direction_mod = 1.0
+	enemy_speed_mod = 1.0
+	player_speed_mod = 1.0
+	emit_signal("tower_rate_change", 1.0)
+	blindness.color = Color.white
+	emit_signal("toggle_player_light", false)
+	tower_damage_mod = 1.0
+
+
+func setup_effect_timer(time: float) -> void:
+	# if you already have an effect purify all
+	if in_effect:
+		cleanse_effects()
+	# always do this
+	effect_timer.wait_time = time
+	in_effect = true
+	effect_timer.start()
+
+
 func play_effect(fruit_type: int) -> void:
 	match fruit_type:
 		fruit.SPIRALINES:
+			setup_effect_timer(effect_time[fruit.SPIRALINES])
 			player_direction_mod = -0.9
 			enemy_speed_mod = -0.7
-			yield(get_tree().create_timer(effect_time[fruit.SPIRALINES]), "timeout")
-			player_direction_mod = 1.0
-			enemy_speed_mod = 1.0
 
 		fruit.FLASHFRUIT:
+			setup_effect_timer(effect_time[fruit.FLASHFRUIT])
 			player_speed_mod = 1.75
 			emit_signal("tower_rate_change", 1.75)
-			yield(get_tree().create_timer(effect_time[fruit.FLASHFRUIT]), "timeout")
-			player_speed_mod = 1.0
-			emit_signal("tower_rate_change", 1.0)
 
 		fruit.POMEYES:
+			setup_effect_timer(effect_time[fruit.POMEYES])
 			emit_signal("toggle_player_light", true)
 			blindness.color = Color.black
 			tower_damage_mod = 1.5
-			yield(get_tree().create_timer(effect_time[fruit.POMEYES]), "timeout")
-			blindness.color = Color.white
-			emit_signal("toggle_player_light", false)
-			tower_damage_mod = 1.0
 
 		fruit.BULBFRUIT:
+			setup_effect_timer(effect_time[fruit.BULBFRUIT])
 			print("bulbfruit")
 
 		fruit.NEUTRAROOTS:
+			setup_effect_timer(effect_time[fruit.NEUTRAROOTS])
 			print("neutraroots")
 
