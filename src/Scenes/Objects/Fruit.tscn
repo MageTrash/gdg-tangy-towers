@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/Fruit.gd" type="Script" id=1]
 [ext_resource path="res://Art n Music/Fruit Sprites/shadow_fruit.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Art n Music/Fruit Sprites/spiralfruit.png" type="Texture" id=6]
 [ext_resource path="res://Art n Music/Fruit Sprites/pomeye.png" type="Texture" id=7]
 [ext_resource path="res://Art n Music/Fruit Sprites/neutraroot.png" type="Texture" id=8]
+[ext_resource path="res://Art n Music/Fruit Sprites/blandfruit.png" type="Texture" id=9]
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 5.99999
@@ -25,9 +26,9 @@ animations = [ {
 "name": "neutraroots",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "pomeyes",
+"name": "flashfruit",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
@@ -35,14 +36,19 @@ animations = [ {
 "name": "spiralines",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "pomeyes",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "bulbfruit",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "flashfruit",
+"name": "blandfruit",
 "speed": 5.0
 } ]
 
@@ -97,7 +103,7 @@ texture = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.5, -12 )
 frames = SubResource( 2 )
-animation = "flashfruit"
+animation = "blandfruit"
 
 [node name="ExcludeSpawn" type="Area2D" parent="." groups=["Spawnable"]]
 __meta__ = {
