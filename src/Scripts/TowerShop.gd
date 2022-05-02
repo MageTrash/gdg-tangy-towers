@@ -16,14 +16,14 @@ func _ready() -> void:
 
 func on_shop_entered(_body: Node) -> void:
 	shop_ui.visible = true
-	
+
 	emit_signal("in_shop", true)
 	var secondary = get_node("CanvasLayer/ShopUI/TabContainer/Tower 1/MarginContainer/Button")
 	connect("in_shop", secondary, "on_shop_change")
 
 func on_shop_exited(_body: Node) -> void:
 	shop_ui.visible = false
-	
+
 	emit_signal("in_shop", false)
 	var secondary = get_node("CanvasLayer/ShopUI/TabContainer/Tower 1/MarginContainer/Button")
 	connect("in_shop", secondary, "on_shop_change")
