@@ -1,13 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Art n Music/Fruit Sprites/spiralfruit.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/SinglePriceBox.gd" type="Script" id=2]
+[ext_resource path="res://Art n Music/Fruit Sprites/spiralines.png" type="Texture" id=1]
 
 [node name="SinglePriceBox" type="HBoxContainer"]
 margin_right = 314.0
 margin_bottom = 32.0
 alignment = 1
-script = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_left = 131.0

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/neutraroot.png-e734b91e44890c9ee5acdac465552714.stex"
+path="res://.import/spiralines.png-4b0b303ea83c75b2ee87e946098aaebb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art n Music/Fruit Sprites/neutraroot.png"
-dest_files=[ "res://.import/neutraroot.png-e734b91e44890c9ee5acdac465552714.stex" ]
+source_file="res://Art n Music/Fruit Sprites/spiralines.png"
+dest_files=[ "res://.import/spiralines.png-4b0b303ea83c75b2ee87e946098aaebb.stex" ]
 
 [params]
 

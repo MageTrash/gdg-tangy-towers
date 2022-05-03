@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pomeye.png-b2a80435e29759d20e17cd1e4720e2d1.stex"
+path="res://.import/pomeyes.png-103d2394bb6c35546d38d9b8de898a20.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art n Music/Fruit Sprites/pomeye.png"
-dest_files=[ "res://.import/pomeye.png-b2a80435e29759d20e17cd1e4720e2d1.stex" ]
+source_file="res://Art n Music/Fruit Sprites/pomeyes.png"
+dest_files=[ "res://.import/pomeyes.png-103d2394bb6c35546d38d9b8de898a20.stex" ]
 
 [params]
 

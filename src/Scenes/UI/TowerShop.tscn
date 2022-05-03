@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/TowerShop.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/ShopTheme.tres" type="Theme" id=2]
 [ext_resource path="res://Art n Music/Tilesets/tower-pad1.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/UI/TowerTypeMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Objects/Towers/BaseTower.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15, 16 )
@@ -46,4 +47,6 @@ margin_top = -130.0
 margin_right = 200.0
 margin_bottom = 140.0
 
-[node name="Tower" parent="CanvasLayer/ShopUI/TabContainer" instance=ExtResource( 4 )]
+[node name="TowerTabName" parent="CanvasLayer/ShopUI/TabContainer" instance=ExtResource( 4 )]
+tower_name = "BasicTower"
+tower_scene = ExtResource( 5 )

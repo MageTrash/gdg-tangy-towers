@@ -14,11 +14,11 @@
 [ext_resource path="res://Scenes/Objects/Towers/BaseTower.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scenes/Objects/Towers/SlowTower.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/UI/FruitCountLabel.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Art n Music/Fruit Sprites/neutraroot.png" type="Texture" id=15]
+[ext_resource path="res://Art n Music/Fruit Sprites/neutraroots.png" type="Texture" id=15]
 [ext_resource path="res://Art n Music/Fruit Sprites/flashfruit.png" type="Texture" id=16]
 [ext_resource path="res://Art n Music/Fruit Sprites/bulbfruit.png" type="Texture" id=17]
-[ext_resource path="res://Art n Music/Fruit Sprites/pomeye.png" type="Texture" id=18]
-[ext_resource path="res://Art n Music/Fruit Sprites/spiralfruit.png" type="Texture" id=19]
+[ext_resource path="res://Art n Music/Fruit Sprites/pomeyes.png" type="Texture" id=18]
+[ext_resource path="res://Art n Music/Fruit Sprites/spiralines.png" type="Texture" id=19]
 [ext_resource path="res://Scripts/Shaders/Screen Overlays.tres" type="Shader" id=20]
 [ext_resource path="res://Scenes/Maps/Camera2D.gd" type="Script" id=21]
 
@@ -93,9 +93,6 @@ group_node = NodePath("../YSort/Towers")
 
 [node name="ShopUI" parent="TowerShop/CanvasLayer" index="0"]
 visible = false
-
-[node name="Tower" parent="TowerShop/CanvasLayer/ShopUI/TabContainer" index="0"]
-tower_name = ""
 
 [node name="YSort" type="YSort" parent="."]
 
