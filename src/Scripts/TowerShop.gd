@@ -30,7 +30,14 @@ func on_buy_pressed(tower: PackedScene, price: Array) -> void:
 		if Global.fruit_counter[i] < price[i]:
 			return
 
+	var new_fruit_counter = Global.fruit_counter
+	for i in range(0, Global.fruit.size()):
+		if price[i] > 0:
+			new_fruit_counter[i] -= price[i]
+
+	Global.fruit_counter = new_fruit_counter
+
 	# if yes then go invis until player's in_build mode is off
 	shop_ui.visible = false
 	Global.player.is_building = true
-	print(tower, price)
+	Global.player.tower = tower
