@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art n Music/UI/vines.png" type="Texture" id=2]
@@ -6,9 +6,7 @@
 [ext_resource path="res://Scenes/Objects/Spawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Objects/Towers/AOETower.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/TestingScene.gd" type="Script" id=6]
-[ext_resource path="res://Scripts/TestLabel.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/UI/ShopTheme.tres" type="Theme" id=8]
-[ext_resource path="res://Scripts/DebugText.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=10]
 [ext_resource path="res://Art n Music/UI/sideui.png" type="Texture" id=11]
 [ext_resource path="res://Scenes/Objects/Towers/BaseTower.tscn" type="PackedScene" id=12]
@@ -37,7 +35,7 @@ noise = SubResource( 6 )
 [sub_resource type="ShaderMaterial" id=5]
 shader = ExtResource( 20 )
 shader_param/effectActive = false
-shader_param/effectType = 3
+shader_param/effectType = 0
 shader_param/center = Vector2( 0.5, 0.5 )
 shader_param/sample_radius = 0.5
 shader_param/line_color = Color( 1, 1, 1, 1 )
@@ -48,7 +46,7 @@ shader_param/noise = SubResource( 7 )
 [sub_resource type="ShaderMaterial" id=8]
 shader = ExtResource( 20 )
 shader_param/effectActive = false
-shader_param/effectType = 2
+shader_param/effectType = 0
 shader_param/center = Vector2( 0.5, 0.5 )
 shader_param/sample_radius = 0.5
 shader_param/line_color = Color( 1, 1, 1, 1 )
@@ -59,25 +57,6 @@ shader_param/aberWidth = 5.0
 bg_color = Color( 1, 0.678431, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
-
-[sub_resource type="GDScript" id=4]
-script/source = "extends CheckBox
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-"
 
 [node name="TestingScene" type="Node2D"]
 script = ExtResource( 6 )
@@ -166,6 +145,13 @@ __meta__ = {
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="InfoText" type="Label" parent="CanvasLayer"]
+margin_left = 1.0
+margin_top = -27.0
+margin_right = 432.0
+margin_bottom = -7.0
+text = "This scene is only for testing stuff out"
+
 [node name="Sideui" type="TextureRect" parent="CanvasLayer"]
 margin_left = 538.0
 margin_right = 640.0
@@ -181,31 +167,6 @@ rect_rotation = -90.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 stretch_mode = 2
-
-[node name="InfoText" type="Label" parent="CanvasLayer"]
-margin_left = 1.0
-margin_top = -27.0
-margin_right = 432.0
-margin_bottom = -7.0
-text = "This scene is only for testing stuff out. Press E to toggle Build Mode"
-
-[node name="BuildMode" type="Label" parent="CanvasLayer"]
-margin_left = 4.0
-margin_top = 8.0
-margin_right = 101.0
-margin_bottom = 22.0
-theme = ExtResource( 8 )
-text = "Place Towers?: off"
-script = ExtResource( 7 )
-
-[node name="DebugText" type="Label" parent="CanvasLayer"]
-margin_left = 6.0
-margin_top = 25.0
-margin_right = 342.0
-margin_bottom = 67.0
-theme = ExtResource( 8 )
-text = "displays the fruit global fruit count once you pick up some fruit"
-script = ExtResource( 9 )
 
 [node name="TimerLabel" type="Label" parent="CanvasLayer"]
 margin_left = 545.0
@@ -317,7 +278,6 @@ margin_top = 269.0
 margin_right = 602.0
 margin_bottom = 293.0
 pressed = true
-script = SubResource( 4 )
 
 [connection signal="pressed" from="CanvasLayer/ExitButton" to="." method="_on_ExitButton_pressed"]
 [connection signal="toggled" from="CanvasLayer/InWaveCheck" to="." method="_on_InWaveCheck_toggled"]

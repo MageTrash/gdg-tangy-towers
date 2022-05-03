@@ -8,4 +8,6 @@ font_data = ExtResource( 1 )
 
 [resource]
 default_font = SubResource( 1 )
-Button/colors/font_color = Color( 1, 0.866667, 0, 1 )
+Button/colors/font_color = Color( 0.941176, 0.890196, 0.0941176, 1 )
+Button/colors/font_color_hover = Color( 0.188235, 0.933333, 0.121569, 1 )
+Button/colors/font_color_pressed = Color( 0.921569, 0.0352941, 0.0352941, 1 )

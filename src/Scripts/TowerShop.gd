@@ -26,6 +26,11 @@ func on_shop_exited(_body: Node) -> void:
 
 func on_buy_pressed(tower: PackedScene, price: Array) -> void:
 	# check if enough currency
+	for i in range(0, Global.fruit.size()):
+		if Global.fruit_counter[i] < price[i]:
+			return
 
 	# if yes then go invis until player's in_build mode is off
+	shop_ui.visible = false
+	Global.player.is_building = true
 	print(tower, price)

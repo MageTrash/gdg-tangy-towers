@@ -10,8 +10,7 @@ export(float, 1, 20) var friction : float = 4.0
 export(float, 0.0, 1.0) var slow_factor : float = 0.7
 
 
-signal building(is_building)
-
+onready var tower : PackedScene
 
 onready var animated_sprite = $AnimatedSprite
 
@@ -69,35 +68,32 @@ func _physics_process(_delta: float) -> void:
 			animated_sprite.play("idle")
 
 
-### For debugging purposes ###
-var tower = preload("res://Scenes/Objects/Towers/BaseTower.tscn")
+func place_tower() -> void:
+	var current_tower = tower.instance()
+	var tower_shape = current_tower.get_node("StaticBody2D/CollisionShape2D")
+	var space = get_world_2d().direct_space_state
+	var query = Physics2DShapeQueryParameters.new()
+	query.shape_rid = tower_shape.shape.get_rid()
+	var shape_trans: Transform2D = tower_shape.transform
+	shape_trans.origin = global_transform.origin
+	query.transform = shape_trans
+	query.exclude = [self, $ExcludeSpawn]
+	var results = space.intersect_shape(query)
+	if results == []:
+		tower_shape.set_disabled(true)
+		current_tower.global_position = global_position
+		get_parent().get_node("Towers").add_child(current_tower)
+		is_building = false
+	else:
+		current_tower.queue_free()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey:
-		if event.pressed and event.scancode == KEY_E:
-			# toggle is_building
-			is_building = !is_building
-			emit_signal("building", is_building)
-
 		# Check if tower's CollisionShape intersects with anything else
 		if event.pressed and event.scancode == KEY_SPACE and is_building:
-			var current_tower = tower.instance()
-			var tower_shape = current_tower.get_node("StaticBody2D/CollisionShape2D")
-			var space = get_world_2d().direct_space_state
-			var query = Physics2DShapeQueryParameters.new()
-			query.shape_rid = tower_shape.shape.get_rid()
-			var shape_trans: Transform2D = tower_shape.transform
-			shape_trans.origin = global_transform.origin
-			query.transform = shape_trans
-			query.exclude = [self, $ExcludeSpawn]
-			var results = space.intersect_shape(query)
-			if results == []:
-				tower_shape.set_disabled(true)
-				current_tower.global_position = global_position
-				get_parent().get_node("Towers").add_child(current_tower)
-			else:
-				current_tower.queue_free()
+			place_tower()
 
 
 func change_light(toggle: bool) -> void:
 	light.enabled = toggle
+
