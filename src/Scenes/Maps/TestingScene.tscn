@@ -94,6 +94,9 @@ group_node = NodePath("../YSort/Towers")
 [node name="ShopUI" parent="TowerShop/CanvasLayer" index="0"]
 visible = false
 
+[node name="Tower" parent="TowerShop/CanvasLayer/ShopUI/TabContainer" index="0"]
+tower_name = ""
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]

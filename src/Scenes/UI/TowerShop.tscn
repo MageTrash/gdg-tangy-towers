@@ -47,4 +47,3 @@ margin_right = 200.0
 margin_bottom = 140.0
 
 [node name="Tower" parent="CanvasLayer/ShopUI/TabContainer" instance=ExtResource( 4 )]
-description = null
