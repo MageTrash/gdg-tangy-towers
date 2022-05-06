@@ -122,10 +122,10 @@ func cleanse_effects() -> void:
 	player_direction_mod = 1.0
 	enemy_speed_mod = 1.0
 	player_speed_mod = 1.0
+	tower_damage_mod = 1.0
 	emit_signal("tower_rate_change", 1.0)
 	blindness.color = Color.white
 	emit_signal("toggle_player_light", false)
-	tower_damage_mod = 1.0
 
 
 func setup_effect_timer(time: float) -> void:
@@ -165,5 +165,14 @@ func play_effect(fruit_type: int) -> void:
 
 		fruit.NEUTRAROOTS:
 			setup_effect_timer(effect_time[fruit.NEUTRAROOTS])
-			print("neutraroots")
+			var rand_num = Global.rng.randi_range(0, 3)
+			match rand_num:
+				0:
+					enemy_speed_mod = Global.rng.randf_range(1.5, 2.75)
+				1:
+					player_speed_mod = Global.rng.randf_range(1.5, 2.75)
+				2:
+					tower_damage_mod = Global.rng.randf_range(1.5, 2.75)
+				3:
+					emit_signal("tower_rate_change", Global.rng.randf_range(1.5, 2.75))
 
