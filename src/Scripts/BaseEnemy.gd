@@ -81,8 +81,12 @@ func reached_end() -> void:
 
 
 func set_health(value: int) -> void:
+	# if the current health is greater than the new health value
+	# then you've lost health and play the hit animation
+	if health > value:
+		anim.play("hit")
+	#else: you should make some sort of health added effect/animation here
 	health = value
-	anim.play("hit")
 	if health <= 0:
 		anim.play("death")
 

@@ -102,7 +102,7 @@ func get_path_tangent(point_offset: float) -> Vector2:
 
 
 func spawn_enemy() -> void:
-	var type_of_enemy = 3
+	var type_of_enemy = 0
 	var bad_guy = enemy.instance()
 	var sprites = bad_guy.get_node("Sprites")
 	sprites.get_node("AnimatedSprite").animation = bad_guy.enemy.keys()[type_of_enemy].to_lower()
@@ -158,7 +158,10 @@ func play_effect(fruit_type: int) -> void:
 
 		fruit.BULBFRUIT:
 			setup_effect_timer(effect_time[fruit.BULBFRUIT])
-			print("bulbfruit")
+			enemy_speed_mod = 1.75
+			for child in map_path.get_children():
+				child.health += 10
+
 
 		fruit.NEUTRAROOTS:
 			setup_effect_timer(effect_time[fruit.NEUTRAROOTS])
