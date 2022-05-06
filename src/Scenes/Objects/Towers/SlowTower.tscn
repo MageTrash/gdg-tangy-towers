@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/SlowTower.gd" type="Script" id=1]
+[ext_resource path="res://Art n Music/Towers/jellyjar.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 6.0
-height = 12.0
+radius = 5.99998
+height = 14.0001
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 120.0
@@ -47,3 +48,7 @@ __meta__ = {
 [node name="CooldownTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="Jellyjar" type="Sprite" parent="."]
+position = Vector2( 0, -11 )
+texture = ExtResource( 2 )
