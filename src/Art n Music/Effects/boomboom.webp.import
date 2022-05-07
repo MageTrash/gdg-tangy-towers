@@ -2,16 +2,11 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/leaves1.png-6f35ed44ff61cc20eac8f9c5e7f07626.stex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
-source_file="res://Art n Music/Tilesets/leaves1.png"
-dest_files=[ "res://.import/leaves1.png-6f35ed44ff61cc20eac8f9c5e7f07626.stex" ]
-
+source_file="res://Art n Music/Effects/boomboom.webp"
 [params]
 
 compress/mode=3
