@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/leaves2.png-ff0a531b5d26e7ee91080312967f61f9.stex"
+path="res://.import/grass3.png-ba17ef3a21dc32a2e095e3121f338d8a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art n Music/Tilesets/leaves2.png"
-dest_files=[ "res://.import/leaves2.png-ff0a531b5d26e7ee91080312967f61f9.stex" ]
+source_file="res://Art n Music/Tilesets/grass3.png"
+dest_files=[ "res://.import/grass3.png-ba17ef3a21dc32a2e095e3121f338d8a.stex" ]
 
 [params]
 
