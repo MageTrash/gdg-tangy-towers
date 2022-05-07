@@ -18,7 +18,7 @@
 [ext_resource path="res://Art n Music/Fruit Sprites/pomeyes.png" type="Texture" id=18]
 [ext_resource path="res://Art n Music/Fruit Sprites/spiralines.png" type="Texture" id=19]
 [ext_resource path="res://Scripts/Shaders/Screen Overlays.tres" type="Shader" id=20]
-[ext_resource path="res://Scenes/Maps/Camera2D.gd" type="Script" id=21]
+[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=21]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -71,12 +71,6 @@ position = Vector2( 512, 96 )
 group_node = NodePath("../YSort/Towers")
 
 [node name="ShopUI" parent="TowerShop/CanvasLayer" index="0"]
-visible = false
-
-[node name="TowerTabName" parent="TowerShop/CanvasLayer/ShopUI/TabContainer" index="0"]
-visible = true
-
-[node name="TowerTabName3" parent="TowerShop/CanvasLayer/ShopUI/TabContainer" index="2"]
 visible = false
 
 [node name="YSort" type="YSort" parent="."]
@@ -207,25 +201,25 @@ theme = ExtResource( 8 )
 text = "(DO NOT CLICK) Exit"
 
 [node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
-margin_left = 542.0
-margin_top = 46.0
-margin_right = 636.0
-margin_bottom = 189.0
+margin_left = 545.0
+margin_top = 141.0
+margin_right = 633.0
+margin_bottom = 275.0
 size_flags_horizontal = 3
 columns = 2
 
 [node name="SLCounter" parent="CanvasLayer/GridContainer" instance=ExtResource( 14 )]
 
 [node name="SLSprite" type="TextureRect" parent="CanvasLayer/GridContainer/SLCounter"]
-margin_left = 21.0
-margin_top = 22.0
-margin_right = 66.0
-margin_bottom = 67.0
+margin_left = 25.0
+margin_top = 20.0
+margin_right = 57.0
+margin_bottom = 52.0
 texture = ExtResource( 19 )
 
 [node name="FlashCounter" parent="CanvasLayer/GridContainer" instance=ExtResource( 14 )]
-margin_left = 49.0
-margin_right = 94.0
+margin_left = 43.0
+margin_right = 82.0
 fruit_index = 1
 
 [node name="FlashSprite" type="TextureRect" parent="CanvasLayer/GridContainer/FlashCounter"]
@@ -236,8 +230,8 @@ margin_bottom = 54.0
 texture = ExtResource( 16 )
 
 [node name="PECounter" parent="CanvasLayer/GridContainer" instance=ExtResource( 14 )]
-margin_top = 49.0
-margin_bottom = 94.0
+margin_top = 43.0
+margin_bottom = 82.0
 fruit_index = 2
 
 [node name="PESprite" type="TextureRect" parent="CanvasLayer/GridContainer/PECounter"]
@@ -248,10 +242,10 @@ margin_bottom = 52.0
 texture = ExtResource( 18 )
 
 [node name="BulbCounter" parent="CanvasLayer/GridContainer" instance=ExtResource( 14 )]
-margin_left = 49.0
-margin_top = 49.0
-margin_right = 94.0
-margin_bottom = 94.0
+margin_left = 43.0
+margin_top = 43.0
+margin_right = 82.0
+margin_bottom = 82.0
 fruit_index = 3
 
 [node name="BulbSprite" type="TextureRect" parent="CanvasLayer/GridContainer/BulbCounter"]
@@ -262,8 +256,8 @@ margin_bottom = 53.0
 texture = ExtResource( 17 )
 
 [node name="NRCounter" parent="CanvasLayer/GridContainer" instance=ExtResource( 14 )]
-margin_top = 98.0
-margin_bottom = 143.0
+margin_top = 86.0
+margin_bottom = 125.0
 fruit_index = 4
 
 [node name="NRSprite" type="TextureRect" parent="CanvasLayer/GridContainer/NRCounter"]
@@ -276,3 +270,6 @@ texture = ExtResource( 15 )
 [connection signal="pressed" from="CanvasLayer/ExitButton" to="." method="_on_ExitButton_pressed"]
 
 [editable path="TowerShop"]
+[editable path="TowerShop/CanvasLayer/ShopUI/TabContainer/Basic"]
+[editable path="TowerShop/CanvasLayer/ShopUI/TabContainer/Slow"]
+[editable path="TowerShop/CanvasLayer/ShopUI/TabContainer/Splash"]

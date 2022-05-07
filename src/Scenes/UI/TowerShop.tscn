@@ -49,22 +49,134 @@ margin_top = -130.0
 margin_right = 200.0
 margin_bottom = 140.0
 
-[node name="TowerTabName" parent="CanvasLayer/ShopUI/TabContainer" instance=ExtResource( 4 )]
-visible = false
-tower_name = "BasicTower"
+[node name="Basic" parent="CanvasLayer/ShopUI/TabContainer" instance=ExtResource( 4 )]
+tower_name = "Basic"
 tower_scene = ExtResource( 5 )
-fruit_pomeyes = 0
+fruit_spiralines = 0
+fruit_flashfruit = 0
+fruit_pomeyes = 3
+fruit_bulbfruit = 2
+fruit_neutraroots = 0
+
+[node name="TowerName" parent="CanvasLayer/ShopUI/TabContainer/Basic" index="0"]
+margin_right = 392.0
+margin_bottom = 22.0
+
+[node name="MiddleMarginContainer" parent="CanvasLayer/ShopUI/TabContainer/Basic" index="1"]
+margin_top = 26.0
+margin_right = 392.0
+margin_bottom = 195.0
+
+[node name="MiddleBoxContainer" parent="CanvasLayer/ShopUI/TabContainer/Basic/MiddleMarginContainer" index="0"]
+margin_right = 392.0
+margin_bottom = 169.0
+
+[node name="PriceContainer" parent="CanvasLayer/ShopUI/TabContainer/Basic/MiddleMarginContainer/MiddleBoxContainer" index="0"]
+margin_right = 194.0
+margin_bottom = 169.0
+
+[node name="Description" parent="CanvasLayer/ShopUI/TabContainer/Basic/MiddleMarginContainer/MiddleBoxContainer" index="1"]
+margin_left = 198.0
+margin_right = 392.0
+margin_bottom = 169.0
+text = "Shoots basic projectiles."
+
+[node name="ButtonMarginContainer" parent="CanvasLayer/ShopUI/TabContainer/Basic" index="2"]
+margin_top = 199.0
+margin_right = 392.0
+margin_bottom = 237.0
+
+[node name="Button" parent="CanvasLayer/ShopUI/TabContainer/Basic/ButtonMarginContainer" index="0"]
+margin_left = 161.0
+margin_top = 10.0
+margin_right = 230.0
+margin_bottom = 27.0
+
+[node name="Slow" parent="CanvasLayer/ShopUI/TabContainer" instance=ExtResource( 4 )]
+visible = false
+tower_name = "Slowing"
+tower_scene = ExtResource( 6 )
+fruit_spiralines = 0
+fruit_flashfruit = 2
+fruit_pomeyes = 2
 fruit_bulbfruit = 0
 fruit_neutraroots = 0
 
-[node name="TowerTabName2" parent="CanvasLayer/ShopUI/TabContainer" instance=ExtResource( 4 )]
-visible = false
-tower_name = "SlowTower"
-tower_scene = ExtResource( 6 )
-fruit_spiralines = 0
-fruit_flashfruit = 0
-fruit_pomeyes = 0
+[node name="TowerName" parent="CanvasLayer/ShopUI/TabContainer/Slow" index="0"]
+margin_right = 392.0
+margin_bottom = 19.0
 
-[node name="TowerTabName3" parent="CanvasLayer/ShopUI/TabContainer" instance=ExtResource( 4 )]
-tower_name = "SplashTower"
+[node name="MiddleMarginContainer" parent="CanvasLayer/ShopUI/TabContainer/Slow" index="1"]
+margin_top = 23.0
+margin_right = 392.0
+margin_bottom = 199.0
+
+[node name="MiddleBoxContainer" parent="CanvasLayer/ShopUI/TabContainer/Slow/MiddleMarginContainer" index="0"]
+margin_right = 392.0
+margin_bottom = 176.0
+
+[node name="PriceContainer" parent="CanvasLayer/ShopUI/TabContainer/Slow/MiddleMarginContainer/MiddleBoxContainer" index="0"]
+margin_right = 194.0
+margin_bottom = 176.0
+
+[node name="Description" parent="CanvasLayer/ShopUI/TabContainer/Slow/MiddleMarginContainer/MiddleBoxContainer" index="1"]
+margin_left = 198.0
+margin_right = 392.0
+margin_bottom = 176.0
+text = "Shoots projectiles that slow down enemies for a short while."
+
+[node name="ButtonMarginContainer" parent="CanvasLayer/ShopUI/TabContainer/Slow" index="2"]
+margin_top = 203.0
+margin_right = 392.0
+margin_bottom = 237.0
+
+[node name="Button" parent="CanvasLayer/ShopUI/TabContainer/Slow/ButtonMarginContainer" index="0"]
+margin_left = 161.0
+margin_top = 8.0
+margin_right = 230.0
+margin_bottom = 25.0
+
+[node name="Splash" parent="CanvasLayer/ShopUI/TabContainer" instance=ExtResource( 4 )]
+visible = false
+tower_name = "Splash"
 tower_scene = ExtResource( 7 )
+fruit_pomeyes = 0
+fruit_bulbfruit = 0
+
+[node name="TowerName" parent="CanvasLayer/ShopUI/TabContainer/Splash" index="0"]
+margin_right = 392.0
+margin_bottom = 19.0
+
+[node name="MiddleMarginContainer" parent="CanvasLayer/ShopUI/TabContainer/Splash" index="1"]
+margin_top = 23.0
+margin_right = 392.0
+margin_bottom = 199.0
+
+[node name="MiddleBoxContainer" parent="CanvasLayer/ShopUI/TabContainer/Splash/MiddleMarginContainer" index="0"]
+margin_right = 392.0
+margin_bottom = 176.0
+
+[node name="PriceContainer" parent="CanvasLayer/ShopUI/TabContainer/Splash/MiddleMarginContainer/MiddleBoxContainer" index="0"]
+margin_right = 194.0
+margin_bottom = 176.0
+
+[node name="Description" parent="CanvasLayer/ShopUI/TabContainer/Splash/MiddleMarginContainer/MiddleBoxContainer" index="1"]
+margin_left = 198.0
+margin_right = 392.0
+margin_bottom = 176.0
+text = "Shoots projectiles that deal damage in an area of effect."
+
+[node name="ButtonMarginContainer" parent="CanvasLayer/ShopUI/TabContainer/Splash" index="2"]
+margin_top = 203.0
+margin_right = 392.0
+margin_bottom = 237.0
+
+[node name="Button" parent="CanvasLayer/ShopUI/TabContainer/Splash/ButtonMarginContainer" index="0"]
+margin_left = 161.0
+margin_top = 8.0
+margin_right = 230.0
+margin_bottom = 25.0
+
+[editable path="CanvasLayer/ShopUI/TabContainer/Basic"]
+[editable path="CanvasLayer/ShopUI/TabContainer/Slow"]
+[editable path="CanvasLayer/ShopUI/TabContainer/Splash"]
