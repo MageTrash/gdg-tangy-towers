@@ -168,11 +168,11 @@ func play_effect(fruit_type: int) -> void:
 			var rand_num = Global.rng.randi_range(0, 3)
 			match rand_num:
 				0:
-					enemy_speed_mod = Global.rng.randf_range(1.5, 2.75)
+					enemy_speed_mod = Global.rng.randf_range(0.5, 2.75)
 				1:
-					player_speed_mod = Global.rng.randf_range(1.5, 2.75)
+					player_speed_mod = Global.rng.randf_range(0.5, 2.75)
 				2:
-					tower_damage_mod = Global.rng.randf_range(1.5, 2.75)
+					tower_damage_mod = Global.rng.randf_range(0.5, 2.75)
 				3:
-					emit_signal("tower_rate_change", Global.rng.randf_range(1.5, 2.75))
+					emit_signal("tower_rate_change", Global.rng.randf_range(0.5, 2.75))
 

@@ -10,3 +10,4 @@ font_data = ExtResource( 1 )
 default_font = SubResource( 1 )
 Button/colors/font_color = Color( 0.952941, 0.87451, 0.0392157, 1 )
 Button/colors/font_color_focus = Color( 0.858824, 0.282353, 0.282353, 1 )
+Button/fonts/font = null
