@@ -40,8 +40,6 @@ onready var blindness : CanvasModulate = CanvasModulate.new()
 onready var enemy : PackedScene = preload("res://Scenes/Objects/BaseEnemy.tscn")
 
 onready var enemies_at_end : int = 0
-# This boolean will state if fruit collect goes to the counter or active effect
-onready var in_wave : bool = true
 # This array will hold the counter for each fruit
 onready var fruit_counter = [] setget set_fruit_counter
 
@@ -73,11 +71,9 @@ func _ready() -> void:
 
 # Call this function to increment certain fruit counts
 func increment_fruit(fruit_type: int) -> void:
-	if in_wave:
-		play_effect(fruit_type)
-	else:
-		fruit_counter[fruit_type] += 1
-		emit_signal("count_change", fruit_counter)
+	play_effect(fruit_type)
+	fruit_counter[fruit_type] += 1
+	emit_signal("count_change", fruit_counter)
 
 
 func increment_enemies_counter() -> void:
@@ -102,7 +98,7 @@ func get_path_tangent(point_offset: float) -> Vector2:
 
 
 func spawn_enemy() -> void:
-	var type_of_enemy = 0
+	var type_of_enemy = rng.randi_range(0, 3)
 	var bad_guy = enemy.instance()
 	var sprites = bad_guy.get_node("Sprites")
 	sprites.get_node("AnimatedSprite").animation = bad_guy.enemy.keys()[type_of_enemy].to_lower()
@@ -161,7 +157,6 @@ func play_effect(fruit_type: int) -> void:
 			enemy_speed_mod = 1.75
 			for child in map_path.get_children():
 				child.health += 10
-
 
 		fruit.NEUTRAROOTS:
 			setup_effect_timer(effect_time[fruit.NEUTRAROOTS])
