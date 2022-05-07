@@ -43,6 +43,9 @@ onready var enemies_at_end : int = 0
 # This array will hold the counter for each fruit
 onready var fruit_counter = [] setget set_fruit_counter
 
+# for UI
+signal new_fruit(fruit)
+signal cleanse_effects()
 
 func set_fruit_counter(value) -> void:
 	fruit_counter = value
@@ -74,6 +77,7 @@ func increment_fruit(fruit_type: int) -> void:
 	play_effect(fruit_type)
 	fruit_counter[fruit_type] += 1
 	emit_signal("count_change", fruit_counter)
+	emit_signal("new_fruit", fruit_type)
 
 
 func increment_enemies_counter() -> void:
@@ -122,6 +126,7 @@ func cleanse_effects() -> void:
 	emit_signal("tower_rate_change", 1.0)
 	blindness.color = Color.white
 	emit_signal("toggle_player_light", false)
+	emit_signal("cleanse_effects")
 
 
 func setup_effect_timer(time: float) -> void:

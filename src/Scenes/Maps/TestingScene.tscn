@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art n Music/UI/vines.png" type="Texture" id=2]
@@ -6,7 +6,9 @@
 [ext_resource path="res://Scenes/Objects/Spawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Objects/Towers/AOETower.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/TestingScene.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/CurrentFruitTexture.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/UI/ShopTheme.tres" type="Theme" id=8]
+[ext_resource path="res://Scripts/CurrentEffectDesc.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Timer.gd" type="Script" id=10]
 [ext_resource path="res://Art n Music/UI/sideui.png" type="Texture" id=11]
 [ext_resource path="res://Scenes/Objects/Towers/BaseTower.tscn" type="PackedScene" id=12]
@@ -19,6 +21,7 @@
 [ext_resource path="res://Art n Music/Fruit Sprites/spiralines.png" type="Texture" id=19]
 [ext_resource path="res://Scripts/Shaders/Screen Overlays.tres" type="Shader" id=20]
 [ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=21]
+[ext_resource path="res://Scripts/EffectTimerBar.gd" type="Script" id=22]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -57,6 +60,9 @@ shader_param/aberWidth = 5.0
 bg_color = Color( 1, 0.678431, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=3]
+
+[sub_resource type="StyleBoxLine" id=9]
+color = Color( 1, 0, 0, 1 )
 
 [node name="TestingScene" type="Node2D"]
 script = ExtResource( 6 )
@@ -162,26 +168,24 @@ rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 stretch_mode = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
-margin_left = 539.0
-margin_top = 28.0
-margin_right = 588.0
-margin_bottom = 39.0
-rect_scale = Vector2( 2, 2 )
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
+margin_left = 542.0
+margin_top = 2.0
+margin_right = 630.0
+margin_bottom = 15.0
 theme = ExtResource( 8 )
 custom_styles/fg = SubResource( 2 )
 custom_styles/bg = SubResource( 3 )
 value = 75.0
-percent_visible = false
 
-[node name="TimerLabel" type="Label" parent="CanvasLayer"]
-margin_left = 545.0
-margin_top = 10.0
-margin_right = 631.0
-margin_bottom = 30.0
-theme = ExtResource( 8 )
-text = "0:57"
-script = ExtResource( 10 )
+[node name="EffectTimerBar" type="ProgressBar" parent="CanvasLayer"]
+margin_left = 584.0
+margin_top = 21.0
+margin_right = 625.0
+margin_bottom = 35.0
+custom_styles/fg = SubResource( 9 )
+custom_styles/bg = SubResource( 9 )
+script = ExtResource( 22 )
 
 [node name="Sideui" type="TextureRect" parent="CanvasLayer"]
 margin_left = 538.0
@@ -192,82 +196,117 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ExitButton" type="Button" parent="CanvasLayer"]
-margin_left = 541.0
-margin_top = 319.0
-margin_right = 639.0
-margin_bottom = 339.0
+[node name="TimerLabel" type="Label" parent="CanvasLayer/Sideui"]
+margin_left = 39.0
+margin_top = 33.0
+margin_right = 85.0
+margin_bottom = 46.0
 theme = ExtResource( 8 )
-text = "(DO NOT CLICK) Exit"
+text = "100.9"
+align = 2
+script = ExtResource( 10 )
 
-[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
-margin_left = 545.0
+[node name="CurrentFruitTexture" type="TextureRect" parent="CanvasLayer/Sideui"]
+margin_left = 5.0
+margin_top = 18.0
+margin_right = 37.0
+margin_bottom = 50.0
+script = ExtResource( 7 )
+
+[node name="CurrentEffectHeader" type="Label" parent="CanvasLayer/Sideui"]
+margin_left = 8.0
+margin_top = 52.0
+margin_right = 87.0
+margin_bottom = 66.0
+theme = ExtResource( 8 )
+text = "Current effects:"
+align = 1
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Sideui"]
+margin_left = 7.0
 margin_top = 141.0
-margin_right = 633.0
+margin_right = 95.0
 margin_bottom = 275.0
 size_flags_horizontal = 3
 columns = 2
 
-[node name="SLCounter" parent="CanvasLayer/GridContainer" instance=ExtResource( 14 )]
+[node name="SLCounter" parent="CanvasLayer/Sideui/GridContainer" instance=ExtResource( 14 )]
 
-[node name="SLSprite" type="TextureRect" parent="CanvasLayer/GridContainer/SLCounter"]
+[node name="SLSprite" type="TextureRect" parent="CanvasLayer/Sideui/GridContainer/SLCounter"]
 margin_left = 25.0
 margin_top = 20.0
 margin_right = 57.0
 margin_bottom = 52.0
 texture = ExtResource( 19 )
 
-[node name="FlashCounter" parent="CanvasLayer/GridContainer" instance=ExtResource( 14 )]
+[node name="FlashCounter" parent="CanvasLayer/Sideui/GridContainer" instance=ExtResource( 14 )]
 margin_left = 43.0
 margin_right = 82.0
 fruit_index = 1
 
-[node name="FlashSprite" type="TextureRect" parent="CanvasLayer/GridContainer/FlashCounter"]
+[node name="FlashSprite" type="TextureRect" parent="CanvasLayer/Sideui/GridContainer/FlashCounter"]
 margin_left = 19.0
 margin_top = 22.0
 margin_right = 52.0
 margin_bottom = 54.0
 texture = ExtResource( 16 )
 
-[node name="PECounter" parent="CanvasLayer/GridContainer" instance=ExtResource( 14 )]
+[node name="PECounter" parent="CanvasLayer/Sideui/GridContainer" instance=ExtResource( 14 )]
 margin_top = 43.0
 margin_bottom = 82.0
 fruit_index = 2
 
-[node name="PESprite" type="TextureRect" parent="CanvasLayer/GridContainer/PECounter"]
+[node name="PESprite" type="TextureRect" parent="CanvasLayer/Sideui/GridContainer/PECounter"]
 margin_left = 22.0
 margin_top = 20.0
 margin_right = 55.0
 margin_bottom = 52.0
 texture = ExtResource( 18 )
 
-[node name="BulbCounter" parent="CanvasLayer/GridContainer" instance=ExtResource( 14 )]
+[node name="BulbCounter" parent="CanvasLayer/Sideui/GridContainer" instance=ExtResource( 14 )]
 margin_left = 43.0
 margin_top = 43.0
 margin_right = 82.0
 margin_bottom = 82.0
 fruit_index = 3
 
-[node name="BulbSprite" type="TextureRect" parent="CanvasLayer/GridContainer/BulbCounter"]
+[node name="BulbSprite" type="TextureRect" parent="CanvasLayer/Sideui/GridContainer/BulbCounter"]
 margin_left = 20.0
 margin_top = 21.0
 margin_right = 53.0
 margin_bottom = 53.0
 texture = ExtResource( 17 )
 
-[node name="NRCounter" parent="CanvasLayer/GridContainer" instance=ExtResource( 14 )]
+[node name="NRCounter" parent="CanvasLayer/Sideui/GridContainer" instance=ExtResource( 14 )]
 margin_top = 86.0
 margin_bottom = 125.0
 fruit_index = 4
 
-[node name="NRSprite" type="TextureRect" parent="CanvasLayer/GridContainer/NRCounter"]
+[node name="NRSprite" type="TextureRect" parent="CanvasLayer/Sideui/GridContainer/NRCounter"]
 margin_left = 23.0
 margin_top = 19.0
 margin_right = 55.0
 margin_bottom = 51.0
 texture = ExtResource( 15 )
 
-[connection signal="pressed" from="CanvasLayer/ExitButton" to="." method="_on_ExitButton_pressed"]
+[node name="ExitButton" type="Button" parent="CanvasLayer/Sideui"]
+margin_left = -2.0
+margin_top = 316.0
+margin_right = 96.0
+margin_bottom = 351.0
+theme = ExtResource( 8 )
+text = "(DO NOT CLICK) Exit"
+
+[node name="CurrentEffectDesc" type="Label" parent="CanvasLayer/Sideui"]
+margin_left = 9.0
+margin_top = 68.0
+margin_right = 88.0
+margin_bottom = 131.0
+theme = ExtResource( 8 )
+autowrap = true
+script = ExtResource( 9 )
+
+[connection signal="pressed" from="CanvasLayer/Sideui/ExitButton" to="." method="_on_ExitButton_pressed"]
 
 [editable path="TowerShop"]
 [editable path="TowerShop/CanvasLayer/ShopUI/TabContainer/Basic"]
