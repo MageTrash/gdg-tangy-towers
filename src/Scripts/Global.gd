@@ -20,8 +20,9 @@ enum fruit {
 
 # this must be the same length as fruit enum and is ordered the same way
 # e.g. the first value in probability corresponds to SPIRALINES
-var probability = [1, 1, 1, 1, 1]
-var effect_time = [4.5, 10.0, 10.0, 3.0, 3.0]
+
+var probability = [1, 3, 3, 3, 5]
+var effect_time = [5.0, 5.0, 8.0, 5.0, 6.0]
 var effect_type = 0
 
 var scale_factor : float = 0.25
@@ -35,6 +36,7 @@ var tower_damage_mod : float = 1.0
 var player_direction_mod : float = 1.0
 
 var in_effect : bool = false
+var neutra_type : int = 0
 
 onready var player_health : int = 20
 onready var player : KinematicBody2D
@@ -177,8 +179,8 @@ func play_effect(fruit_type: int) -> void:
 
 		fruit.NEUTRAROOTS:
 			setup_effect_timer(effect_time[fruit.NEUTRAROOTS])
-			var rand_num = Global.rng.randi_range(0, 3)
-			match rand_num:
+			neutra_type = Global.rng.randi_range(0, 3)
+			match neutra_type:
 				0:
 					enemy_speed_mod = Global.rng.randf_range(0.5, 2.75)
 				1:
