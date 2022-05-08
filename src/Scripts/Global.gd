@@ -48,6 +48,7 @@ onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 onready var blindness : CanvasModulate = CanvasModulate.new()
 onready var enemy : PackedScene = preload("res://Scenes/Objects/BaseEnemy.tscn")
 onready var game_end : bool = false
+onready var start_wave_time : float = 5.0
 
 # This array will hold the counter for each fruit
 onready var fruit_counter = [] setget set_fruit_counter
@@ -75,12 +76,8 @@ func _ready() -> void:
 	effect_timer.connect("timeout", self, "cleanse_effects")
 	add_child(effect_timer)
 
-	wave_timer.wait_time = 5
+	wave_timer.wait_time = start_wave_time
 	wave_timer.connect("timeout", self, "spawn_enemy")
-	wave_timer.autostart = true
-
-
-func game_start() -> void:
 	add_child(wave_timer)
 
 
