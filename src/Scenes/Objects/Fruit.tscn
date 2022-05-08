@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/Fruit.gd" type="Script" id=1]
 [ext_resource path="res://Art n Music/Fruit Sprites/shadow_fruit.png" type="Texture" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://Art n Music/Fruit Sprites/pomeyes.png" type="Texture" id=7]
 [ext_resource path="res://Art n Music/Fruit Sprites/neutraroots.png" type="Texture" id=8]
 [ext_resource path="res://Art n Music/Fruit Sprites/blandfruit.png" type="Texture" id=9]
-
+[ext_resource path="res://Art n Music/Fruit Sprites/fruit leaves.png" type="Texture" id=10]
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 5.99999
@@ -22,24 +22,14 @@ animations = [ {
 "name": "temp fruit",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "neutraroots",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
 "name": "flashfruit",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ ExtResource( 8 ) ],
 "loop": true,
-"name": "spiralines",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "pomeyes",
+"name": "neutraroots",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
@@ -50,6 +40,16 @@ animations = [ {
 "frames": [ ExtResource( 9 ) ],
 "loop": true,
 "name": "blandfruit",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "pomeyes",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "spiralines",
 "speed": 5.0
 } ]
 
@@ -97,6 +97,10 @@ script = ExtResource( 1 )
 rotation = 1.5708
 shape = SubResource( 5 )
 
+[node name="FruitLeaves" type="Sprite" parent="."]
+position = Vector2( -0.5, 0 )
+texture = ExtResource( 10 )
+
 [node name="Shadow" type="Sprite" parent="."]
 position = Vector2( 0.5, -2 )
 texture = ExtResource( 2 )
@@ -116,6 +120,9 @@ self_modulate = Color( 0, 0.0627451, 1, 0.152941 )
 show_behind_parent = true
 rotation = 1.5708
 shape = SubResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Float"
