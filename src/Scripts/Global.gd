@@ -6,6 +6,7 @@ signal count_change(count_array)
 signal tower_rate_change(tower_fire_rate_mod)
 signal toggle_player_light(light_change)
 signal tower_count_change(tower_count)
+signal game_end
 
 # this list will change later
 enum fruit {
@@ -34,6 +35,7 @@ var player_direction_mod : float = 1.0
 
 var in_effect : bool = false
 
+onready var player_health : int = 20 setget set_player_health
 onready var player : KinematicBody2D
 onready var map_path : Path2D
 onready var enemy_ysort : YSort
@@ -43,7 +45,6 @@ onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 onready var blindness : CanvasModulate = CanvasModulate.new()
 onready var enemy : PackedScene = preload("res://Scenes/Objects/BaseEnemy.tscn")
 
-onready var enemies_at_end : int = 0
 # This array will hold the counter for each fruit
 onready var fruit_counter = [] setget set_fruit_counter
 
@@ -85,7 +86,7 @@ func increment_fruit(fruit_type: int) -> void:
 
 
 func increment_enemies_counter() -> void:
-	enemies_at_end += 1
+	player_health -= 1
 
 
 # The map script will register it's path so all towers have a global reference to it
@@ -141,6 +142,7 @@ func setup_effect_timer(time: float) -> void:
 		cleanse_effects()
 	# always do this
 	effect_timer.wait_time = time
+	effect_timer
 	in_effect = true
 	effect_timer.start()
 
@@ -186,3 +188,9 @@ func play_effect(fruit_type: int) -> void:
 func set_tower_count(value: int) -> void:
 	tower_count = value
 	emit_signal("tower_count_change", tower_count)
+
+
+func set_player_health(value: int) -> void:
+	player_health = value
+	if player_health <= 0:
+		emit_signal("game_end")
