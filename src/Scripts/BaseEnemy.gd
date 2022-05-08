@@ -101,3 +101,4 @@ func on_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		var to_player : Vector2 = (body.global_position - global_position).normalized()
 		body.stunned = to_player * knockback * (Global.player_speed_mod*0.85)
+		path_speed *= 0.95

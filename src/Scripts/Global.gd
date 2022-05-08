@@ -5,6 +5,7 @@ extends Node
 signal count_change(count_array)
 signal tower_rate_change(tower_fire_rate_mod)
 signal toggle_player_light(light_change)
+signal tower_count_change(tower_count)
 
 # this list will change later
 enum fruit {
@@ -20,6 +21,9 @@ enum fruit {
 var probability = [1, 1, 1, 1, 1]
 var effect_time = [4.5, 10.0, 10.0, 3.0, 3.0]
 var effect_type = 0
+
+var scale_factor : float = 0.75
+var tower_count : int = 0 setget set_tower_count
 
 # these change must return to 1.0
 var enemy_speed_mod : float = 1.0
@@ -66,7 +70,7 @@ func _ready() -> void:
 	effect_timer.connect("timeout", self, "cleanse_effects")
 	add_child(effect_timer)
 
-	wave_timer.wait_time = 1
+	wave_timer.wait_time = 2.5
 	wave_timer.connect("timeout", self, "spawn_enemy")
 	wave_timer.autostart = true
 	add_child(wave_timer)
@@ -176,3 +180,7 @@ func play_effect(fruit_type: int) -> void:
 				3:
 					emit_signal("tower_rate_change", Global.rng.randf_range(0.5, 2.75))
 
+
+func set_tower_count(value: int) -> void:
+	tower_count = value
+	emit_signal("tower_count_change", tower_count)

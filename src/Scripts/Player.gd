@@ -84,6 +84,7 @@ func place_tower() -> void:
 		current_tower.global_position = global_position
 		get_parent().get_node("Towers").add_child(current_tower)
 		is_building = false
+		Global.tower_count += 1
 	else:
 		current_tower.queue_free()
 

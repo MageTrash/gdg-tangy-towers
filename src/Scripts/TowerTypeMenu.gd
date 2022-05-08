@@ -51,6 +51,7 @@ func _get(property: String):
 
 func _ready() -> void:
 	price_update()
+	Global.connect("tower_count_change", self, "update_tower_price")
 	# only run this when in game not in the editor
 	if not Engine.editor_hint:
 		assert(tower_scene != null, "add the tower scene to the export var")
@@ -76,3 +77,8 @@ func price_update() -> void:
 		current_price_box.get_node("TextureRect").texture = load(texture_path)
 		price_container.add_child(current_price_box)
 
+
+func update_tower_price(tower_num: int) -> void:
+	for i in range(0, costs.size()):
+		costs[i] += floor(Global.scale_factor * pow(tower_num, 2))
+	price_update()
