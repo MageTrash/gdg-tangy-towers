@@ -22,7 +22,7 @@ var probability = [1, 1, 1, 1, 1]
 var effect_time = [4.5, 10.0, 10.0, 3.0, 3.0]
 var effect_type = 0
 
-var scale_factor : float = 0.75
+var scale_factor : float = 0.25
 var tower_count : int = 0 setget set_tower_count
 
 # these change must return to 1.0

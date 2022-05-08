@@ -1,8 +1,13 @@
 extends Label
 
-export(float, 0.00, 120.00) var time = 120.00
+onready var time = 0.00
 
 func _process(delta):
-	time -= delta
-	var time_display = stepify(time, 0.1)
-	text = var2str(time_display)
+	time += delta
+	var time = stepify(time, 0.1)
+	var mils = fmod(time, 1) * 10
+	print(mils)
+	var secs = fmod(time, 60)
+	var mins = fmod(time, 60*60) / 60
+	var time_string = "%02d:%02d.%01d" % [mins, secs, mils]
+	text = time_string
