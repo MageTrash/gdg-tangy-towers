@@ -100,7 +100,6 @@ shape = SubResource( 1 )
 modulate = Color( 0.999708, 0.99624, 0.993939, 1 )
 material = SubResource( 5 )
 position = Vector2( 0.5, 0 )
-scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
