@@ -68,10 +68,11 @@ texture = ExtResource( 8 )
 stretch_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-margin_left = 18.0
-margin_top = 82.0
-margin_right = 312.0
-margin_bottom = 125.0
+margin_left = 19.0
+margin_top = 31.0
+margin_right = 313.0
+margin_bottom = 74.0
+rect_scale = Vector2( 2, 2 )
 theme = ExtResource( 5 )
 custom_fonts/normal_font = ExtResource( 7 )
 text = "Tangy Towers"
