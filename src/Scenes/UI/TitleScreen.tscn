@@ -9,7 +9,7 @@
 [ext_resource path="res://Art n Music/Fruit Sprites/heartfruit.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
-size = 41
+size = 42
 outline_size = 1
 outline_color = Color( 0, 0, 0, 0.458824 )
 font_data = ExtResource( 7 )

@@ -6,6 +6,7 @@ export(int, 50, 1000) var bullet_speed = 200
 export(float, 1, 100) var bullet_damage : float = 1
 export(float, 0.1, 200) var fire_rate = 5
 
+onready var anim : AnimationPlayer = $AnimationPlayer
 onready var sight_area: Area2D = $SightArea
 onready var muzzel: Position2D = $ShotPosition
 onready var cooldown: Timer = $CooldownTimer
@@ -45,6 +46,16 @@ func out_of_sight(area: Area2D) -> void:
 
 func _process(_delta: float) -> void:
 	if targets and cooldown.is_stopped():
+		var angle_num = Vector2.RIGHT.dot(global_position.direction_to(targets[0].global_position).normalized())
+		if angle_num >= 0.5:
+			anim.play("right")
+		elif angle_num <= -0.5:
+			anim.play("left")
+		angle_num = Vector2.UP.dot(global_position.direction_to(targets[0].global_position).normalized())
+		if angle_num >= 0.5:
+			anim.play("up")
+		elif angle_num <= -0.5:
+			anim.play("down")
 		if predict_position(targets[0]):
 			var bullet = bullet_scene.instance()
 			bullet.speed = bullet_speed

@@ -9,4 +9,5 @@ func _ready() -> void:
 
 func _on_ExitButton_pressed():
 	Global.game_end = true
+	Global.cleanse_effects()
 	get_tree().change_scene('res://Scenes/UI/TitleScreen.tscn')
