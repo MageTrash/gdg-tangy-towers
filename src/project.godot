@@ -17,6 +17,7 @@ config/icon="res://Art n Music/Fruit Sprites/fruit-temp.png"
 [autoload]
 
 Global="*res://Scripts/Global.gd"
+MusicMan="*res://AutoLoad/MusicMan.tscn"
 
 [debug]
 
