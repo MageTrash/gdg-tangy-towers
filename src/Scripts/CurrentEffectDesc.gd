@@ -6,10 +6,10 @@ func _ready():
 
 func update_texture(fruit_type):
 	match fruit_type:
-		0: set_text("* inverted controls!\n* enemies reversed")
-		1: set_text("+ player speed\n+ tower fire rate")
-		2: set_text("* player blinded!\n+ tower damage")
-		3: set_text("+ enemy speed\n+ enemy health")
+		0: set_text("* Enemies reversed!\n+ Inverted controls!")
+		1: set_text("++Player speed\n++Tower fire rate")
+		2: set_text("* Blinded Player!\n++Tower damage")
+		3: set_text("++Enemy speed\n++Enemy health")
 		4: set_text("???")
 
 func cleanse_effects():

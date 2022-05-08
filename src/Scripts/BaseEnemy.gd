@@ -1,11 +1,11 @@
 extends PathFollow2D
 
 export(Vector2) var fungaberry_health = Vector2(5, 10)
-export(int) var fungaberry_speed = 25
+export(int) var fungaberry_speed = 27.5
 export(Vector2) var rotnana_health = Vector2(10, 20)
-export(int) var rotnana_speed = 15
+export(int) var rotnana_speed = 20
 export(Vector2) var lemonose_health = Vector2(20, 30)
-export(int) var lemonose_speed = 20
+export(int) var lemonose_speed = 15
 export(Vector2) var wormy_health = Vector2(35, 45)
 export(int) var wormy_speed = 10
 export(float) var knockback : float = 200.0
