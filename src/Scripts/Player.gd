@@ -97,6 +97,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.pressed and event.scancode == KEY_SPACE and is_building:
 			place_tower()
 
+		if OS.has_feature("debug"):
+			if event.pressed and event.scancode == KEY_E:
+				Global.decrement_player_health()
 
 func change_light(toggle: bool) -> void:
 	light.enabled = toggle

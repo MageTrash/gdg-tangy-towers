@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/UI/Buttons/QuitButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://- Resource Dump/Fonts/HopeGold.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/Maps/FinalScene.tscn" type="PackedScene" id=6]
 [ext_resource path="res://- Resource Dump/Fonts/KarmaticArcade.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Art n Music/Fruit Sprites/heartfruit.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/Score.gd" type="Script" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -115,23 +116,32 @@ size_flags_vertical = 3
 custom_constants/separation = 10
 alignment = 1
 
-[node name="NewGameButton" parent="Menu/CentreRow/Buttons" instance=ExtResource( 3 )]
-margin_top = 50.0
+[node name="Score" type="Label" parent="Menu/CentreRow/Buttons"]
+margin_top = 39.0
 margin_right = 288.0
-margin_bottom = 80.0
+margin_bottom = 50.0
+theme = ExtResource( 5 )
+text = "Your Score: "
+align = 1
+script = ExtResource( 9 )
+
+[node name="NewGameButton" parent="Menu/CentreRow/Buttons" instance=ExtResource( 3 )]
+margin_top = 60.0
+margin_right = 288.0
+margin_bottom = 90.0
 theme = ExtResource( 5 )
 scene_to_load = ExtResource( 6 )
 
 [node name="QuitButton" parent="Menu/CentreRow/Buttons" instance=ExtResource( 1 )]
-margin_top = 90.0
+margin_top = 100.0
 margin_right = 288.0
-margin_bottom = 120.0
+margin_bottom = 130.0
 theme = ExtResource( 5 )
 
 [node name="Controls" type="Label" parent="Menu/CentreRow/Buttons"]
-margin_top = 130.0
+margin_top = 140.0
 margin_right = 288.0
-margin_bottom = 197.0
+margin_bottom = 207.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "WASD or ARROW Keys to move
 SHIFT to walk

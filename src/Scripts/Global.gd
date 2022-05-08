@@ -39,7 +39,10 @@ var in_effect : bool = false
 var neutra_type : int = 0
 var shader_type : int = 0
 
-onready var player_health : int = 20
+var score : float = 0.0
+
+onready var player_max_health : int = 20
+onready var player_health : int = player_max_health
 onready var player : KinematicBody2D
 onready var map_path : Path2D
 onready var enemy_ysort : YSort
@@ -50,9 +53,11 @@ onready var blindness : CanvasModulate = CanvasModulate.new()
 onready var enemy : PackedScene = preload("res://Scenes/Objects/BaseEnemy.tscn")
 onready var game_end : bool = false
 onready var start_wave_time : float = 5.0
+onready var time_passed : float
 
 # This array will hold the counter for each fruit
 onready var fruit_counter = [] setget set_fruit_counter
+onready var enemy_death_count : int = 0
 
 # for UI
 signal new_fruit(fruit)
@@ -70,9 +75,7 @@ func _ready() -> void:
 	rng.randomize()
 	add_child(blindness)
 
-	# This will add/set all the counters to zero at the start of the game
-	for i in len(fruit.values()):
-		fruit_counter.append(0)
+	reset_fruit_counter()
 
 	effect_timer.connect("timeout", self, "cleanse_effects")
 	add_child(effect_timer)
@@ -80,6 +83,13 @@ func _ready() -> void:
 	wave_timer.wait_time = start_wave_time
 	wave_timer.connect("timeout", self, "spawn_enemy")
 	add_child(wave_timer)
+
+
+func reset_fruit_counter() -> void:
+	fruit_counter.clear()
+	# This will add/set all the counters to zero at the start of the game
+	for i in len(fruit.values()):
+		fruit_counter.append(0)
 
 
 # Call this function to increment certain fruit counts
@@ -95,6 +105,9 @@ func decrement_player_health(amount: int = 1) -> void:
 	emit_signal("health_change", player_health)
 	if player_health <= 0:
 		emit_signal("game_end")
+		score = time_passed * 100 + enemy_death_count * 100
+		game_end = true
+		get_tree().change_scene_to(load("res://Scenes/UI/TitleScreen.tscn"))
 
 
 # The map script will register it's path so all towers have a global reference to it
@@ -183,7 +196,6 @@ func play_effect(fruit_type: int) -> void:
 			shader_type = 4
 			for child in map_path.get_children():
 				child.health += 10
-
 
 		fruit.NEUTRAROOTS:
 			setup_effect_timer(effect_time[fruit.NEUTRAROOTS])

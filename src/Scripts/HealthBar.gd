@@ -2,7 +2,7 @@ extends ProgressBar
 
 onready var health_grad : Gradient = preload("res://Scenes/UI/HealthGradient.tres")
 onready var stylebox = get("custom_styles/fg")
-onready var max_health = Global.player_health
+onready var max_health = Global.player_max_health
 
 func _ready() -> void:
 	max_value = max_health

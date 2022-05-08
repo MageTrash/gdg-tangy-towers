@@ -36,6 +36,8 @@ func _ready() -> void:
 	collider.connect("body_entered", self, "on_body_entered")
 	add_child(slow_timer)
 
+	Global.connect("game_end", self, "on_game_end")
+
 	match enemy_type:
 		enemy.FUNGABERRY:
 			health = Global.rng.randi_range(fungaberry_health.x, fungaberry_health.y)
@@ -89,6 +91,7 @@ func set_health(value: int) -> void:
 	health = value
 	if health <= 0:
 		anim.play("death")
+		Global.enemy_death_count += 1
 
 
 func on_anim_fin(anim_name: String) -> void:
@@ -102,3 +105,7 @@ func on_body_entered(body: Node) -> void:
 		var to_player : Vector2 = (body.global_position - global_position).normalized()
 		body.stunned = to_player * knockback * (Global.player_speed_mod*0.85)
 		path_speed *= 0.95
+
+
+func on_game_end() -> void:
+	path_speed = 0.0

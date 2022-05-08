@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art n Music/UI/vines.png" type="Texture" id=2]
@@ -144,19 +144,10 @@ load_path = "res://.import/grass1.png-e5f45d5ad837bdd97cb579778b904d45.stex"
 0/shapes = [  ]
 0/z_index = 0
 
-[sub_resource type="Gradient" id=17]
-offsets = PoolRealArray( 0, 0.104712, 0.455497, 0.743455, 1 )
-colors = PoolColorArray( 0, 0, 0, 1, 0.127077, 0.0905457, 0.269531, 1, 0.667969, 0.255707, 0.31972, 1, 0.85791, 0.720092, 0.482574, 1, 1, 1, 1, 1 )
-
-[sub_resource type="GradientTexture" id=18]
-gradient = SubResource( 17 )
-
 [sub_resource type="OpenSimplexNoise" id=13]
-period = 0.5
+period = 1.2
 
 [sub_resource type="NoiseTexture" id=7]
-width = 384
-height = 384
 seamless = true
 noise = SubResource( 13 )
 
@@ -164,12 +155,11 @@ noise = SubResource( 13 )
 shader = ExtResource( 20 )
 shader_param/effectActive = false
 shader_param/effectType = 0
-shader_param/line_color_a = Color( 1, 1, 1, 0.0431373 )
-shader_param/line_color_b = Color( 0.839216, 0.854902, 0.560784, 0.517647 )
-shader_param/inverse_speed = 40.0
+shader_param/line_color_a = Color( 1, 1, 1, 1 )
+shader_param/line_color_b = Color( 0, 1, 1, 1 )
+shader_param/inverse_speed = 10.0
 shader_param/aberWidth = 5.0
 shader_param/noise = SubResource( 7 )
-shader_param/gradient = SubResource( 18 )
 
 [sub_resource type="StyleBoxFlat" id=16]
 
