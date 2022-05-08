@@ -19,50 +19,50 @@ margin_right = 639.0
 margin_bottom = 350.0
 
 [node name="Logo" type="TextureRect" parent="Menu"]
+visible = false
 margin_right = 636.0
 margin_bottom = 64.0
 texture = ExtResource( 2 )
 stretch_mode = 4
 
 [node name="CentreRow" type="HBoxContainer" parent="Menu"]
-margin_top = 68.0
 margin_right = 636.0
 margin_bottom = 346.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="Menu/CentreRow"]
 margin_right = 316.0
-margin_bottom = 278.0
+margin_bottom = 346.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 10
 alignment = 1
 
 [node name="NewGameButton" parent="Menu/CentreRow/Buttons" instance=ExtResource( 3 )]
-margin_top = 104.0
+margin_top = 138.0
 margin_right = 316.0
-margin_bottom = 134.0
+margin_bottom = 168.0
 theme = ExtResource( 5 )
 scene_to_load = ExtResource( 6 )
 
 [node name="QuitButton" parent="Menu/CentreRow/Buttons" instance=ExtResource( 1 )]
-margin_top = 144.0
+margin_top = 178.0
 margin_right = 316.0
-margin_bottom = 174.0
+margin_bottom = 208.0
 theme = ExtResource( 5 )
 
 [node name="CenterContainer" type="CenterContainer" parent="Menu/CentreRow"]
 margin_left = 320.0
 margin_right = 636.0
-margin_bottom = 278.0
+margin_bottom = 346.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="Menu/CentreRow/CenterContainer"]
 margin_left = 94.0
-margin_top = 75.0
+margin_top = 109.0
 margin_right = 222.0
-margin_bottom = 203.0
+margin_bottom = 237.0
 rect_min_size = Vector2( 128, 128 )
 texture = ExtResource( 8 )
 stretch_mode = 1

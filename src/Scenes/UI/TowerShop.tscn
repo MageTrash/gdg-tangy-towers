@@ -53,9 +53,7 @@ margin_bottom = 140.0
 tower_name = "Basic"
 tower_scene = ExtResource( 5 )
 fruit_spiralines = 0
-fruit_flashfruit = 0
-fruit_pomeyes = 2
-fruit_bulbfruit = 2
+fruit_pomeyes = 0
 fruit_neutraroots = 0
 
 [node name="TowerName" parent="CanvasLayer/ShopUI/TabContainer/Basic" index="0"]
@@ -96,10 +94,10 @@ margin_bottom = 27.0
 visible = false
 tower_name = "Slowing"
 tower_scene = ExtResource( 6 )
-fruit_spiralines = 2
-fruit_flashfruit = 2
-fruit_pomeyes = 0
-fruit_bulbfruit = 0
+fruit_spiralines = 0
+fruit_flashfruit = 0
+fruit_pomeyes = 2
+fruit_bulbfruit = 2
 fruit_neutraroots = 0
 
 [node name="TowerName" parent="CanvasLayer/ShopUI/TabContainer/Slow" index="0"]
@@ -141,6 +139,7 @@ visible = false
 tower_name = "Splash"
 tower_scene = ExtResource( 7 )
 fruit_spiralines = 0
+fruit_flashfruit = 0
 fruit_pomeyes = 0
 
 [node name="TowerName" parent="CanvasLayer/ShopUI/TabContainer/Splash" index="0"]

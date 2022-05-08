@@ -376,7 +376,6 @@ margin_right = 85.0
 margin_bottom = 46.0
 theme = ExtResource( 8 )
 text = "00:00.0"
-align = 2
 script = ExtResource( 10 )
 
 [node name="CurrentFruitTexture" type="TextureRect" parent="CanvasLayer/Sideui2"]
@@ -475,12 +474,12 @@ text = "Current effects:"
 align = 1
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/Sideui2"]
-margin_left = -2.0
+margin_left = 9.0
 margin_top = 316.0
-margin_right = 96.0
+margin_right = 87.0
 margin_bottom = 351.0
 theme = ExtResource( 8 )
-text = "(DO NOT CLICK) Exit"
+text = "Exit"
 
 [node name="CurrentEffectDesc" type="Label" parent="CanvasLayer/Sideui2"]
 margin_left = 9.0
@@ -490,6 +489,8 @@ margin_bottom = 131.0
 theme = ExtResource( 8 )
 autowrap = true
 script = ExtResource( 23 )
+
+[connection signal="pressed" from="CanvasLayer/Sideui2/ExitButton" to="." method="_on_ExitButton_pressed"]
 
 [editable path="TowerShop"]
 [editable path="TowerShop/CanvasLayer/ShopUI/TabContainer/Basic"]
