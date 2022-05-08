@@ -1,19 +1,10 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/BaseEnemy.gd" type="Script" id=1]
-[ext_resource path="res://Scripts/Shaders/Damage.gdshader" type="Shader" id=2]
-[ext_resource path="res://Art n Music/Effects/Gross Explosion/grossexplosion3.png" type="Texture" id=3]
 [ext_resource path="res://Art n Music/Enemy Sprites/wormy.png" type="Texture" id=4]
 [ext_resource path="res://Art n Music/Enemy Sprites/fungalberry.png" type="Texture" id=5]
 [ext_resource path="res://Art n Music/Enemy Sprites/lemonose.png" type="Texture" id=6]
 [ext_resource path="res://Art n Music/Enemy Sprites/rotnana.png" type="Texture" id=7]
-[ext_resource path="res://Art n Music/Effects/Gross Explosion/grossexplosion4.png" type="Texture" id=8]
-[ext_resource path="res://Art n Music/Effects/Gross Explosion/grossexplosion2.png" type="Texture" id=9]
-[ext_resource path="res://Art n Music/Effects/Gross Explosion/grossexplosion7.png" type="Texture" id=10]
-[ext_resource path="res://Art n Music/Effects/Gross Explosion/grossexplosion5.png" type="Texture" id=11]
-[ext_resource path="res://Art n Music/Effects/Gross Explosion/grossexplosion1.png" type="Texture" id=12]
-[ext_resource path="res://Art n Music/Effects/Gross Explosion/grossexplosion6.png" type="Texture" id=13]
-[ext_resource path="res://Art n Music/Effects/Gross Explosion/grossexplosion8.png" type="Texture" id=14]
 
 [sub_resource type="CapsuleShape2D" id=9]
 radius = 12.0
@@ -23,19 +14,27 @@ height = 4.0
 radius = 4.453
 height = 9.094
 
+[sub_resource type="Shader" id=3]
+resource_local_to_scene = true
+code = "shader_type canvas_item;
+
+uniform vec4 flashColor : hint_color;
+uniform float flashState : hint_range(0, 1) = 0.0;
+
+void fragment() {
+	vec4 pixelColor = texture(TEXTURE, UV);
+	COLOR = mix(pixelColor, flashColor, flashState);
+	COLOR.a = pixelColor.a;
+}"
+
 [sub_resource type="ShaderMaterial" id=8]
 resource_local_to_scene = true
-shader = ExtResource( 2 )
+shader = SubResource( 3 )
 shader_param/flashColor = Color( 1, 1, 1, 1 )
 shader_param/flashState = 0.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 12 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 10 ), ExtResource( 14 ) ],
-"loop": false,
-"name": "gross_explosion",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "wormy",
@@ -46,14 +45,14 @@ animations = [ {
 "name": "fungaberry",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "rotnana",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "lemonose",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "rotnana",
 "speed": 5.0
 } ]
 
@@ -191,7 +190,7 @@ shape = SubResource( 10 )
 material = SubResource( 8 )
 position = Vector2( 0.5, -8 )
 frames = SubResource( 2 )
-animation = "gross_explosion"
+animation = "fungaberry"
 __meta__ = {
 "_edit_lock_": true
 }
