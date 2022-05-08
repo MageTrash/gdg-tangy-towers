@@ -7,10 +7,11 @@ uniform bool effectActive = false;
 uniform int effectType = 0;
 
 uniform sampler2D noise;
+uniform sampler2D noise2;
 uniform sampler2D gradient;
 uniform vec4 line_color_a: hint_color = vec4(1.0, 1.0, 1.0, 1.0);
 uniform vec4 line_color_b: hint_color = vec4(0.0, 1.0, 1.0, 1.0);
-uniform float inverse_speed = 10.0;
+uniform float inverse_speed = 60.0;
 
 const float pi = 3.14159265359;
 
@@ -64,6 +65,10 @@ void fragment() {
 			float value = 0.299*background.r + 0.587 * background.g + 0.114 * background.b;
 			color = texture(gradient, vec2(value));
 			
+			break;
+		case 5:
+			vec2 distortedUV = SCREEN_UV + texture(noise2, UV).r * 0.01 * msin;
+			color = texture(SCREEN_TEXTURE, distortedUV);
 			break;
 		default:
 			//Default shader
