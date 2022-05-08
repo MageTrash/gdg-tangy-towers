@@ -5,4 +5,5 @@ func _ready() -> void:
 	Global.game_start()
 
 func _on_ExitButton_pressed():
+	Global.game_end = true
 	get_tree().change_scene('res://Scenes/UI/TitleScreen.tscn')

@@ -47,6 +47,7 @@ onready var effect_timer : Timer = Timer.new()
 onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
 onready var blindness : CanvasModulate = CanvasModulate.new()
 onready var enemy : PackedScene = preload("res://Scenes/Objects/BaseEnemy.tscn")
+onready var game_end : bool = false
 
 # This array will hold the counter for each fruit
 onready var fruit_counter = [] setget set_fruit_counter
@@ -115,6 +116,7 @@ func get_path_tangent(point_offset: float) -> Vector2:
 
 
 func spawn_enemy() -> void:
+	if game_end: return
 	var type_of_enemy = rng.randi_range(0, 3)
 	var bad_guy = enemy.instance()
 	var sprites = bad_guy.get_node("Sprites")

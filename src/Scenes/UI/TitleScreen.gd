@@ -13,4 +13,6 @@ func _ready():
 	MusicMan.play_menutrack()
 
 func _on_Button_pressed(scene_to_load):
+	if scene_to_load == null:
+		get_tree().quit()
 	get_tree().change_scene_to(scene_to_load)
