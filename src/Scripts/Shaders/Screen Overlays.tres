@@ -19,7 +19,7 @@ uniform float aberWidth = 5.;
 void fragment() {
 	vec4 background = texture(SCREEN_TEXTURE, SCREEN_UV);
 	
-	float msin = sin(TIME) * 0.5 + 0.5;
+	float msin = sin(TIME*2.) * 0.25 + 0.5;
 	
 	vec4 color;
 	// Case-dependent output
@@ -34,13 +34,14 @@ void fragment() {
 			break;
 		case 2:
 			//Chromatic aberration shader
-			float offsetter = aberWidth * msin + 0.75;
+			float offsetter = aberWidth * msin + 0.5;
 			vec4 aber_left = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + SCREEN_PIXEL_SIZE.x *offsetter, SCREEN_UV.y));
 			vec4 aber_right = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x - SCREEN_PIXEL_SIZE.x *offsetter, SCREEN_UV.y));
 			
-			color = vec4(aber_left.r, aber_right.g, background.b, 1.);
+			color = vec4(aber_left.r, aber_right.g * 0.95, background.b, 1.);
 			break;
 		case 3:
+			//Speedlines shader
 			vec2 dist = UV - center;
 			float angle = atan(dist.y / dist.x);
 			vec2 sample = vec2(sample_radius * cos(angle), sample_radius * sin(angle));
