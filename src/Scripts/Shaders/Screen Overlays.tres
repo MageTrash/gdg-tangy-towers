@@ -29,7 +29,7 @@ void fragment() {
 			break;
 		case 1:
 			//Grayscale shader
-			float value = (background.r+background.g+background.b) / 3.0;
+			float value = 0.299*background.r + 0.587 * background.g + 0.114 * background.b;
 			color = vec4(vec3(value), 1.);
 			break;
 		case 2:
