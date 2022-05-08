@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/SlowTower.gd" type="Script" id=1]
 [ext_resource path="res://Art n Music/Towers/jellyjar.png" type="Texture" id=2]
+[ext_resource path="res://Art n Music/Character Sprites/shadow_character.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 5.99998
-height = 14.0001
+radius = 7.99998
+height = 10.0001
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 120.0
@@ -38,6 +39,9 @@ self_modulate = Color( 0, 0.0627451, 1, 0.152941 )
 show_behind_parent = true
 rotation = 1.5708
 shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ShotPosition" type="Position2D" parent="."]
 position = Vector2( 0, -20 )
@@ -48,6 +52,11 @@ __meta__ = {
 [node name="CooldownTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="ShadowCharacter" type="Sprite" parent="."]
+position = Vector2( 0.5, -2 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 3 )
 
 [node name="Jellyjar" type="Sprite" parent="."]
 position = Vector2( 0, -11 )
