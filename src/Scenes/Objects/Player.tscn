@@ -47,11 +47,6 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
-"frames": [ ExtResource( 13 ) ],
-"loop": true,
-"name": "AOETower",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "BaseTower",
@@ -60,6 +55,11 @@ animations = [ {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "SlowTower",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "AOETower",
 "speed": 5.0
 } ]
 
@@ -126,7 +126,7 @@ animation = "carry_moving"
 [node name="TowerSprites" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -32 )
 frames = SubResource( 6 )
-animation = "AOETower"
+animation = "BaseTower"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Light2D")
