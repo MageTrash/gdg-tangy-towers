@@ -77,7 +77,7 @@ func _physics_process(delta: float) -> void:
 func reached_end() -> void:
 	Global.decrement_player_health()
 	# made it to the end anim
-	queue_free()
+	on_anim_fin("death")
 
 
 func set_health(value: int) -> void:
