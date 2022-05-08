@@ -3,7 +3,7 @@
 [ext_resource path="res://- Resource Dump/Fonts/KarmaticArcade.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 10
+size = 26
 outline_size = 1
 outline_color = Color( 0, 0, 0, 0.458824 )
 font_data = ExtResource( 1 )

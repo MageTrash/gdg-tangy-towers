@@ -246,9 +246,6 @@ group_node = NodePath("../YSort/Towers")
 [node name="ShopUI" parent="TowerShop/CanvasLayer" index="0"]
 visible = false
 
-[node name="Basic" parent="TowerShop/CanvasLayer/ShopUI/TabContainer" index="0"]
-margin_top = 17.0
-
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 1 )]
