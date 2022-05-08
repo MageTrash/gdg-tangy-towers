@@ -50,6 +50,10 @@ margin_right = 200.0
 margin_bottom = 140.0
 
 [node name="Basic" parent="CanvasLayer/ShopUI/TabContainer" instance=ExtResource( 4 )]
+margin_left = 2.0
+margin_top = 17.0
+margin_right = -2.0
+margin_bottom = -2.0
 tower_name = "Basic"
 tower_scene = ExtResource( 5 )
 fruit_spiralines = 0
@@ -57,37 +61,37 @@ fruit_pomeyes = 0
 fruit_neutraroots = 0
 
 [node name="TowerName" parent="CanvasLayer/ShopUI/TabContainer/Basic" index="0"]
-margin_right = 392.0
-margin_bottom = 22.0
+margin_right = 396.0
+margin_bottom = 23.0
 
 [node name="MiddleMarginContainer" parent="CanvasLayer/ShopUI/TabContainer/Basic" index="1"]
-margin_top = 26.0
-margin_right = 392.0
-margin_bottom = 195.0
+margin_top = 27.0
+margin_right = 396.0
+margin_bottom = 207.0
 
 [node name="MiddleBoxContainer" parent="CanvasLayer/ShopUI/TabContainer/Basic/MiddleMarginContainer" index="0"]
-margin_right = 392.0
-margin_bottom = 169.0
+margin_right = 396.0
+margin_bottom = 180.0
 
 [node name="PriceContainer" parent="CanvasLayer/ShopUI/TabContainer/Basic/MiddleMarginContainer/MiddleBoxContainer" index="0"]
-margin_right = 194.0
-margin_bottom = 169.0
+margin_right = 196.0
+margin_bottom = 180.0
 
 [node name="Description" parent="CanvasLayer/ShopUI/TabContainer/Basic/MiddleMarginContainer/MiddleBoxContainer" index="1"]
-margin_left = 198.0
-margin_right = 392.0
-margin_bottom = 169.0
+margin_left = 200.0
+margin_right = 396.0
+margin_bottom = 180.0
 text = "Shoots basic damaging projectiles."
 
 [node name="ButtonMarginContainer" parent="CanvasLayer/ShopUI/TabContainer/Basic" index="2"]
-margin_top = 199.0
-margin_right = 392.0
-margin_bottom = 237.0
+margin_top = 211.0
+margin_right = 396.0
+margin_bottom = 251.0
 
 [node name="Button" parent="CanvasLayer/ShopUI/TabContainer/Basic/ButtonMarginContainer" index="0"]
-margin_left = 161.0
-margin_top = 10.0
-margin_right = 230.0
+margin_left = 163.0
+margin_top = 12.0
+margin_right = 232.0
 margin_bottom = 27.0
 
 [node name="Slow" parent="CanvasLayer/ShopUI/TabContainer" instance=ExtResource( 4 )]
@@ -130,9 +134,9 @@ margin_bottom = 237.0
 
 [node name="Button" parent="CanvasLayer/ShopUI/TabContainer/Slow/ButtonMarginContainer" index="0"]
 margin_left = 161.0
-margin_top = 8.0
+margin_top = 9.0
 margin_right = 230.0
-margin_bottom = 25.0
+margin_bottom = 24.0
 
 [node name="Splash" parent="CanvasLayer/ShopUI/TabContainer" instance=ExtResource( 4 )]
 visible = false
@@ -172,9 +176,9 @@ margin_bottom = 237.0
 
 [node name="Button" parent="CanvasLayer/ShopUI/TabContainer/Splash/ButtonMarginContainer" index="0"]
 margin_left = 161.0
-margin_top = 8.0
+margin_top = 9.0
 margin_right = 230.0
-margin_bottom = 25.0
+margin_bottom = 24.0
 
 [editable path="CanvasLayer/ShopUI/TabContainer/Basic"]
 [editable path="CanvasLayer/ShopUI/TabContainer/Slow"]
