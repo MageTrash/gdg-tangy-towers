@@ -36,7 +36,7 @@ var player_direction_mod : float = 1.0
 
 var in_effect : bool = false
 
-onready var player_health : int = 20 setget set_player_health
+onready var player_health : int = 20
 onready var player : KinematicBody2D
 onready var map_path : Path2D
 onready var enemy_ysort : YSort
@@ -86,8 +86,11 @@ func increment_fruit(fruit_type: int) -> void:
 	emit_signal("new_fruit", fruit_type)
 
 
-func increment_enemies_counter() -> void:
-	player_health -= 1
+func decrement_player_health(amount: int = 1) -> void:
+	player_health -= amount
+	emit_signal("health_change", player_health)
+	if player_health <= 0:
+		emit_signal("game_end")
 
 
 # The map script will register it's path so all towers have a global reference to it
@@ -190,9 +193,3 @@ func set_tower_count(value: int) -> void:
 	tower_count = value
 	emit_signal("tower_count_change", tower_count)
 
-
-func set_player_health(value: int) -> void:
-	player_health = value
-	emit_signal("health_change", player_health)
-	if player_health <= 0:
-		emit_signal("game_end")

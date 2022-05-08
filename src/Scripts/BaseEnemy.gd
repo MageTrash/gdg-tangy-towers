@@ -75,7 +75,7 @@ func _physics_process(delta: float) -> void:
 
 # called when enemy has reached the end of path2D
 func reached_end() -> void:
-	Global.increment_enemies_counter()
+	Global.decrement_player_health()
 	# made it to the end anim
 	queue_free()
 
