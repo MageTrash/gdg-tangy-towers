@@ -148,7 +148,6 @@ func setup_effect_timer(time: float) -> void:
 		cleanse_effects()
 	# always do this
 	effect_timer.wait_time = time
-	effect_timer
 	in_effect = true
 	effect_timer.start()
 

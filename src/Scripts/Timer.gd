@@ -4,7 +4,7 @@ onready var time = 0.00
 
 func _process(delta):
 	time += delta
-	var time = stepify(time, 0.1)
+	time = stepify(time, 0.1)
 	var mils = fmod(time, 1) * 10
 	var secs = fmod(time, 60)
 	var mins = fmod(time, 60*60) / 60

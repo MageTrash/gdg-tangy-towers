@@ -39,5 +39,5 @@ func on_buy_pressed(tower: PackedScene, price: Array) -> void:
 
 	# if yes then go invis until player's in_build mode is off
 	shop_ui.visible = false
-	Global.player.is_building = true
 	Global.player.tower = tower
+	Global.player.is_building = true

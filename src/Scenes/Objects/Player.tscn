@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art n Music/Character Sprites/character-moving4.png" type="Texture" id=2]
@@ -11,6 +11,13 @@
 [ext_resource path="res://Art n Music/Character Sprites/character-moving6.png" type="Texture" id=9]
 [ext_resource path="res://Art n Music/Character Sprites/character-carrying2.png" type="Texture" id=10]
 [ext_resource path="res://Art n Music/Character Sprites/character-carrying1.png" type="Texture" id=11]
+[ext_resource path="res://Art n Music/Towers/jellyjar.png" type="Texture" id=12]
+[ext_resource path="res://Art n Music/Towers/toothpickjar.png" type="Texture" id=13]
+[ext_resource path="res://Art n Music/Towers/kniferack-right.png" type="Texture" id=14]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.99999
+height = 6.00002
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 30 )
@@ -38,9 +45,23 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 5.99999
-height = 6.00002
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "AOETower",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "BaseTower",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "SlowTower",
+"speed": 5.0
+} ]
 
 [sub_resource type="Animation" id=5]
 resource_name = "light fluctuate"
@@ -64,6 +85,10 @@ script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "Change the script variables to fine tune the movement"
 }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="."]
 show_behind_parent = true
@@ -98,9 +123,10 @@ position = Vector2( 0.5, -16 )
 frames = SubResource( 3 )
 animation = "carry_moving"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource( 1 )
+[node name="TowerSprites" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -32 )
+frames = SubResource( 6 )
+animation = "AOETower"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Light2D")

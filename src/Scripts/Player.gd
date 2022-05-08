@@ -13,6 +13,7 @@ export(float, 0.0, 1.0) var slow_factor : float = 0.7
 onready var tower : PackedScene
 
 onready var animated_sprite = $AnimatedSprite
+onready var tower_sprite = $TowerSprites
 
 onready var is_building: bool = false setget set_is_building
 onready var raw_direction: Vector2
@@ -23,6 +24,7 @@ onready var stunned : Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	light.enabled = false
+	tower_sprite.visible = false
 	# give global a reference to player from anywhere
 	Global.register_player(self)
 	Global.connect("toggle_player_light", self, "change_light")
@@ -83,7 +85,7 @@ func place_tower() -> void:
 		tower_shape.set_disabled(true)
 		current_tower.global_position = global_position
 		get_parent().get_node("Towers").add_child(current_tower)
-		is_building = false
+		set_is_building(false)
 		Global.tower_count += 1
 	else:
 		current_tower.queue_free()
@@ -102,10 +104,7 @@ func change_light(toggle: bool) -> void:
 func set_is_building(value: bool) -> void:
 	is_building = value
 	if is_building:
-		# turn tower sprite visible here
-		# run animations involving the tower here
-		pass
+		tower_sprite.animation = tower._bundled["names"][0]
+		tower_sprite.visible = true
 	else:
-		# turn tower sprite invisible here
-		# stop animations
-		pass
+		tower_sprite.visible = false

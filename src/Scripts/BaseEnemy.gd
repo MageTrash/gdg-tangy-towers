@@ -21,7 +21,7 @@ enum enemy {
 var enemy_type : int
 
 var health : int = 10 setget set_health
-var path_speed : int
+var path_speed : float
 var slow_multiplier : float = 1.0 setget set_slowed
 var slow_time : float = 4.0
 
