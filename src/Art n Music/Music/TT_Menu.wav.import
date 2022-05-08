@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TT_Menu.wav-c868575699df595d2141138bd889c81e.sample"
+
+[deps]
+
+source_file="res://Art n Music/Music/TT_Menu.wav"
+dest_files=[ "res://.import/TT_Menu.wav-c868575699df595d2141138bd889c81e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

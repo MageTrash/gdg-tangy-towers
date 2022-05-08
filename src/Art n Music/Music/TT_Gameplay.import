@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TT_-_Calm-RED4.wav-33557853f4831844a8d8b7be9b5d9142.sample"
+
+[deps]
+
+source_file="res://Art n Music/Music/TT_-_Calm-RED4.wav"
+dest_files=[ "res://.import/TT_-_Calm-RED4.wav-33557853f4831844a8d8b7be9b5d9142.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
