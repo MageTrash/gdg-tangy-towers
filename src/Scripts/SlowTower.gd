@@ -21,6 +21,13 @@ func _ready() -> void:
 	Global.connect("tower_rate_change", self, "on_fire_rate_change")
 	sight_area.connect("area_entered", self, "in_sight")
 	sight_area.connect("area_exited", self, "out_of_sight")
+	$ExcludeSpawn.connect("body_exited", self, "left_spawn_area")
+
+
+func left_spawn_area(body: PhysicsBody2D) -> void:
+	if body.is_in_group("Player"):
+		$StaticBody2D/CollisionShape2D.set_deferred("disabled", false)
+
 
 func on_fire_rate_change(modifier: float) -> void:
 	cooldown.wait_time = 1 / (fire_rate * modifier)
