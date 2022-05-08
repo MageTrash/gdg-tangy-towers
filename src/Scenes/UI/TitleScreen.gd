@@ -8,8 +8,9 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for button in $Menu/CentreRow/Buttons.get_children():
-		button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
+	for child in $Menu/CentreRow/Buttons.get_children():
+		if child is Button:
+			child.connect("pressed", self, "_on_Button_pressed", [child.scene_to_load])
 	MusicMan.play_menutrack()
 
 func _on_Button_pressed(scene_to_load):
