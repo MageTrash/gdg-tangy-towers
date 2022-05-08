@@ -1,10 +1,10 @@
 extends Label
 
-onready var time = 0.00
+onready var time_passed = 0.00
 
 func _process(delta):
-	time += delta
-	time = stepify(time, 0.1)
+	time_passed += delta
+	var time = stepify(time_passed, 0.1)
 	var mils = fmod(time, 1) * 10
 	var secs = fmod(time, 60)
 	var mins = fmod(time, 60*60) / 60

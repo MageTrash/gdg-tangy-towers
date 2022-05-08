@@ -75,11 +75,12 @@ func _ready() -> void:
 	effect_timer.connect("timeout", self, "cleanse_effects")
 	add_child(effect_timer)
 
-
-func game_start() -> void:
 	wave_timer.wait_time = 5
 	wave_timer.connect("timeout", self, "spawn_enemy")
 	wave_timer.autostart = true
+
+
+func game_start() -> void:
 	add_child(wave_timer)
 
 
