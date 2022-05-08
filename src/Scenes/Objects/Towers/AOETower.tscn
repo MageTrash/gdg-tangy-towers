@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Art n Music/Towers/toothpickjar.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/AOETower.gd" type="Script" id=2]
+[ext_resource path="res://Art n Music/Character Sprites/shadow_character.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 7.99998
@@ -48,6 +49,11 @@ __meta__ = {
 [node name="CooldownTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="ShadowCharacter" type="Sprite" parent="."]
+position = Vector2( 0.5, -1 )
+scale = Vector2( 1.25, 1.25 )
+texture = ExtResource( 3 )
 
 [node name="Toothpickjar" type="Sprite" parent="."]
 position = Vector2( 0, -11 )

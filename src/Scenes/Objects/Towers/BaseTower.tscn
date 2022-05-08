@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/BaseTower.gd" type="Script" id=1]
 [ext_resource path="res://Art n Music/Towers/kniferack-front.png" type="Texture" id=2]
 [ext_resource path="res://Art n Music/Towers/kniferack-back.png" type="Texture" id=3]
 [ext_resource path="res://Art n Music/Towers/kniferack-left.png" type="Texture" id=4]
 [ext_resource path="res://Art n Music/Towers/kniferack-right.png" type="Texture" id=5]
+[ext_resource path="res://Art n Music/Character Sprites/shadow_character.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 12.0
@@ -18,9 +19,9 @@ extents = Vector2( 17, 22 )
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "right",
+"name": "up",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ) ],
@@ -28,9 +29,9 @@ animations = [ {
 "name": "left",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "up",
+"name": "right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ) ],
@@ -74,6 +75,11 @@ __meta__ = {
 [node name="CooldownTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="ShadowCharacter" type="Sprite" parent="."]
+position = Vector2( 0.5, 1 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -12 )

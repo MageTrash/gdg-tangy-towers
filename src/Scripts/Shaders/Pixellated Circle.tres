@@ -2,9 +2,10 @@
 
 [resource]
 code = "shader_type canvas_item;
-
+uniform vec4 hue_colour : hint_color = vec4(1., 1., 1., 1.);
 uniform float minCircleSize : hint_range(0.0, 320.0) = 100.;
 uniform float maxCircleExpansion : hint_range(0.0, 100.0) = 20.;
+uniform float frequencyModifier : hint_range(0.0, 2.0) = 1.0;
 
 void fragment() {
 	// Dividing the max resolution into our preffered pixel size.
@@ -15,9 +16,9 @@ void fragment() {
 	
 	//Calculates the fluctuating circle.
 	float radius = sin(TIME)*maxCircleExpansion/2./res.x + (minCircleSize+maxCircleExpansion)/2./res.x;
-	float radial = smoothstep(radius+0.001, radius-0.001, distance(pixelUV, vec2(0.5)));
+	float radial = smoothstep(radius+0.00075, radius-0.00075, distance(pixelUV, vec2(0.5)));
 	
-	vec4 flatCircle = vec4(radial); //Creates an RGBA with the circle.
+	vec4 flatCircle = vec4(hue_colour.rgb, hue_colour.a*radial); //Creates an RGBA with the circle.
 	
 	COLOR = flatCircle;
 }

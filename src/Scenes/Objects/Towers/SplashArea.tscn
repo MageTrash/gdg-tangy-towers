@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scripts/SplashArea.gd" type="Script" id=1]
 [ext_resource path="res://Art n Music/Effects/Explosion4.png" type="Texture" id=2]
@@ -14,9 +14,27 @@
 [ext_resource path="res://Art n Music/Fruit Sprites/thornbomb.png" type="Texture" id=12]
 [ext_resource path="res://Art n Music/Effects/Explosion7.png" type="Texture" id=13]
 [ext_resource path="res://Art n Music/Effects/Explosion9.png" type="Texture" id=14]
+[ext_resource path="res://Art n Music/320-empty.png" type="Texture" id=15]
+[ext_resource path="res://Scripts/Shaders/Pixellated Circle.tres" type="Shader" id=16]
+[ext_resource path="res://Scripts/Shaders/Outline.gdshader" type="Shader" id=17]
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 16 )
+shader_param/hue_colour = Color( 0.917647, 0.454902, 0.270588, 0.239216 )
+shader_param/minCircleSize = 60.0
+shader_param/maxCircleExpansion = 10.0
+shader_param/frequencyModifier = 1.0
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 39.2046
+radius = 40.0
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 17 )
+shader_param/color = Color( 0.780392, 0.85098, 0.482353, 0.654902 )
+shader_param/width = 1.0
+shader_param/pattern = 0
+shader_param/inside = false
+shader_param/add_margins = true
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -26,19 +44,66 @@ animations = [ {
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 14 ), ExtResource( 10 ), ExtResource( 6 ), ExtResource( 8 ) ],
-"loop": true,
+"loop": false,
 "name": "explosion",
-"speed": 5.0
+"speed": 12.0
 } ]
+
+[sub_resource type="Animation" id=7]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 3.86374, 1 ),
+"update": 0,
+"values": [ Color( 0.999708, 0.99624, 0.993939, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "priming"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.55, 1, 1.4, 1.8, 2.05, 2.25, 2.45, 2.65, 2.8, 2.9, 3 ),
+"transitions": PoolRealArray( 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 0.5, 2, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.964706, 0.545098, 0.266667, 1 ), Color( 1, 1, 1, 1 ), Color( 0.964706, 0.545098, 0.266667, 1 ), Color( 1, 1, 1, 1 ), Color( 0.964706, 0.545098, 0.266667, 1 ), Color( 0.890196, 0.85098, 0.6, 1 ), Color( 0.905882, 0.396078, 0.054902, 1 ), Color( 0.85098, 0.584314, 0.403922, 1 ), Color( 0.627451, 0.254902, 0.0117647, 1 ), Color( 0.964706, 0.545098, 0.266667, 1 ), Color( 0.372549, 0.0156863, 0.0156863, 1 ) ]
+}
 
 [node name="SplashArea" type="Area2D"]
 monitorable = false
 script = ExtResource( 1 )
 
+[node name="AreaOverlay" type="Sprite" parent="."]
+material = SubResource( 3 )
+texture = ExtResource( 15 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+modulate = Color( 1, 1, 1, 0 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 0.999708, 0.99624, 0.993939, 1 )
+material = SubResource( 5 )
 position = Vector2( 0.5, 0 )
 frames = SubResource( 2 )
-animation = "explosion"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/death = SubResource( 7 )
+anims/priming = SubResource( 6 )
+
+[connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
