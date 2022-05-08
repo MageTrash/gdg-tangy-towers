@@ -10,6 +10,7 @@ extends Control
 func _ready():
 	for button in $Menu/CentreRow/Buttons.get_children():
 		button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
+	MusicMan.play_menutrack()
 
 func _on_Button_pressed(scene_to_load):
 	get_tree().change_scene_to(scene_to_load)

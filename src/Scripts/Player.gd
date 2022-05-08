@@ -28,6 +28,7 @@ func _ready() -> void:
 	# give global a reference to player from anywhere
 	Global.register_player(self)
 	Global.connect("toggle_player_light", self, "change_light")
+	MusicMan.play_gameplaytrack()
 
 func _physics_process(_delta: float) -> void:
 	# This will get a normalized Vector2 direction of where the player want's to move
