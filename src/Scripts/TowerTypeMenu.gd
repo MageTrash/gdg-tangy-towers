@@ -81,5 +81,5 @@ func price_update() -> void:
 func update_tower_price(tower_num: int) -> void:
 	for i in range(0, costs.size()):
 		if costs[i] == 0: continue
-		costs[i] += floor(Global.scale_factor * pow(tower_num, 2))
+		costs[i] = floor(1.5 * costs[i])
 	price_update()
