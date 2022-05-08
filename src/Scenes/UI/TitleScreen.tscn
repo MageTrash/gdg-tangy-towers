@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/UI/Buttons/QuitButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art n Music/Fruit Sprites/flashfruit.png" type="Texture" id=2]
@@ -8,8 +8,8 @@
 [ext_resource path="res://Scenes/Maps/FinalScene.tscn" type="PackedScene" id=6]
 [ext_resource path="res://- Resource Dump/Fonts/KarmaticArcade.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Art n Music/Fruit Sprites/heartfruit.png" type="Texture" id=8]
-[ext_resource path="res://Scripts/Score.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Shaders/Outline.gdshader" type="Shader" id=9]
+[ext_resource path="res://Scripts/Score.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -119,10 +119,10 @@ alignment = 1
 margin_top = 39.0
 margin_right = 288.0
 margin_bottom = 50.0
-theme = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Your Score: "
 align = 1
-script = ExtResource( 9 )
+script = ExtResource( 10 )
 
 [node name="NewGameButton" parent="Menu/CentreRow/Buttons" instance=ExtResource( 3 )]
 margin_top = 60.0
