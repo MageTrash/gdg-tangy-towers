@@ -7,6 +7,7 @@ signal tower_rate_change(tower_fire_rate_mod)
 signal toggle_player_light(light_change)
 signal tower_count_change(tower_count)
 signal game_end
+signal health_change(player_health)
 
 # this list will change later
 enum fruit {
@@ -192,5 +193,6 @@ func set_tower_count(value: int) -> void:
 
 func set_player_health(value: int) -> void:
 	player_health = value
+	emit_signal("health_change", player_health)
 	if player_health <= 0:
 		emit_signal("game_end")
