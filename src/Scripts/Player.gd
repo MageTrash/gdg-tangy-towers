@@ -14,7 +14,7 @@ onready var tower : PackedScene
 
 onready var animated_sprite = $AnimatedSprite
 
-onready var is_building: bool = false
+onready var is_building: bool = false setget set_is_building
 onready var raw_direction: Vector2
 onready var direction: Vector2
 onready var velocity: Vector2
@@ -98,3 +98,14 @@ func _unhandled_input(event: InputEvent) -> void:
 func change_light(toggle: bool) -> void:
 	light.enabled = toggle
 
+
+func set_is_building(value: bool) -> void:
+	is_building = value
+	if is_building:
+		# turn tower sprite visible here
+		# run animations involving the tower here
+		pass
+	else:
+		# turn tower sprite invisible here
+		# stop animations
+		pass
