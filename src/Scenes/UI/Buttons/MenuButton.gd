@@ -1,3 +1,4 @@
 extends Button
 
-export(String) var scene_to_load
+export(PackedScene) var scene_to_load
+
