@@ -10,6 +10,7 @@ export(bool) var loop = true
 
 onready var list_of_tiles: Array = get_used_cells()
 onready var fruit_group = get_node_or_null(group_node)
+onready var timer : Timer = Timer.new()
 
 func _ready() -> void:
 	assert(spawn_object != null, "Add a scene to the spawn_object script variable")
@@ -21,9 +22,15 @@ func _ready() -> void:
 	# set the tile to invisible
 	tile_set.tile_set_modulate(0, Color(0 ,0, 0, 0))
 
-	while loop:
-		spawn_random(spawn_amount)
-		yield(get_tree().create_timer(timer_length), "timeout")
+	timer.wait_time = timer_length
+	timer.connect("timeout", self, "time_end")
+	add_child(timer)
+	timer.start()
+
+
+func time_end() -> void:
+	spawn_random(spawn_amount)
+	timer.start()
 
 
 func spawn_random(amount: int) -> void:
