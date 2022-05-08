@@ -124,11 +124,12 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="Menu/CentreRow/CenterContainer"]
-margin_left = 80.0
-margin_top = 59.0
-margin_right = 208.0
-margin_bottom = 187.0
+margin_left = 40.0
+margin_top = 10.0
+margin_right = 168.0
+margin_bottom = 138.0
 rect_min_size = Vector2( 128, 128 )
+rect_scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 8 )
 stretch_mode = 1
 
