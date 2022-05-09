@@ -63,6 +63,7 @@ func _process(_delta: float) -> void:
 				bullet.slowness = slowness_effect
 				add_child(bullet)
 				cooldown.start()
+				SfxMan.play_jamballshootsfx()
 
 
 # solves a quadratic equation and returns how many solutions it has
