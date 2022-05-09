@@ -64,6 +64,7 @@ func _process(_delta: float) -> void:
 			bullet.damage = bullet_damage * Global.tower_damage_mod
 			add_child(bullet)
 			cooldown.start()
+			SfxMan.play_shootknifesfx()
 
 
 # solves a quadratic equation and returns how many solutions it has

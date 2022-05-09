@@ -31,4 +31,5 @@ func on_area_entered(body: Node) -> void:
 		if body.is_building == false:
 			Global.increment_fruit(fruit_type)
 			# do something here like an animation? then delete
+			SfxMan.play_fruitpickupsfx()
 			queue_free()

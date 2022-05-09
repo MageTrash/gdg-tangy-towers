@@ -19,6 +19,7 @@ func time_end() -> void:
 			area.get_parent().health -= damage
 	$AreaOverlay.material.set_shader_param("minCircleSize", 0.0)
 	$AnimatedSprite.play("explosion")
+	SfxMan.play_explosionsfx()
 	$AnimationPlayer.play("death")
 	yield($AnimatedSprite, "animation_finished")
 	queue_free()
