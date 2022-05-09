@@ -28,9 +28,9 @@ animations = [ {
 "name": "rotnana",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "wormy",
+"name": "fungaberry",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
@@ -38,9 +38,9 @@ animations = [ {
 "name": "lemonose",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 4 ) ],
 "loop": true,
-"name": "fungaberry",
+"name": "wormy",
 "speed": 5.0
 } ]
 

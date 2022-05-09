@@ -98,6 +98,7 @@ func on_anim_fin(anim_name: String) -> void:
 	if anim_name == "death":
 		anim.get_parent().queue_free()
 		queue_free()
+		SfxMan.play_enemydeathsfx()
 
 
 func on_body_entered(body: Node) -> void:

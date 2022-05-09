@@ -88,6 +88,7 @@ func place_tower() -> void:
 		get_parent().get_node("Towers").add_child(current_tower)
 		set_is_building(false)
 		Global.tower_count += 1
+		SfxMan.play_towerplacesfx()
 	else:
 		current_tower.queue_free()
 
