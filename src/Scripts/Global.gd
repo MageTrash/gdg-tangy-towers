@@ -201,15 +201,15 @@ func play_effect(fruit_type: int) -> void:
 			setup_effect_timer(effect_time[fruit.NEUTRAROOTS])
 			neutra_type = Global.rng.randi_range(0, 3)
 			shader_type = 2
-			#match neutra_type:
-			#	0:
-			enemy_speed_mod = Global.rng.randf_range(0.25, 2.0)
-			#	1:
-			player_speed_mod = Global.rng.randf_range(0.3, 2.0)
-			#	2:
-			tower_damage_mod = Global.rng.randf_range(0.5, 2.5)
-			#	3:
-			emit_signal("tower_rate_change", Global.rng.randf_range(0.5, 2.5))
+			match neutra_type:
+				0:
+					enemy_speed_mod = Global.rng.randf_range(0.25, 2.0)
+				1:
+					player_speed_mod = Global.rng.randf_range(0.3, 2.0)
+				2:
+					tower_damage_mod = Global.rng.randf_range(0.5, 2.5)
+				3:
+					emit_signal("tower_rate_change", Global.rng.randf_range(0.5, 2.5))
 
 
 func set_tower_count(value: int) -> void:
