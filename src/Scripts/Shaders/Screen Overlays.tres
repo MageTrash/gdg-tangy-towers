@@ -15,7 +15,7 @@ uniform float inverse_speed = 60.0;
 
 const float pi = 3.14159265359;
 
-uniform float aberWidth = 5.;
+const float aberWidth = 1.5;
 
 void fragment() {
 	vec4 background = texture(SCREEN_TEXTURE, SCREEN_UV);
@@ -45,7 +45,7 @@ void fragment() {
 			vec4 aber_left = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + SCREEN_PIXEL_SIZE.x *offsetter, SCREEN_UV.y));
 			vec4 aber_right = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x - SCREEN_PIXEL_SIZE.x *offsetter, SCREEN_UV.y));
 			
-			color = vec4(aber_left.r, aber_right.g * 0.85, background.b, 1.);
+			color = vec4(aber_left.g * 0.3 + aber_left.r, aber_right.g * 0.85, background.b * 0.85, 1.);
 			break;
 		case 3:
 			//Speedlines shader
@@ -60,6 +60,7 @@ void fragment() {
 			} else {
 				color = mix(line_color_a, line_color_b, 1.0 - noise_line.r);
 			}
+			
 			break;
 		case 4:
 			float value = 0.299*background.r + 0.587 * background.g + 0.114 * background.b;
@@ -67,8 +68,12 @@ void fragment() {
 			
 			break;
 		case 5:
-			vec2 distortedUV = SCREEN_UV + texture(noise2, UV).r * 0.01 * msin;
+			vec2 distortedUV = SCREEN_UV + texture(noise2, UV * (msin * 0.1 + 0.25)).r * 0.02;
+			vec4 aber = texture(SCREEN_TEXTURE, vec2(distortedUV.x + sin(TIME*2. + 3.) * SCREEN_PIXEL_SIZE.x * 2., distortedUV.y + cos(TIME*2. + 2.) * SCREEN_PIXEL_SIZE.y * 3.));
+			
 			color = texture(SCREEN_TEXTURE, distortedUV);
+			color.r = aber.r;
+			color.g -= 0.6*aber.g ;
 			break;
 		default:
 			//Default shader

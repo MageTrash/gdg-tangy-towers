@@ -3,7 +3,6 @@
 [sub_resource type="OpenSimplexNoise" id=18]
 period = 10.0
 persistence = 1.0
-lacunarity = 4.0
 
 [resource]
 seamless = true
