@@ -6,7 +6,7 @@ onready var area : Area2D = $PickupArea
 onready var sprite : AnimatedSprite = $AnimatedSprite
 
 func _ready() -> void:
-	fruit_type = pick_random(Global.probability)
+	fruit_type = pick_random(Global.fruit_probability)
 	sprite.animation = Global.fruit.keys()[fruit_type].to_lower()
 	area.connect("body_entered", self, "on_area_entered")
 

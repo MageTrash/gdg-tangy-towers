@@ -1,13 +1,16 @@
 extends PathFollow2D
 
-export(Vector2) var fungaberry_health = Vector2(5, 10)
-export(int) var fungaberry_speed = 30
-export(Vector2) var rotnana_health = Vector2(10, 20)
-export(int) var rotnana_speed = 25
-export(Vector2) var lemonose_health = Vector2(20, 30)
-export(int) var lemonose_speed = 20
-export(Vector2) var wormy_health = Vector2(35, 45)
-export(int) var wormy_speed = 15
+export(Vector2) var fungaberry_health = Vector2(4, 7)
+export(float) var fungaberry_speed = 30.0
+export(Vector2) var rotnana_health = Vector2(8, 15)
+export(float) var rotnana_speed = 25.0
+export(Vector2) var lemonose_health = Vector2(15, 25)
+export(float) var lemonose_speed = 20.0
+export(Vector2) var wormy_health = Vector2(30, 40)
+export(float) var wormy_speed = 10.0
+export(Vector2) var creature_health = Vector2(65, 80)
+export(float) var creature_speed = 3.0
+
 export(float) var knockback : float = 200.0
 
 enum enemy {
@@ -15,12 +18,13 @@ enum enemy {
 	ROTNANA,
 	LEMONOSE,
 	WORMY,
+	CREATURE
 }
 
 # Is chosen from enemy enum
 var enemy_type : int
 
-var health : int = 10 setget set_health
+var health : float = 10.0 setget set_health
 var path_speed : float
 var slow_multiplier : float = 1.0 setget set_slowed
 var slow_time : float = 4.0
@@ -51,7 +55,10 @@ func _ready() -> void:
 		enemy.WORMY:
 			health = Global.rng.randi_range(wormy_health.x, wormy_health.y)
 			path_speed = wormy_speed
-
+		enemy.CREATURE:
+			health = Global.rng.randi_range(creature_health.x, creature_health.y)
+			path_speed = wormy_speed
+	health *= Global.enemy_scale_factor
 
 # this gets called when it's health is changed and the check makes sure you don't get
 # overlapping timers counting down to change slow_multiplier back to 1.0
@@ -82,7 +89,7 @@ func reached_end() -> void:
 	on_anim_fin("death")
 
 
-func set_health(value: int) -> void:
+func set_health(value: float) -> void:
 	# if the current health is greater than the new health value
 	# then you've lost health and play the hit animation
 	if health > value:
@@ -105,7 +112,7 @@ func on_body_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		var to_player : Vector2 = (body.global_position - global_position).normalized()
 		body.stunned = to_player * knockback * (Global.player_speed_mod*0.85)
-		path_speed *= 0.95
+		path_speed *= 0.85
 
 
 func on_game_end() -> void:

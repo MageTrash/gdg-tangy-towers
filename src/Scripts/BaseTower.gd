@@ -4,7 +4,7 @@ extends Node2D
 export(PackedScene) var bullet_scene := preload("res://Scenes/Objects/Towers/Bullet.tscn")
 export(int, 50, 1000) var bullet_speed = 200
 export(float, 1, 100) var bullet_damage : float = 1
-export(float, 0.1, 200) var fire_rate = 5
+export(float, 0.1, 200) var fire_rate = 4
 
 onready var anim : AnimationPlayer = $AnimationPlayer
 onready var sight_area: Area2D = $SightArea
@@ -94,6 +94,6 @@ func predict_position(target: PathFollow2D) -> bool:
 		return false
 	var dist_to_predict: float = max(root1, root2)
 	var t: float = dist_to_predict / bullet_speed
-	var c: Vector2 = target.global_position + (target_dir * target.path_speed) * t
+	var c: Vector2 = target.global_position + (target_dir * target.path_speed * Global.enemy_speed_mod) * t
 	result = (c - muzzel.global_position).normalized()
 	return true

@@ -93,6 +93,6 @@ func predict_position(target: PathFollow2D) -> bool:
 		return false
 	var dist_to_predict: float = max(root1, root2)
 	var t: float = dist_to_predict / bullet_speed
-	var c: Vector2 = target.global_position + (target_dir * target.path_speed) * t
+	var c: Vector2 = target.global_position + (target_dir * target.path_speed * Global.enemy_speed_mod) * t
 	result = (c - muzzel.global_position).normalized()
 	return true
