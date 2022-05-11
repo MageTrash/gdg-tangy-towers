@@ -131,7 +131,7 @@ func get_path_tangent(point_offset: float) -> Vector2:
 
 func spawn_enemy() -> void:
 	if game_end: return
-	var type_of_enemy = rng.randi_range(0, 4)
+	var type_of_enemy = pick_random(enemy_probability)
 	var bad_guy = enemy.instance()
 	var sprites = bad_guy.get_node("Sprites")
 	sprites.get_node("AnimatedSprite").animation = bad_guy.enemy.keys()[type_of_enemy].to_lower()
@@ -147,6 +147,20 @@ func spawn_enemy() -> void:
 		wave_timer.wait_time -= 0.01
 	if wave_timer.wait_time <= 1.0:
 		enemy_scale_factor += 0.01
+
+func pick_random(number_list: Array) -> int:
+	var sum : int = 0
+	for value in number_list:
+		sum += value
+	var rand_num : int = Global.rng.randi() % sum
+	var index : int = 0
+	for value in number_list:
+		if rand_num < value:
+			break
+		else:
+			rand_num -= value
+			index += 1
+	return index
 
 
 func cleanse_effects() -> void:
