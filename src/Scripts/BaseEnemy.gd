@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-export(Vector2) var fungaberry_health = Vector2(4, 7)
+export(Vector2) var fungaberry_health = Vector2(4, 9)
 export(float) var fungaberry_speed = 30.0
 export(Vector2) var rotnana_health = Vector2(8, 15)
 export(float) var rotnana_speed = 25.0
