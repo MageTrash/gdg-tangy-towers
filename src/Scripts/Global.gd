@@ -22,8 +22,8 @@ enum fruit {
 # e.g. the first value in probability corresponds to SPIRALINES
 
 var fruit_probability = [2, 3, 3, 2, 4]
-var enemy_probability = [11, 7, 5, 4, 1]
-var effect_time = [5.0, 5.0, 8.0, 5.0, 2.5]
+var enemy_probability = [15, 7, 6, 3, 1]
+var effect_time = [5.0, 5.0, 7.5, 5.0, 2.5]
 var effect_type = 0
 
 var enemy_scale_factor : float = 1.0
@@ -144,9 +144,11 @@ func spawn_enemy() -> void:
 	map_path.add_child(bad_guy)
 	wave_timer.start()
 	if wave_timer.wait_time > 1.0:
-		wave_timer.wait_time -= 0.01
+		wave_timer.wait_time -= 0.02
 	if wave_timer.wait_time <= 1.0:
 		enemy_scale_factor += 0.01
+	if enemy_probability[0] > 5:
+		enemy_probability[0] -= 0.25
 
 func pick_random(number_list: Array) -> int:
 	var sum : int = 0

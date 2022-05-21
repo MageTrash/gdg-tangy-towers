@@ -12,6 +12,7 @@ func _ready() -> void:
 	shop_ui.visible = false
 	buy_area.connect("body_entered", self, "on_shop_entered")
 	buy_area.connect("body_exited", self, "on_shop_exited")
+	$AnimatedSprite.play("default")
 
 
 func on_shop_entered(_body: Node) -> void:

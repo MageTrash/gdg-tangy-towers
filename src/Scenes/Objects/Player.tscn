@@ -20,24 +20,24 @@ radius = 5.99999
 height = 6.00002
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 30, 30 )
+extents = Vector2( 50, 50 )
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "idle",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "carry_moving",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "carry_idle",
-"speed": 5.0
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "carry_moving",
+"speed": 10.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
@@ -121,7 +121,7 @@ texture = ExtResource( 3 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0.5, -16 )
 frames = SubResource( 3 )
-animation = "carry_moving"
+animation = "idle"
 
 [node name="TowerSprites" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -32 )

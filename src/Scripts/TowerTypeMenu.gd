@@ -81,5 +81,5 @@ func price_update() -> void:
 func update_tower_price(tower_num: int) -> void:
 	for i in range(0, costs.size()):
 		if costs[i] == 0: continue
-		costs[i] = tower_num + round(0.75*costs[i])
+		costs[i] = round((1 + tower_num / 3) * costs[i])
 	price_update()

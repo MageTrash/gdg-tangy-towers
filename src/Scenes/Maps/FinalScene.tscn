@@ -451,6 +451,7 @@ margin_bottom = 66.0
 theme = ExtResource( 8 )
 text = "Current effects:"
 align = 1
+uppercase = true
 
 [node name="ExitButton" type="Button" parent="CanvasLayer/Sideui2"]
 margin_left = 9.0

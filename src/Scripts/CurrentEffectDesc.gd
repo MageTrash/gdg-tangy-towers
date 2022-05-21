@@ -13,4 +13,4 @@ func update_texture(fruit_type):
 		4: set_text("Randomises all stats!")
 
 func cleanse_effects():
-	set_text("")
+	set_text("Bump into enemies to slow them")

@@ -8,7 +8,7 @@ export(float) var speed : float = 100.0
 export(float, 1, 20) var friction : float = 4.0
 # Used to slow down player when they hold down ctrl/shift
 export(float, 0.0, 1.0) var slow_factor : float = 0.7
-
+export (int) var anim_speed : int = 10
 
 onready var tower : PackedScene
 
@@ -59,6 +59,7 @@ func _physics_process(_delta: float) -> void:
 	# Plays the animations depending on the player state.
 	var is_moving = (direction.length() != 0.0)
 
+	animated_sprite.set_speed_scale(Global.player_speed_mod)
 	if is_building == true:
 		if is_moving:
 			animated_sprite.play("carry_moving")
